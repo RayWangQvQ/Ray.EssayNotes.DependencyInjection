@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Ray.EssayNotes.AutoFac.Service.IService;
+
+namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
+{
+    [ApiController]
+    public class StudentController : ControllerBase
+    {
+        private readonly IStudentService _studentService;
+        public StudentController(IStudentService studentService)
+        {
+            _studentService = studentService;
+        }
+
+        [Route("Student/GetStuNameById")]
+        public string GetStuNameById(long id)
+        {
+            return _studentService.GetStuName(id);
+        }
+    }
+}
