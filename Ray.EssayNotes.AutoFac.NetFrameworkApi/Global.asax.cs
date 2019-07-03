@@ -22,7 +22,7 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi
 
             // Get your HttpConfiguration.
             HttpConfiguration config = GlobalConfiguration.Configuration;
-            config.DependencyResolver = ApiContainer.Init();
+            ApiContainer.Init(config);
         }
     }
 }

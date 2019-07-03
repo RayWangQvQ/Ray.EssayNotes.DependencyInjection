@@ -1,9 +1,7 @@
-﻿using Ray.EssayNotes.AutoFac.Service.IService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+//
+using Ray.EssayNotes.AutoFac.Service.IService;
+
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc.Controllers
 {
@@ -16,7 +14,7 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc.Controllers
         }
 
         /// <summary>
-        /// 
+        /// 获取学生姓名
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

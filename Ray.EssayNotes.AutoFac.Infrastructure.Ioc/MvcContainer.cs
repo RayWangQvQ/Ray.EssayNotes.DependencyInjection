@@ -1,11 +1,13 @@
-﻿using Autofac;
-using Autofac.Integration.Mvc;
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
-using Ray.EssayNotes.AutoFac.Repository.Repository;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Web.Mvc;
+//
+using Autofac;
+using Autofac.Integration.Mvc;
+//
+using Ray.EssayNotes.AutoFac.Repository.IRepository;
+using Ray.EssayNotes.AutoFac.Repository.Repository;
+
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
@@ -26,16 +28,16 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             //新建容器构建器，用于注册组件和服务
             var builder = new ContainerBuilder();
             //注册组件
-            Build(builder);
+            MyBuild(builder); 
             func?.Invoke(builder);
             //利用构建器创建容器
             Instance = builder.Build();
 
             //将AutoFac设置为系统DI解析器
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(Instance));
+            System.Web.Mvc.DependencyResolver.SetResolver(new AutofacDependencyResolver(Instance));
         }
 
-        public static void Build(ContainerBuilder builder)
+        public static void MyBuild(ContainerBuilder builder)
         {
             Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssembliesWeb();
 
@@ -51,10 +53,11 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>));
 
             //注册Controller
+            //方法1：自己根据反射注册
             //builder.RegisterAssemblyTypes(assemblies)
             //    .Where(cc => cc.Name.EndsWith("Controller"))
             //    .AsSelf();
-            //或者可以用AutoFac封装好的一个专门用来注册Controller的方法
+            //方法2：用AutoFac提供的专门用于注册MvcController的扩展方法
             Assembly mvcAssembly = assemblies.FirstOrDefault(x => x.FullName.Contains(".NetFrameworkMvc"));
             builder.RegisterControllers(mvcAssembly);
         }

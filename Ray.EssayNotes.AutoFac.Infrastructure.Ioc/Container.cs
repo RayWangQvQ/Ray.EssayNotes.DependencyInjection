@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+//
 using Autofac;
 using Autofac.Core;
+//
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
@@ -145,7 +143,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void BuildContainerFunc8(ContainerBuilder builder)
         {
-            Assembly[] assemblies = Helpers.ReflectionHelper.GetReferencedAssemblies();
+            Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssemblies();
 
             builder.RegisterAssemblyTypes(assemblies)//程序集内所有具象类（concrete classes）
                 .Where(cc =>cc.Name.EndsWith("Repository")|//筛选

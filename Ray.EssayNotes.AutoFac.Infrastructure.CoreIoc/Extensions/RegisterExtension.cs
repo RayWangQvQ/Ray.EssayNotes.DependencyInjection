@@ -1,20 +1,26 @@
-﻿using Ray.EssayNotes.AutoFac.Model;
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
-using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Ray.EssayNotes.AutoFac.Service.Service;
+//
 using Microsoft.Extensions.DependencyInjection;
+//
+using Ray.EssayNotes.AutoFac.Model;
+using Ray.EssayNotes.AutoFac.Repository.IRepository;
+using Ray.EssayNotes.AutoFac.Repository.Repository;
+using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.Service;
+
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
 {
+    /// <summary>
+    /// asp.net core注册扩展
+    /// </summary>
     public static class RegisterExtension
     {
         /// <summary>
-        /// 自定义注册
+        /// 自定义手动注册
         /// </summary>
         /// <param name="services"></param>
         public static void AddMyServices(this IServiceCollection services)
@@ -32,7 +38,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
         }
 
         /// <summary>
-        /// 自定义注册
+        /// 反射注册
         /// </summary>
         /// <param name="services"></param>
         /// <param name="assembly"></param>
@@ -78,7 +84,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
 
         /// <summary>
         /// 暴露类型可空注册
-        /// （如果暴露类型为null，则以其本身类型注册）
+        /// （如果暴露类型为null，则自动以其本身类型注册）
         /// </summary>
         /// <param name="services"></param>
         /// <param name="interfaceType"></param>

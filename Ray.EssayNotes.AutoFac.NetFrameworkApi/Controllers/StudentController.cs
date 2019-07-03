@@ -1,9 +1,7 @@
-﻿using Ray.EssayNotes.AutoFac.Service.IService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
+//
+using Ray.EssayNotes.AutoFac.Service.IService;
+
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Controllers
 {
@@ -15,6 +13,11 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Controllers
             _studentService = studentService;
         }
 
+        /// <summary>
+        /// 获取学生姓名
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("Student/GetStuNameById")]
         public string GetStuNameById(long id)

@@ -1,13 +1,16 @@
-﻿using Ray.EssayNotes.AutoFac.Repository.IRepository;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//
 using Ray.EssayNotes.AutoFac.Model;
+using Ray.EssayNotes.AutoFac.Repository.IRepository;
+
 
 namespace Ray.EssayNotes.AutoFac.Repository.Repository
 {
+    /// <summary>
+    /// 基类仓储
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         public virtual T Get(long id)

@@ -1,15 +1,24 @@
-﻿using Autofac;
-using Autofac.Extensions.DependencyInjection;
+﻿using System;
+//
 using Microsoft.Extensions.DependencyInjection;
-using System;
+//
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+//
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 
+
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
 {
+    /// <summary>
+    /// Core的AutoFac容器
+    /// </summary>
     public static class CoreContainer
     {
-
+        /// <summary>
+        /// 容器实例
+        /// </summary>
         public static IContainer Instance;
 
         /// <summary>
@@ -22,23 +31,23 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
         {
             //新建容器构建器，用于注册组件和服务
             var builder = new ContainerBuilder();
+            //将Core自带DI容器内的服务迁移到AutoFac容器
             builder.Populate(services);
-            //注册组件
+            //自定义注册组件
             MyBuild(builder);
             func?.Invoke(builder);
             //利用构建器创建容器
             Instance = builder.Build();
+
             return new AutofacServiceProvider(Instance);
         }
 
         public static void MyBuild(this ContainerBuilder builder)
         {
-            //builder.RegisterModule(new AutofacModule());
-
             var assemblies = Helpers.ReflectionHelper.GetAllAssembliesCoreWeb();
 
             //注册仓储 && Service
-            builder.RegisterAssemblyTypes(assemblies)//程序集内所有具象类（concrete classes）
+            builder.RegisterAssemblyTypes(assemblies)
                 .Where(cc => cc.Name.EndsWith("Repository") |//筛选
                              cc.Name.EndsWith("Service"))
                 .PublicOnly()//只要public访问权限的

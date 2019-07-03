@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Ray.EssayNotes.AutoFac.Service.IService
 {
+    /// <summary>
+    /// 教师逻辑处理interface
+    /// </summary>
     public interface ITeacherService
     {
         string GetTeacherName(long id);

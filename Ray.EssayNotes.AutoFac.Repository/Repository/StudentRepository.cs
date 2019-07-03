@@ -1,13 +1,12 @@
 ﻿using Ray.EssayNotes.AutoFac.Model;
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Ray.EssayNotes.AutoFac.Repository.Repository
 {
+    /// <summary>
+    /// 学生仓储
+    /// </summary>
     public class StudentRepository : BaseRepository<StudentEntity>, IStudentRepository
     {
         public string GetName(long id)

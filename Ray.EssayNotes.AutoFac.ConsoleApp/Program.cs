@@ -1,7 +1,10 @@
 ﻿using System;
+//
 using Autofac;
+//
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.IService;
+
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp
 {
