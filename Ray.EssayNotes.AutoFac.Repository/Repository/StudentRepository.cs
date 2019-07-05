@@ -11,7 +11,7 @@ namespace Ray.EssayNotes.AutoFac.Repository.Repository
     {
         public string GetName(long id)
         {
-            return "学生张三";
+            return "学生张三";//造个假数据返回
         }
     }
 }

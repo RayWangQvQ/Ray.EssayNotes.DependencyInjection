@@ -16,25 +16,32 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
     /// </summary>
     public static class Container
     {
+        /// <summary>
+        /// 容器
+        /// </summary>
         public static IContainer Instance;
 
         /// <summary>
         /// 初始化容器
         /// </summary>
-        /// <param name="func"></param>
+        /// <param name="func">委托</param>
         /// <returns></returns>
         public static void Init(Func<ContainerBuilder, ContainerBuilder> func = null)
         {
             //新建容器构建器，用于注册组件和服务
             var builder = new ContainerBuilder();
             //注册组件
-            Build(builder);
+            MyBuild(builder);
             func?.Invoke(builder);
             //利用构建器创建容器
             Instance = builder.Build();
         }
 
-        public static void Build(ContainerBuilder builder)
+        /// <summary>
+        /// 自定义注册
+        /// </summary>
+        /// <param name="builder"></param>
+        public static void MyBuild(ContainerBuilder builder)
         {
             //BuildContainerFunc1(builder);
             //BuildContainerFunc2(builder);
@@ -52,8 +59,8 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void BuildContainerFunc1(ContainerBuilder builder)
         {
-            builder.RegisterType<StudentService>().As<IStudentService>();
             builder.RegisterType<StudentRepository>().As<IStudentRepository>();
+            builder.RegisterType<StudentService>().As<IStudentService>();
         }
         /// <summary>
         /// 方法2：自己创建实例注册
