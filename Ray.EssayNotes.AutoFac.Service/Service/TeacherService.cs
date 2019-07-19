@@ -9,6 +9,9 @@ namespace Ray.EssayNotes.AutoFac.Service.Service
     /// </summary>
     public class TeacherService : ITeacherService
     {
+        /// <summary>
+        /// 用于属性注入
+        /// </summary>
         public ITeacherRepository TeacherRepository { get; set; }
 
         public string GetTeacherName(long id)

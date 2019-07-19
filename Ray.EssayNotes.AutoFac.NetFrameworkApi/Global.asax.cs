@@ -1,12 +1,10 @@
-﻿using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+//
+using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
+
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi
 {
@@ -20,9 +18,12 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            // Get your HttpConfiguration.
+            //初始化容器，并返回适用于WebApi的AutoFac解析器
+            System.Web.Http.Dependencies.IDependencyResolver autoFacResolver = ApiContainer.Init();
+            //获取HttpConfiguration
             HttpConfiguration config = GlobalConfiguration.Configuration;
-            ApiContainer.Init(config);
+            //将AutoFac解析器设置为系统DI解析器
+            config.DependencyResolver = autoFacResolver;
         }
     }
 }

@@ -42,6 +42,10 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
             return new AutofacServiceProvider(Instance);
         }
 
+        /// <summary>
+        /// 自定义注册
+        /// </summary>
+        /// <param name="builder"></param>
         public static void MyBuild(this ContainerBuilder builder)
         {
             var assemblies = Helpers.ReflectionHelper.GetAllAssembliesCoreWeb();

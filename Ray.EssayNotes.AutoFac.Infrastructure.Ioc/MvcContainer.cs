@@ -19,11 +19,11 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         public static IContainer Instance;
 
         /// <summary>
-        /// 初始化容器
+        /// 初始化MVC容器
         /// </summary>
         /// <param name="func"></param>
         /// <returns></returns>
-        public static void Init(Func<ContainerBuilder, ContainerBuilder> func = null)
+        public static System.Web.Mvc.IDependencyResolver Init(Func<ContainerBuilder, ContainerBuilder> func = null)
         {
             //新建容器构建器，用于注册组件和服务
             var builder = new ContainerBuilder();
@@ -33,8 +33,8 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             //利用构建器创建容器
             Instance = builder.Build();
 
-            //将AutoFac设置为系统DI解析器
-            System.Web.Mvc.DependencyResolver.SetResolver(new AutofacDependencyResolver(Instance));
+            //返回针对MVC的AutoFac解析器
+            return new AutofacDependencyResolver(Instance);
         }
 
         public static void MyBuild(ContainerBuilder builder)

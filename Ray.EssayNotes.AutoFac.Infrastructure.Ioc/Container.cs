@@ -60,7 +60,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         public static void BuildContainerFunc1(ContainerBuilder builder)
         {
             builder.RegisterType<StudentRepository>().As<IStudentRepository>();
-            builder.RegisterType<StudentService>().As<IStudentService>();
+            builder.RegisterType(typeof(StudentService)).As(typeof(IStudentService));
         }
         /// <summary>
         /// 方法2：自己创建实例注册
@@ -82,8 +82,10 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void BuildContainerFunc3(ContainerBuilder builder)
         {
-            builder.Register(x => new StudentService(new StudentRepository())).As<IStudentService>();
-            builder.Register(x => new StudentRepository()).As<IStudentRepository>();
+            builder.Register(x => new StudentRepository())
+                .As<IStudentRepository>();
+            builder.Register(x => new StudentService(x.Resolve<IStudentRepository>()))
+                .As<IStudentService>();
         }
         /// <summary>
         /// 方法4：指定类型（type）
@@ -140,8 +142,8 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterType<TeacherService>()
                 .AsSelf()
                 .As<ITeacherService>()
-                .OnlyIf(x => 
-                    x.IsRegistered(new TypedService(typeof(ITeacherRepository)))||
+                .OnlyIf(x =>
+                    x.IsRegistered(new TypedService(typeof(ITeacherRepository))) ||
                     x.IsRegistered(new TypedService(typeof(TeacherRepository))));
         }
         /// <summary>
@@ -153,16 +155,28 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssemblies();
 
             builder.RegisterAssemblyTypes(assemblies)//程序集内所有具象类（concrete classes）
-                .Where(cc =>cc.Name.EndsWith("Repository")|//筛选
+                .Where(cc => cc.Name.EndsWith("Repository") |//筛选
                             cc.Name.EndsWith("Service"))
                 .PublicOnly()//只要public访问权限的
-                .Where(cc=>cc.IsClass)//只要class型（主要为了排除值和interface类型）
-                //.Except<TeacherRepository>()//排除某类型
-                //.As(x=>x.GetInterfaces()[0])//反射出其实现的接口，默认以第一个接口类型暴露
+                .Where(cc => cc.IsClass)//只要class型（主要为了排除值和interface类型）
+                                        //.Except<TeacherRepository>()//排除某类型
+                                        //.As(x=>x.GetInterfaces()[0])//反射出其实现的接口，默认以第一个接口类型暴露
                 .AsImplementedInterfaces();//自动以其实现的所有接口类型暴露（包括IDisposable接口）
 
             builder.RegisterGeneric(typeof(BaseRepository<>))
                 .As(typeof(IBaseRepository<>));
+        }
+
+        /// <summary>
+        /// 暴露类型
+        /// </summary>
+        /// <param name="builder"></param>
+        public static void BuildContainerFunc9(ContainerBuilder builder)
+        {
+            builder.RegisterType<StudentService>();
+            builder.RegisterType<StudentService>().AsSelf();
+            builder.RegisterType<StudentService>().As<StudentService>();
+            builder.RegisterType<StudentService>().As(typeof(StudentService));
         }
         #endregion
     }

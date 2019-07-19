@@ -19,11 +19,10 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         public static IContainer Instance;
 
         /// <summary>
-        /// 初始化容器
+        /// 初始化Api容器
         /// </summary>
-        /// <param name="config"></param>
         /// <param name="func"></param>
-        public static void Init(System.Web.Http.HttpConfiguration config,Func<ContainerBuilder, ContainerBuilder> func = null)
+        public static System.Web.Http.Dependencies.IDependencyResolver Init(Func<ContainerBuilder, ContainerBuilder> func = null)
         {
             //新建容器构建器，用于注册组件和服务
             var builder = new ContainerBuilder();
@@ -33,8 +32,8 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             //利用构建器创建容器
             Instance = builder.Build();
 
-            //将AutoFac解析器设置为系统解析器
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(Instance);
+            //返回针对WebApi的AutoFac解析器
+            return new AutofacWebApiDependencyResolver(Instance);
         }
 
         public static void MyBuild(ContainerBuilder builder)

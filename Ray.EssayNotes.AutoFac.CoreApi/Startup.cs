@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+//
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+//
 using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions;
 using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Helpers;
+
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {
@@ -41,7 +38,6 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             //service  
             Assembly serviceAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Service"));
             services.AddAssemblyServices(serviceAssemblies);
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

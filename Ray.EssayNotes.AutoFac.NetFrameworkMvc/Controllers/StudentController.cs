@@ -5,9 +5,17 @@ using Ray.EssayNotes.AutoFac.Service.IService;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc.Controllers
 {
+    /// <summary>
+    /// 学生Api
+    /// </summary>
     public class StudentController : Controller
     {
         private readonly IStudentService _studentService;
+
+        /// <summary>
+        /// 构造注入
+        /// </summary>
+        /// <param name="studentService"></param>
         public StudentController(IStudentService studentService)
         {
             _studentService = studentService;

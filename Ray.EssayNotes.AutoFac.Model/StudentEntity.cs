@@ -7,7 +7,7 @@ namespace Ray.EssayNotes.AutoFac.Model
     {
         /// <summary>姓名</summary>
         public string Name { get; set; }
-        /// <summary>成绩</summary>
+        /// <summary>年级</summary>
         public int Grade { get; set; }
 
     }
