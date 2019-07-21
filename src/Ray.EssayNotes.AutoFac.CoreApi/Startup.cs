@@ -28,8 +28,9 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //注册
             //自定义注册
-            //services.AddMyServices();
+            services.AddMyServices();
             
+            /*
             //自定义批量注册
             Assembly[] assemblies = ReflectionHelper.GetAllAssembliesCoreWeb();
             //repository
@@ -38,6 +39,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             //service  
             Assembly serviceAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Service"));
             services.AddAssemblyServices(serviceAssemblies);
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

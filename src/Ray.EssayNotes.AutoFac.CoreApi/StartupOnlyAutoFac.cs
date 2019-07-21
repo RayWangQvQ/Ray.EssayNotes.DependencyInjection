@@ -23,7 +23,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddControllersAsServices();//把控制器当作服务注册
 
             return CoreContainer.Init(services);
         }

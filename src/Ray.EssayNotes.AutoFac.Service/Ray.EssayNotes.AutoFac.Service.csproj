@@ -44,10 +44,12 @@
     <Compile Include="IService\IBookService.cs" />
     <Compile Include="IService\IStudentService.cs" />
     <Compile Include="IService\ITeacherService.cs" />
+    <Compile Include="IService\ITestInstancePreRequestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BookService.cs" />
     <Compile Include="Service\StudentService.cs" />
     <Compile Include="Service\TeacherService.cs" />
+    <Compile Include="Service\TestInstancePreRequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Model.csproj">

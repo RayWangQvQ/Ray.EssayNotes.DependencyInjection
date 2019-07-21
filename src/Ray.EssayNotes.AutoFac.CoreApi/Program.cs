@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-
+using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {

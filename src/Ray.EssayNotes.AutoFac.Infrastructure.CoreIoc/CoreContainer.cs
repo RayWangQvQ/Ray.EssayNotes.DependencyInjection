@@ -7,7 +7,7 @@ using Autofac.Extensions.DependencyInjection;
 //
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-
+using Ray.EssayNotes.AutoFac.Repository;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
 {
@@ -60,6 +60,8 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
 
             //注册泛型仓储
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>));
+
+            builder.RegisterType<MyDbContext>().InstancePerRequest();
 
             /*
             //注册Controller

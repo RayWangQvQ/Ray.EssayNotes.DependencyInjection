@@ -6,6 +6,7 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 //
 using Ray.EssayNotes.AutoFac.Model;
+using Ray.EssayNotes.AutoFac.Repository;
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
@@ -35,6 +36,9 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IBookService, BookService>();
+            services.AddScoped<ITestInstancePreRequestService, TestInstancePreRequestService>();
+            //DbContext
+            services.AddScoped<MyDbContext, MyDbContext>();
         }
 
         /// <summary>
