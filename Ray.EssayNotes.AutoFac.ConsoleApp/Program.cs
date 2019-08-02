@@ -1,16 +1,13 @@
-﻿using System;
-//
-using Autofac;
-//
+﻿using Autofac;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.IService;
-
+using System;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Container.Init();//初始化容器，将需要用到的组件添加到容器中
 

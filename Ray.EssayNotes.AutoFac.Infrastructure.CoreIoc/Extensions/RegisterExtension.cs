@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-//
-using Microsoft.Extensions.DependencyInjection;
-//
-using Ray.EssayNotes.AutoFac.Model;
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
-using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
-using Ray.EssayNotes.AutoFac.Service.Service;
-
+﻿//
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
 {
@@ -83,8 +71,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
         }
 
         /// <summary>
-        /// 暴露类型可空注册
-        /// （如果暴露类型为null，则自动以其本身类型注册）
+        /// 暴露类型可空注册 （如果暴露类型为null，则自动以其本身类型注册）
         /// </summary>
         /// <param name="services"></param>
         /// <param name="interfaceType"></param>
@@ -98,14 +85,17 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
                     if (interfaceType == null) services.AddScoped(instanceType);
                     else services.AddScoped(interfaceType, instanceType);
                     break;
+
                 case ServiceLifetime.Singleton:
                     if (interfaceType == null) services.AddSingleton(instanceType);
                     else services.AddSingleton(interfaceType, instanceType);
                     break;
+
                 case ServiceLifetime.Transient:
                     if (interfaceType == null) services.AddTransient(instanceType);
                     else services.AddTransient(interfaceType, instanceType);
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(serviceLifetime), serviceLifetime, null);
             }

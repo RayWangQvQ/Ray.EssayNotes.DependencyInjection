@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc;
-using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions;
-
-namespace Ray.EssayNotes.AutoFac.CoreApi
+﻿namespace Ray.EssayNotes.AutoFac.CoreApi
 {
     public class Program
     {

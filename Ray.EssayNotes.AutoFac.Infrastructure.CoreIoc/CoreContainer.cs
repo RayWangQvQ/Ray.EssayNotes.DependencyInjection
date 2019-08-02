@@ -1,13 +1,4 @@
-﻿using System;
-//
-using Microsoft.Extensions.DependencyInjection;
-//
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-//
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
-using Ray.EssayNotes.AutoFac.Repository.Repository;
-
+﻿//
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
 {

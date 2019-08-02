@@ -1,13 +1,13 @@
-﻿using System.Web.Http;
-//
+﻿//
 using Ray.EssayNotes.AutoFac.Service.IService;
-
+using System.Web.Http;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Controllers
 {
     public class StudentController : ApiController
     {
         private readonly IStudentService _studentService;
+
         public StudentController(IStudentService studentService)
         {
             _studentService = studentService;

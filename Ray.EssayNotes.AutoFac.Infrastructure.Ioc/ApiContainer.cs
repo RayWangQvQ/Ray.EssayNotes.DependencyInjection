@@ -1,13 +1,10 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
+using Ray.EssayNotes.AutoFac.Repository.IRepository;
+using Ray.EssayNotes.AutoFac.Repository.Repository;
+using System;
 using System.Linq;
 using System.Reflection;
-//
-using Autofac;
-using Autofac.Integration.WebApi;
-//
-using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
-
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
@@ -23,7 +20,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// </summary>
         /// <param name="config"></param>
         /// <param name="func"></param>
-        public static void Init(System.Web.Http.HttpConfiguration config,Func<ContainerBuilder, ContainerBuilder> func = null)
+        public static void Init(System.Web.Http.HttpConfiguration config, Func<ContainerBuilder, ContainerBuilder> func = null)
         {
             //新建容器构建器，用于注册组件和服务
             var builder = new ContainerBuilder();

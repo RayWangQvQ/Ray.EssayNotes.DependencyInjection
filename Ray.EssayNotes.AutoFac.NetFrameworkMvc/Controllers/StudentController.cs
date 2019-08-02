@@ -1,13 +1,12 @@
-﻿using System.Web.Mvc;
-//
-using Ray.EssayNotes.AutoFac.Service.IService;
-
+﻿using Ray.EssayNotes.AutoFac.Service.IService;
+using System.Web.Mvc;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc.Controllers
 {
     public class StudentController : Controller
     {
         private readonly IStudentService _studentService;
+
         public StudentController(IStudentService studentService)
         {
             _studentService = studentService;

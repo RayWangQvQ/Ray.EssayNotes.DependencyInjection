@@ -1,13 +1,11 @@
-﻿using System;
-using System.Reflection;
-//
-using Autofac;
+﻿using Autofac;
 using Autofac.Core;
-//
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
 using Ray.EssayNotes.AutoFac.Service.Service;
+using System;
+using System.Reflection;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
@@ -53,6 +51,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         }
 
         #region 几种注册特性
+
         /// <summary>
         /// 方法1：指定类型（type）暴露接口（interface）
         /// </summary>
@@ -62,6 +61,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterType<StudentRepository>().As<IStudentRepository>();
             builder.RegisterType<StudentService>().As<IStudentService>();
         }
+
         /// <summary>
         /// 方法2：自己创建实例注册
         /// </summary>
@@ -76,6 +76,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             //builder.RegisterInstance(stuRepository).As<IStudentRepository>()
             //    .ExternallyOwned();
         }
+
         /// <summary>
         /// 方法3：拉姆达表达式创建实体，实现注册
         /// </summary>
@@ -85,6 +86,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.Register(x => new StudentService(new StudentRepository())).As<IStudentService>();
             builder.Register(x => new StudentRepository()).As<IStudentRepository>();
         }
+
         /// <summary>
         /// 方法4：指定类型（type）
         /// </summary>
@@ -99,6 +101,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             //builder.RegisterType<StudentRepository>()
             //    .UsingConstructor(typeof(StudentRepository));
         }
+
         /// <summary>
         /// 方法5：属性注入
         /// </summary>
@@ -111,6 +114,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 
             builder.RegisterType<TeacherService>().PropertiesAutowired();
         }
+
         /// <summary>
         /// 方法6：泛型注入
         /// </summary>
@@ -123,6 +127,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterType<BookService>()
                 .As<IBookService>();
         }
+
         /// <summary>
         /// 方法7：已注册内容进行判断
         /// </summary>
@@ -140,10 +145,11 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterType<TeacherService>()
                 .AsSelf()
                 .As<ITeacherService>()
-                .OnlyIf(x => 
-                    x.IsRegistered(new TypedService(typeof(ITeacherRepository)))||
+                .OnlyIf(x =>
+                    x.IsRegistered(new TypedService(typeof(ITeacherRepository))) ||
                     x.IsRegistered(new TypedService(typeof(TeacherRepository))));
         }
+
         /// <summary>
         /// 方法8：通过反射程序集
         /// </summary>
@@ -153,17 +159,18 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssemblies();
 
             builder.RegisterAssemblyTypes(assemblies)//程序集内所有具象类（concrete classes）
-                .Where(cc =>cc.Name.EndsWith("Repository")|//筛选
+                .Where(cc => cc.Name.EndsWith("Repository") |//筛选
                             cc.Name.EndsWith("Service"))
                 .PublicOnly()//只要public访问权限的
-                .Where(cc=>cc.IsClass)//只要class型（主要为了排除值和interface类型）
-                //.Except<TeacherRepository>()//排除某类型
-                //.As(x=>x.GetInterfaces()[0])//反射出其实现的接口，默认以第一个接口类型暴露
+                .Where(cc => cc.IsClass)//只要class型（主要为了排除值和interface类型）
+                                        //.Except<TeacherRepository>()//排除某类型
+                                        //.As(x=>x.GetInterfaces()[0])//反射出其实现的接口，默认以第一个接口类型暴露
                 .AsImplementedInterfaces();//自动以其实现的所有接口类型暴露（包括IDisposable接口）
 
             builder.RegisterGeneric(typeof(BaseRepository<>))
                 .As(typeof(IBaseRepository<>));
         }
-        #endregion
+
+        #endregion 几种注册特性
     }
 }

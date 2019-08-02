@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Helpers
+﻿namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Helpers
 {
     /// <summary>
     /// 反射辅助类
@@ -10,7 +6,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Helpers
     public static class ReflectionHelper
     {
         /// <summary>
-        ///  获取Asp.Net Core项目所有程序集
+        /// 获取Asp.Net Core项目所有程序集
         /// </summary>
         /// <returns></returns>
         public static Assembly[] GetAllAssembliesCoreWeb()
