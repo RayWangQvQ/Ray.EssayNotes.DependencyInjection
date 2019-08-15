@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Loader;
+//
+using Microsoft.Extensions.DependencyModel;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Helpers
 {
@@ -15,16 +18,16 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Helpers
         /// <returns></returns>
         public static Assembly[] GetAllAssembliesCoreWeb()
         {
-            //1.获取当前程序集(Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc)所有引用程序集
-            Assembly executingAssembly = Assembly.GetExecutingAssembly();//当前程序集
-            List<Assembly> assemblies = executingAssembly.GetReferencedAssemblies()
-                .Select(Assembly.Load)
-                .Where(m => m.FullName.Contains("Ray"))
-                .ToList();
-            //2.获取启动入口程序集（Ray.EssayNotes.AutoFac.CoreApi）
-            Assembly assembly = Assembly.GetEntryAssembly();
-            assemblies.Add(assembly);
-            return assemblies.ToArray();
+            var list = new List<Assembly>();
+            DependencyContext dependencyContext = DependencyContext.Default;
+            IEnumerable<CompilationLibrary> libs = dependencyContext.CompileLibraries
+                .Where(lib => !lib.Serviceable && lib.Type != "package" && lib.Name.StartsWith("Ray"));
+            foreach (var lib in libs)
+            {
+                Assembly assembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName(lib.Name));
+                list.Add(assembly);
+            }
+            return list.ToArray();
         }
     }
 }

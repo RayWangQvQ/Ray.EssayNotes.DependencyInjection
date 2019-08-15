@@ -61,7 +61,9 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
             //注册泛型仓储
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>));
 
-            builder.RegisterType<MyDbContext>().InstancePerRequest();
+            builder.RegisterType<MyDbContext>()
+                .InstancePerLifetimeScope();
+                //.InstancePerRequest();
 
             /*
             //注册Controller
