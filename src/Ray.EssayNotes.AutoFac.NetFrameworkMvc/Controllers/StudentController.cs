@@ -1,12 +1,12 @@
-﻿using System.Web.Mvc;
-//
+﻿//系统包
+using System.Web.Mvc;
+//本地项目包
 using Ray.EssayNotes.AutoFac.Service.IService;
-
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc.Controllers
 {
     /// <summary>
-    /// 学生Api
+    /// 学生模块Api
     /// </summary>
     public class StudentController : Controller
     {

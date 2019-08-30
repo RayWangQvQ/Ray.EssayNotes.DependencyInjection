@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿//系统包
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Helpers
 {
+    /// <summary>
+    /// 反射辅助类
+    /// </summary>
     public static class ReflectionHelper
     {
         /// <summary>
@@ -13,6 +16,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Helpers
         /// <returns></returns>
         public static Assembly[] GetAllAssemblies()
         {
+            //todo:需要当前项目引用所有程序集，待改善
             //1.获取当前程序集(Ray.EssayNotes.AutoFac.Infrastructure.Ioc)所有引用程序集
             Assembly executingAssembly = Assembly.GetExecutingAssembly();//当前程序集
             List<Assembly> assemblies = executingAssembly.GetReferencedAssemblies()

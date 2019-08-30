@@ -1,10 +1,11 @@
-﻿using System;
-//
+﻿//系统包
+using System;
+//微软包
 using Microsoft.Extensions.DependencyInjection;
-//
+//三方包
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Repository;
@@ -65,7 +66,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
                 .InstancePerLifetimeScope();
                 //.InstancePerRequest();
 
-            /*
+            /*Core不需要注册控制器
             //注册Controller
             Assembly[] controllerAssemblies = assemblies.Where(x => x.FullName.Contains(".CoreApi")).ToArray();
             builder.RegisterAssemblyTypes(controllerAssemblies)

@@ -1,7 +1,7 @@
-﻿using System.Linq;
-//
+﻿//系统包
+using System.Linq;
+//本地项目包
 using Ray.EssayNotes.AutoFac.Model;
-
 
 namespace Ray.EssayNotes.AutoFac.Repository.IRepository
 {

@@ -1,17 +1,17 @@
-﻿using System;
+﻿//系统包
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-//
+//微软包
 using Microsoft.Extensions.DependencyInjection;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Model;
 using Ray.EssayNotes.AutoFac.Repository;
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
 using Ray.EssayNotes.AutoFac.Service.Service;
-
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
 {
@@ -37,8 +37,8 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<ITestInstancePreRequestService, TestInstancePreRequestService>();
-            //DbContext
-            services.AddScoped<MyDbContext, MyDbContext>();
+            //注册DbContext
+            services.AddScoped<MyDbContext>();
         }
 
         /// <summary>
@@ -50,6 +50,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
         /// <returns></returns>
         public static IServiceCollection AddAssemblyServices(this IServiceCollection services, Assembly assembly, ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
         {
+            //todo:待改善
             var typeList = new List<Type>();//所有符合注册条件的类集合
 
             //筛选当前程序集下符合条件的类

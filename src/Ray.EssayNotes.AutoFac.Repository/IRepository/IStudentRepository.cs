@@ -1,5 +1,5 @@
-﻿using Ray.EssayNotes.AutoFac.Model;
-
+﻿//本地项目包
+using Ray.EssayNotes.AutoFac.Model;
 
 namespace Ray.EssayNotes.AutoFac.Repository.IRepository
 {

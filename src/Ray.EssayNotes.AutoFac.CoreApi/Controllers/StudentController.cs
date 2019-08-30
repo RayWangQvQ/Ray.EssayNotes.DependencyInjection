@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-//
+﻿//系统包
+using Microsoft.AspNetCore.Mvc;
+//本地三方包
 using Ray.EssayNotes.AutoFac.Service.IService;
-
 
 namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
 {
+    /// <summary>
+    /// 学生模块接口
+    /// </summary>
     [ApiController]
     public class StudentController : ControllerBase
     {

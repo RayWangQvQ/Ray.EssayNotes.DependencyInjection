@@ -1,10 +1,11 @@
-﻿using System;
+﻿//系统包
+using System;
 using System.Linq;
 using System.Reflection;
-//
+//三方包
 using Autofac;
 using Autofac.Integration.Mvc;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 
@@ -37,6 +38,10 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             return new AutofacDependencyResolver(Instance);
         }
 
+        /// <summary>
+        /// 自定义注册
+        /// </summary>
+        /// <param name="builder"></param>
         public static void MyBuild(ContainerBuilder builder)
         {
             Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssembliesWeb();

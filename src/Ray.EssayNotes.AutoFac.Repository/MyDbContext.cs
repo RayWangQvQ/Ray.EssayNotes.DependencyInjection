@@ -1,6 +1,5 @@
-﻿using System;
-using System.Data.Entity;
-
+﻿//系统包
+using System;
 
 namespace Ray.EssayNotes.AutoFac.Repository
 {

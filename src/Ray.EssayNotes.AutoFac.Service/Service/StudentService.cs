@@ -1,7 +1,7 @@
-﻿using Ray.EssayNotes.AutoFac.Repository.IRepository;
+﻿//本地项目包
+using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
-
 
 namespace Ray.EssayNotes.AutoFac.Service.Service
 {

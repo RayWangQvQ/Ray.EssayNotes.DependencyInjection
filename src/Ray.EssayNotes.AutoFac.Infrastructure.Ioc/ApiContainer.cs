@@ -1,13 +1,13 @@
-﻿using System;
+﻿//系统包
+using System;
 using System.Linq;
 using System.Reflection;
-//
+//三方包
 using Autofac;
 using Autofac.Integration.WebApi;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
-
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
@@ -36,6 +36,10 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             return new AutofacWebApiDependencyResolver(Instance);
         }
 
+        /// <summary>
+        /// 自定义注册
+        /// </summary>
+        /// <param name="builder"></param>
         public static void MyBuild(ContainerBuilder builder)
         {
             var assemblies = Helpers.ReflectionHelper.GetAllAssembliesWeb();

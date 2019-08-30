@@ -1,13 +1,13 @@
-﻿using System;
-//
+﻿//系统包
+using System;
+//微软包
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc;
-
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {

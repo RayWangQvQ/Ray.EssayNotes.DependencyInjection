@@ -1,5 +1,4 @@
 ﻿
-
 namespace Ray.EssayNotes.AutoFac.Service.IService
 {
     /// <summary>

@@ -1,9 +1,10 @@
-﻿using System;
+﻿//系统包
+using System;
 using System.Reflection;
-//
+//三方包
 using Autofac;
 using Autofac.Core;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
@@ -52,7 +53,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             BuildContainerFunc8(builder);
         }
 
-        #region 几种注册特性
+        #region 几种注册特性测试
         /// <summary>
         /// 方法1：指定类型（type）暴露接口（interface）
         /// </summary>

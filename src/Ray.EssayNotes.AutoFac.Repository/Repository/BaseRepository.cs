@@ -1,9 +1,9 @@
-﻿using System;
+﻿//系统包
+using System;
 using System.Linq;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Model;
 using Ray.EssayNotes.AutoFac.Repository.IRepository;
-
 
 namespace Ray.EssayNotes.AutoFac.Repository.Repository
 {
@@ -15,6 +15,7 @@ namespace Ray.EssayNotes.AutoFac.Repository.Repository
     {
         public virtual T Get(long id)
         {
+            //没有连接数据库，利用反射，造个假数据返回用于测试
             T instance = Activator.CreateInstance<T>();
 
             var stuEntity = instance as StudentEntity;

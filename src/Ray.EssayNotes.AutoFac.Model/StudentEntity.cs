@@ -1,5 +1,4 @@
 ﻿
-
 namespace Ray.EssayNotes.AutoFac.Model
 {
     /// <summary>学生实体</summary>

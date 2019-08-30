@@ -1,10 +1,10 @@
-﻿using System;
-//
+﻿//系统包
+using System;
+//三方包
 using Autofac;
-//
+//本地项目包
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.IService;
-
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp
 {
@@ -12,6 +12,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
     {
         static void Main(string[] args)
         {
+            //todo:挨个测试下
             //Container.Init();//初始化容器，将需要用到的组件添加到容器中
 
             //PrintStudentName(10001);
@@ -230,7 +231,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
                     return x;
                 }
             );
-            
+
         }
     }
 }

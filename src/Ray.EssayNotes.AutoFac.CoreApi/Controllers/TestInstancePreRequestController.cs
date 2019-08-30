@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
 {
+    /// <summary>
+    /// 测试接口
+    /// </summary>
     public class TestInstancePreRequestController : ControllerBase
     {
         private readonly MyDbContext _myDbContext;

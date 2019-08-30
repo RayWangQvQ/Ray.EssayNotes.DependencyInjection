@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿//系统包
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-//
+//微软包
 using Microsoft.Extensions.DependencyModel;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Helpers
