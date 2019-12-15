@@ -46,13 +46,13 @@
 
 | 项目 | 名称 | 类型 | 框架 |
 | --- | --- | --- | --- |
-| Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc | Core容器 | 类库 | .NET Core 2.2 |
+| Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc | Core容器 | 类库 | .NET Core 3.1 |
 | Ray.EssayNotes.AutoFac.Infrastructure.Ioc | Framework容器 | 类库 | .NET Framework 4.5 |
 | Ray.EssayNotes.AutoFac.Model | 实体层 | 类库 | .NET Framework 4.5 |
 | Ray.EssayNotes.AutoFac.Repository | 仓储层 | 类库 | .NET Framework 4.5 |
 | Ray.EssayNotes.AutoFac.Service | 业务逻辑层 | 类库 | .NET Framework 4.5 |
 | Ray.EssayNotes.AutoFac.ConsoleApp | 控制台主程序 | 控制台项目 | .NET Framework 4.5 |
-| Ray.EssayNotes.AutoFac.CoreApi | Core WebApi主程序 | Core Api项目 | .NET Core 2.2 |
+| Ray.EssayNotes.AutoFac.CoreApi | Core WebApi主程序 | Core Api项目 | .NET Core 3.1 |
 | Ray.EssayNotes.AutoFac.NetFrameworkApi | Framework WebApi主程序 | Framework WebApi项目 | .NET Framework 4.5 |
 | Ray.EssayNotes.AutoFac.NetFrameworkMvc | Framework MVC主程序 | Framework MVC项目 | .NET Framework 4.5 |
 
