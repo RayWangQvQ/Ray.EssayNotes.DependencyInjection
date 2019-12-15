@@ -1,5 +1,5 @@
 ﻿
-namespace Ray.EssayNotes.AutoFac.Model
+namespace Ray.EssayNotes.AutoFac.Domain.Entity
 {
     /// <summary>
     /// 书籍实体

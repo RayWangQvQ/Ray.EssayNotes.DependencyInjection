@@ -1,9 +1,9 @@
 ﻿//微软包
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 //本地项目包
 using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions;
 
@@ -21,11 +21,10 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //注册
+            services.AddControllers();
             //自定义注册
             services.AddMyServices();
-            
+
             /*
             //自定义批量注册
             Assembly[] assemblies = ReflectionHelper.GetAllAssembliesCoreWeb();
@@ -39,7 +38,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -52,7 +51,11 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

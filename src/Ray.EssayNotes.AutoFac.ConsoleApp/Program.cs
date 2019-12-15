@@ -3,6 +3,7 @@ using System;
 //三方包
 using Autofac;
 //本地项目包
+using Ray.EssayNotes.AutoFac.Domain.Entity;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.IService;
 
@@ -81,18 +82,18 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             //注册
             Container.Init(x =>
                 {
-                    x.RegisterType<Model.StudentEntity>().InstancePerDependency();
+                    x.RegisterType<StudentEntity>().InstancePerDependency();
                     return x;
                 }
             );
             using (var scope = Container.Instance.BeginLifetimeScope())
             {
-                var stu1 = scope.Resolve<Model.StudentEntity>();
+                var stu1 = scope.Resolve<StudentEntity>();
                 Console.WriteLine($"第1次打印：{stu1.Name}");
                 stu1.Name = "张三";
                 Console.WriteLine($"第2次打印：{stu1.Name}");
 
-                var stu2 = scope.Resolve<Model.StudentEntity>();
+                var stu2 = scope.Resolve<StudentEntity>();
                 Console.WriteLine($"第2次打印：{stu2.Name}");
                 //解析了2次，有两个实例，stu1和stu2指向不同的两块内存，彼此之间没有关系
             }
@@ -106,26 +107,26 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             //注册
             Container.Init(x =>
                 {
-                    x.RegisterType<Model.StudentEntity>().SingleInstance();
+                    x.RegisterType<StudentEntity>().SingleInstance();
                     return x;
                 }
             );
             //解析
             //直接从根域内解析（单例下可以使用）
-            var stu1 = Container.Instance.Resolve<Model.StudentEntity>();
+            var stu1 = Container.Instance.Resolve<StudentEntity>();
             stu1.Name = "张三";
             Console.WriteLine($"第1次打印：{stu1.Name}");
 
             using (var scope1 = Container.Instance.BeginLifetimeScope())
             {
-                var stu2 = scope1.Resolve<Model.StudentEntity>();
+                var stu2 = scope1.Resolve<StudentEntity>();
                 Console.WriteLine($"第2次打印：{stu2.Name}");
 
                 stu1.Name = "李四";
             }
             using (var scope2 = Container.Instance.BeginLifetimeScope())
             {
-                var stu3 = scope2.Resolve<Model.StudentEntity>();
+                var stu3 = scope2.Resolve<StudentEntity>();
                 Console.WriteLine($"第3次打印：{stu3.Name}");
             }
             //全局单例，解析3次只产生了同一个实例，指向同一个内存块
@@ -139,31 +140,31 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             //注册
             Container.Init(x =>
                 {
-                    x.RegisterType<Model.StudentEntity>().InstancePerLifetimeScope();
+                    x.RegisterType<StudentEntity>().InstancePerLifetimeScope();
                     return x;
                 }
                 );
             //子域一
             using (var scope1 = Container.Instance.BeginLifetimeScope())
             {
-                var stu1 = scope1.Resolve<Model.StudentEntity>();
+                var stu1 = scope1.Resolve<StudentEntity>();
                 Console.WriteLine($"第1次打印：{stu1.Name}");
 
                 stu1.Name = "张三";
 
-                var stu2 = scope1.Resolve<Model.StudentEntity>();
+                var stu2 = scope1.Resolve<StudentEntity>();
                 Console.WriteLine($"第2次打印：{stu2.Name}");
                 //解析了2次，但2次都是同一个实例（stu1和stu2指向同一个内存块Ⅰ）
             }
             //子域二
             using (var scope2 = Container.Instance.BeginLifetimeScope())
             {
-                var stuA = scope2.Resolve<Model.StudentEntity>();
+                var stuA = scope2.Resolve<StudentEntity>();
                 Console.WriteLine($"第3次打印：{stuA.Name}");
 
                 stuA.Name = "李四";
 
-                var stuB = scope2.Resolve<Model.StudentEntity>();
+                var stuB = scope2.Resolve<StudentEntity>();
                 Console.WriteLine($"第4次打印：{stuB.Name}");
                 //解析了2次，2次都是同一内存块（stuA和stuB指向同一个内存块Ⅱ）
                 //但是内存块Ⅰ与内存块Ⅱ不是同一块内存
@@ -178,25 +179,25 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             //注册
             Container.Init(x =>
                 {
-                    x.RegisterType<Model.StudentEntity>().InstancePerMatchingLifetimeScope("myTag");
+                    x.RegisterType<StudentEntity>().InstancePerMatchingLifetimeScope("myTag");
                     return x;
                 }
             );
             //myScope标签子域一
             using (var myScope1 = Container.Instance.BeginLifetimeScope("myTag"))
             {
-                var stu1 = myScope1.Resolve<Model.StudentEntity>();
+                var stu1 = myScope1.Resolve<StudentEntity>();
                 stu1.Name = "张三";
                 Console.WriteLine($"第1次打印：{stu1.Name}");
 
-                var stu2 = myScope1.Resolve<Model.StudentEntity>();
+                var stu2 = myScope1.Resolve<StudentEntity>();
                 Console.WriteLine($"第2次打印：{stu2.Name}");
                 //解析了2次，但2次都是同一个实例（stu1和stu2指向同一个内存块Ⅰ）
             }
             //myScope标签子域二
             using (var myScope2 = Container.Instance.BeginLifetimeScope("myTag"))
             {
-                var stuA = myScope2.Resolve<Model.StudentEntity>();
+                var stuA = myScope2.Resolve<StudentEntity>();
                 Console.WriteLine($"第3次打印：{stuA.Name}");
                 //因为标签域内已注册过，所以可以解析成功
                 //但是因为和上面不是同一个子域，所以解析出的实例stuA与之前的并不是同一个实例，指向另一个内存块Ⅱ
@@ -206,7 +207,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             {
                 try
                 {
-                    var stuOne = noTagScope.Resolve<Model.StudentEntity>();//会报异常
+                    var stuOne = noTagScope.Resolve<StudentEntity>();//会报异常
                     Console.WriteLine($"第4次正常打印：{stuOne.Name}");
                 }
                 catch (Exception e)
@@ -225,9 +226,9 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             //注册
             Container.Init(x =>
                 {
-                    x.RegisterType<Model.StudentEntity>().InstancePerRequest();
-                    //x.RegisterType<Model.StudentEntity>().InstancePerMatchingLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
-                    //x.RegisterType<Model.StudentEntity>().InstancePerMatchingLifetimeScope("AutofacWebRequest");
+                    x.RegisterType<StudentEntity>().InstancePerRequest();
+                    //x.RegisterType<StudentEntity>().InstancePerMatchingLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
+                    //x.RegisterType<StudentEntity>().InstancePerMatchingLifetimeScope("AutofacWebRequest");
                     return x;
                 }
             );

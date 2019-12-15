@@ -7,8 +7,8 @@
     <ProjectGuid>{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ray.EssayNotes.AutoFac.Model</RootNamespace>
-    <AssemblyName>Ray.EssayNotes.AutoFac.Model</AssemblyName>
+    <RootNamespace>Ray.EssayNotes.AutoFac.Domain</RootNamespace>
+    <AssemblyName>Ray.EssayNotes.AutoFac.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,11 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEntity.cs" />
-    <Compile Include="BookEntity.cs" />
-    <Compile Include="StudentEntity.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\BookEntity.cs" />
+    <Compile Include="Entity\StudentEntity.cs" />
+    <Compile Include="IRepository\IBaseRepository.cs" />
+    <Compile Include="IRepository\IStudentRepository.cs" />
+    <Compile Include="IRepository\ITeacherRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeacherEntity.cs" />
+    <Compile Include="Entity\TeacherEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DomainService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

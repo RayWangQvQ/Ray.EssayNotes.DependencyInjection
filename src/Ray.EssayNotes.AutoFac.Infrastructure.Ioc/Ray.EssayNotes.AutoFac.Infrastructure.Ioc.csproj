@@ -102,9 +102,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Model.csproj">
+    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj">
       <Project>{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}</Project>
-      <Name>Ray.EssayNotes.AutoFac.Model</Name>
+      <Name>Ray.EssayNotes.AutoFac.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Repository\Ray.EssayNotes.AutoFac.Repository.csproj">
       <Project>{B72435F6-5C75-4039-BBEA-2122FA2565A3}</Project>

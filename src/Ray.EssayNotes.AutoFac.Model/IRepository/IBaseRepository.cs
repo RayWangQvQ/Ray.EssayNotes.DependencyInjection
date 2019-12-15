@@ -1,9 +1,9 @@
 ﻿//系统包
 using System.Linq;
-//本地项目包
-using Ray.EssayNotes.AutoFac.Model;
+//本地包
+using Ray.EssayNotes.AutoFac.Domain.Entity;
 
-namespace Ray.EssayNotes.AutoFac.Repository.IRepository
+namespace Ray.EssayNotes.AutoFac.Domain.IRepository
 {
     /// <summary>
     /// 基类仓储interface

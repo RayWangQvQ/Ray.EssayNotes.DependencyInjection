@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Service", "Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj", "{93B88795-3FF2-4F11-B00D-49455BA71674}"
 EndProject
@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Repo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.ConsoleApp", "Ray.EssayNotes.AutoFac.ConsoleApp\Ray.EssayNotes.AutoFac.ConsoleApp.csproj", "{558110B1-CE59-4B51-B814-80C8D41EF046}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Model", "Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Model.csproj", "{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Domain", "Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj", "{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Model", "2.Model", "{509FBEA7-F090-4216-95AB-F2042D2535FB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Domain", "2.Domain", "{509FBEA7-F090-4216-95AB-F2042D2535FB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Repository", "3.Repository", "{3E610E50-DFB0-4726-80FC-6DB8245B65C6}"
 EndProject

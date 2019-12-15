@@ -1,7 +1,6 @@
-﻿//本地项目包
-using Ray.EssayNotes.AutoFac.Model;
+﻿using Ray.EssayNotes.AutoFac.Domain.Entity;
 
-namespace Ray.EssayNotes.AutoFac.Repository.IRepository
+namespace Ray.EssayNotes.AutoFac.Domain.IRepository
 {
     /// <summary>
     /// 学生仓储interface

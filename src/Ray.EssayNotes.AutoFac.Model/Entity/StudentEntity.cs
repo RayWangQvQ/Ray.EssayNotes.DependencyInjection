@@ -1,5 +1,5 @@
 ﻿
-namespace Ray.EssayNotes.AutoFac.Model
+namespace Ray.EssayNotes.AutoFac.Domain.Entity
 {
     /// <summary>学生实体</summary>
     public class StudentEntity : BaseEntity

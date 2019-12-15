@@ -1,5 +1,5 @@
 ﻿//本地项目包
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
+using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
 

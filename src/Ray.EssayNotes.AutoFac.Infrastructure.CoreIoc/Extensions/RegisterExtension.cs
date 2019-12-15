@@ -6,12 +6,12 @@ using System.Reflection;
 //微软包
 using Microsoft.Extensions.DependencyInjection;
 //本地项目包
-using Ray.EssayNotes.AutoFac.Model;
 using Ray.EssayNotes.AutoFac.Repository;
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IService;
 using Ray.EssayNotes.AutoFac.Service.Service;
+using Ray.EssayNotes.AutoFac.Domain.Entity;
+using Ray.EssayNotes.AutoFac.Domain.IRepository;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
 {

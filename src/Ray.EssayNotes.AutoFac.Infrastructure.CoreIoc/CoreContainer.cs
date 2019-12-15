@@ -6,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 //本地项目包
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Repository;
+using Ray.EssayNotes.AutoFac.Domain.IRepository;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc
 {

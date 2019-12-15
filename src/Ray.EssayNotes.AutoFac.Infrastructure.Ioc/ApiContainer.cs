@@ -6,8 +6,8 @@ using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
 //本地项目包
+using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Repository.IRepository;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
