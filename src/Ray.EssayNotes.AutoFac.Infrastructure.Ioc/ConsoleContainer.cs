@@ -15,22 +15,22 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
     /// <summary>
     /// 控制台程序容器
     /// </summary>
-    public static class Container
+    public static class ConsoleContainer
     {
         /// <summary>
         /// 容器
         /// </summary>
-        public static IContainer Instance;
+        public static Autofac.IContainer Instance;
 
         /// <summary>
         /// 初始化容器
         /// </summary>
         /// <param name="func">委托</param>
         /// <returns></returns>
-        public static void Init(Func<ContainerBuilder, ContainerBuilder> func = null)
+        public static void Init(Func<Autofac.ContainerBuilder, Autofac.ContainerBuilder> func = null)
         {
             //新建容器构建器，用于注册组件和服务
-            var builder = new ContainerBuilder();
+            var builder = new Autofac.ContainerBuilder();
             //注册组件
             MyBuild(builder);
             func?.Invoke(builder);
@@ -50,44 +50,11 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             //BuildContainerFunc4(builder);
             //BuildContainerFunc5(builder);
             //BuildContainerFunc6(builder);
-            BuildContainerFunc8(builder);
+            //BuildContainerFunc8(builder);
         }
 
         #region 几种注册特性测试
-        /// <summary>
-        /// 方法1：指定类型（type）暴露接口（interface）
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void BuildContainerFunc1(ContainerBuilder builder)
-        {
-            builder.RegisterType<StudentRepository>().As<IStudentRepository>();
-            builder.RegisterType(typeof(StudentService)).As(typeof(IStudentService));
-        }
-        /// <summary>
-        /// 方法2：自己创建实例注册
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void BuildContainerFunc2(ContainerBuilder builder)
-        {
-            var stuRepository = new StudentRepository();
-            var stuService = new StudentService(stuRepository);
-            builder.RegisterInstance(stuService).As<IStudentService>();
-            builder.RegisterInstance(stuRepository).As<IStudentRepository>();
-            //利用ExternallyOwned()函数接管容器的生命周期控制权
-            //builder.RegisterInstance(stuRepository).As<IStudentRepository>()
-            //    .ExternallyOwned();
-        }
-        /// <summary>
-        /// 方法3：拉姆达表达式创建实体，实现注册
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void BuildContainerFunc3(ContainerBuilder builder)
-        {
-            builder.Register(x => new StudentRepository())
-                .As<IStudentRepository>();
-            builder.Register(x => new StudentService(x.Resolve<IStudentRepository>()))
-                .As<IStudentService>();
-        }
+
         /// <summary>
         /// 方法4：指定类型（type）
         /// </summary>
@@ -112,7 +79,8 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.Register(x => new TeacherService { TeacherRepository = x.ResolveOptional<ITeacherRepository>() })
                 .As<ITeacherService>();
 
-            builder.RegisterType<TeacherService>().PropertiesAutowired();
+            builder.RegisterType<TeacherService>()
+                .PropertiesAutowired();
         }
         /// <summary>
         /// 方法6：泛型注入
@@ -121,8 +89,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         public static void BuildContainerFunc6(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof(BaseRepository<>))
-                .As(typeof(IBaseRepository<>))
-                .InstancePerLifetimeScope();
+                .As(typeof(IBaseRepository<>));
             builder.RegisterType<BookService>()
                 .As<IBookService>();
         }
@@ -132,6 +99,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void BuildContainerFunc7(ContainerBuilder builder)
         {
+            //IfNotRegistered
             builder.RegisterType<TeacherRepository>()
                 .As<ITeacherRepository>()
                 .IfNotRegistered(typeof(ITeacherRepository));
@@ -140,6 +108,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
                 .AsSelf()
                 .IfNotRegistered(typeof(ITeacherRepository));
 
+            //OnlyIf
             builder.RegisterType<TeacherService>()
                 .AsSelf()
                 .As<ITeacherService>()
@@ -175,9 +144,11 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         public static void BuildContainerFunc9(ContainerBuilder builder)
         {
             builder.RegisterType<StudentService>();
-            builder.RegisterType<StudentService>().AsSelf();
-            builder.RegisterType<StudentService>().As<StudentService>();
-            builder.RegisterType<StudentService>().As(typeof(StudentService));
+
+            builder.RegisterType<StudentService>().AsSelf()
+                .As<StudentService>()
+                .As(typeof(StudentService))
+                .AsImplementedInterfaces();//常用
         }
         #endregion
     }

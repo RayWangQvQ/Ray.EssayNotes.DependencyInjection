@@ -17,32 +17,32 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
     /// </summary>
     public static class MvcContainer
     {
-        public static IContainer Instance;
+        public static Autofac.IContainer Instance;
 
         /// <summary>
         /// 初始化MVC容器
         /// </summary>
         /// <param name="func"></param>
         /// <returns></returns>
-        public static System.Web.Mvc.IDependencyResolver Init(Func<ContainerBuilder, ContainerBuilder> func = null)
+        public static System.Web.Mvc.IDependencyResolver Init(Func<Autofac.ContainerBuilder, Autofac.ContainerBuilder> func = null)
         {
             //新建容器构建器，用于注册组件和服务
-            var builder = new ContainerBuilder();
+            var builder = new Autofac.ContainerBuilder();
             //注册组件
-            MyBuild(builder); 
+            MyBuild(builder);
             func?.Invoke(builder);
             //利用构建器创建容器
             Instance = builder.Build();
 
             //返回针对MVC的AutoFac解析器
-            return new AutofacDependencyResolver(Instance);
+            return new Autofac.Integration.Mvc.AutofacDependencyResolver(Instance);
         }
 
         /// <summary>
         /// 自定义注册
         /// </summary>
         /// <param name="builder"></param>
-        public static void MyBuild(ContainerBuilder builder)
+        public static void MyBuild(Autofac.ContainerBuilder builder)
         {
             Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssembliesWeb();
 
@@ -58,13 +58,22 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>));
 
             //注册Controller
-            //方法1：自己根据反射注册
-            //builder.RegisterAssemblyTypes(assemblies)
-            //    .Where(cc => cc.Name.EndsWith("Controller"))
-            //    .AsSelf();
-            //方法2：用AutoFac提供的专门用于注册MvcController的扩展方法
             Assembly mvcAssembly = assemblies.FirstOrDefault(x => x.FullName.Contains(".NetFrameworkMvc"));
-            builder.RegisterControllers(mvcAssembly);
+            //方法1：自己根据反射注册
+            void RegisterControllersOwn(Autofac.ContainerBuilder b)
+            {
+                b.RegisterAssemblyTypes(mvcAssembly)
+                    .Where(cc => cc.Name.EndsWith("Controller"))
+                    .AsSelf();
+            }
+
+            //方法2：用AutoFac提供的专门用于注册MvcController的扩展方法
+            void RegisterControllersAutoFac(Autofac.ContainerBuilder b)
+            {
+                b.RegisterControllers(mvcAssembly);
+            }
+
+            RegisterControllersAutoFac(builder);
         }
     }
 }

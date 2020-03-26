@@ -16,16 +16,16 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
     /// </summary>
     public static class ApiContainer
     {
-        public static IContainer Instance;
+        public static Autofac.IContainer Instance;
 
         /// <summary>
         /// 初始化Api容器
         /// </summary>
         /// <param name="func"></param>
-        public static System.Web.Http.Dependencies.IDependencyResolver Init(Func<ContainerBuilder, ContainerBuilder> func = null)
+        public static System.Web.Http.Dependencies.IDependencyResolver Init(Func<Autofac.ContainerBuilder, Autofac.ContainerBuilder> func = null)
         {
             //新建容器构建器，用于注册组件和服务
-            var builder = new ContainerBuilder();
+            var builder = new Autofac.ContainerBuilder();
             //注册组件
             MyBuild(builder);
             func?.Invoke(builder);
@@ -33,7 +33,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             Instance = builder.Build();
 
             //返回针对WebApi的AutoFac解析器
-            return new AutofacWebApiDependencyResolver(Instance);
+            return new Autofac.Integration.WebApi.AutofacWebApiDependencyResolver(Instance);
         }
 
         /// <summary>
@@ -56,14 +56,22 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>));
 
             //注册ApiController
+            Assembly apiAssembly = assemblies.FirstOrDefault(x => x.FullName.Contains(".NetFrameworkApi"));
             //方法1：自己根据反射注册
-            //Assembly[] controllerAssemblies = assemblies.Where(x => x.FullName.Contains(".NetFrameworkApi")).ToArray();
-            //builder.RegisterAssemblyTypes(controllerAssemblies)
-            //    .Where(cc => cc.Name.EndsWith("Controller"))
-            //    .AsSelf();
+            void RegisterControllersOwn(Autofac.ContainerBuilder b)
+            {
+                b.RegisterAssemblyTypes(apiAssembly)
+                    .Where(cc => cc.Name.EndsWith("Controller"))
+                    .AsSelf();
+            }
+
             //方法2：用AutoFac提供的专门用于注册ApiController的扩展方法
-            Assembly mvcAssembly = assemblies.FirstOrDefault(x => x.FullName.Contains(".NetFrameworkApi"));
-            builder.RegisterApiControllers(mvcAssembly);
+            void RegisterControllersAutoFac(Autofac.ContainerBuilder b)
+            {
+                b.RegisterApiControllers(apiAssembly);
+            }
+
+            RegisterControllersAutoFac(builder);
         }
     }
 }

@@ -35,6 +35,9 @@
     <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,8 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="Helpers\LimitPropsContractResolver.cs" />
+    <Compile Include="Test\ITest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\TestRegister\TestRegister02.cs" />
+    <Compile Include="Test\TestRegister\TestRegister04.cs" />
+    <Compile Include="Test\TestRegister\TestRegister03.cs" />
+    <Compile Include="Test\TestRegister\TestRegister01.cs" />
+    <Compile Include="Test\TestRegister\TestRegisterBase.cs" />
+    <Compile Include="Test\TestRegister\TestRegisterFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

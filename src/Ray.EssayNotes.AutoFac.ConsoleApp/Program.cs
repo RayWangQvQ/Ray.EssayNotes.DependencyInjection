@@ -2,6 +2,8 @@
 using System;
 //三方包
 using Autofac;
+using Ray.EssayNotes.AutoFac.ConsoleApp.Test;
+using Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister;
 //本地项目包
 using Ray.EssayNotes.AutoFac.Domain.Entity;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
@@ -13,20 +15,14 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //todo:挨个测试下
-            //Container.Init();//初始化容器，将需要用到的组件添加到容器中
+            while (true)
+            {
+                Console.WriteLine("\r\n请输入测试编号：");
 
-            //PrintStudentName(10001);
-            //PrintTeacherName(99999);
-            //PrintBookTitle(123456);
-
-            //TestInstancePerDependency();
-            //TestSingleInstance();
-            //TestInstancePerLifetimeScope();
-            TestInstancePerMatchingLifetimeScope();
-
-
-            Console.ReadKey();
+                string testNum = Console.ReadLine();
+                ITest test = TestRegisterFactory.Create(testNum);
+                test.Run();
+            }
         }
 
         /// <summary>
@@ -38,7 +34,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             //从容器中解析出对象（可以理解为根生命域(the “root lifetime scope”)
             //这种方式解析出的对象如果不能自动释放，其生命周期则与程序同样长，多了之后可能会造成内存溢出，这里只是为了好理解，并不建议使用
             //建议使用下面用的利用子生命域解析的方式
-            IStudentService stuService = Container.Instance.Resolve<IStudentService>();
+            IStudentService stuService = ConsoleContainer.Instance.Resolve<IStudentService>();
             string name = stuService.GetStuName(id);
             Console.WriteLine(name);
         }
@@ -50,7 +46,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         public static void PrintTeacherName(long id)
         {
             // 创建一个生命域, 解析对象，使用完后, 自动释放掉所有解析资源
-            using (ILifetimeScope scope = Container.Instance.BeginLifetimeScope())
+            using (ILifetimeScope scope = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 ITeacherService teacherService = scope.Resolve<ITeacherService>();
                 string name = teacherService.GetTeacherName(id);
@@ -65,7 +61,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         public static void PrintBookTitle(long id)
         {
             // 创建一个生命域, 解析对象，使用完后, 自动释放掉所有解析资源
-            using (ILifetimeScope scope = Container.Instance.BeginLifetimeScope())
+            using (ILifetimeScope scope = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 IBookService bookService = scope.ResolveOptional<IBookService>();
                 string title = bookService.GetTitle(id);
@@ -80,13 +76,13 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         public static void TestInstancePerDependency()
         {
             //注册
-            Container.Init(x =>
+            ConsoleContainer.Init(x =>
                 {
                     x.RegisterType<StudentEntity>().InstancePerDependency();
                     return x;
                 }
             );
-            using (var scope = Container.Instance.BeginLifetimeScope())
+            using (var scope = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 var stu1 = scope.Resolve<StudentEntity>();
                 Console.WriteLine($"第1次打印：{stu1.Name}");
@@ -105,7 +101,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         public static void TestSingleInstance()
         {
             //注册
-            Container.Init(x =>
+            ConsoleContainer.Init(x =>
                 {
                     x.RegisterType<StudentEntity>().SingleInstance();
                     return x;
@@ -113,18 +109,18 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             );
             //解析
             //直接从根域内解析（单例下可以使用）
-            var stu1 = Container.Instance.Resolve<StudentEntity>();
+            var stu1 = ConsoleContainer.Instance.Resolve<StudentEntity>();
             stu1.Name = "张三";
             Console.WriteLine($"第1次打印：{stu1.Name}");
 
-            using (var scope1 = Container.Instance.BeginLifetimeScope())
+            using (var scope1 = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 var stu2 = scope1.Resolve<StudentEntity>();
                 Console.WriteLine($"第2次打印：{stu2.Name}");
 
                 stu1.Name = "李四";
             }
-            using (var scope2 = Container.Instance.BeginLifetimeScope())
+            using (var scope2 = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 var stu3 = scope2.Resolve<StudentEntity>();
                 Console.WriteLine($"第3次打印：{stu3.Name}");
@@ -138,14 +134,14 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         public static void TestInstancePerLifetimeScope()
         {
             //注册
-            Container.Init(x =>
+            ConsoleContainer.Init(x =>
                 {
                     x.RegisterType<StudentEntity>().InstancePerLifetimeScope();
                     return x;
                 }
                 );
             //子域一
-            using (var scope1 = Container.Instance.BeginLifetimeScope())
+            using (var scope1 = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 var stu1 = scope1.Resolve<StudentEntity>();
                 Console.WriteLine($"第1次打印：{stu1.Name}");
@@ -157,7 +153,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
                 //解析了2次，但2次都是同一个实例（stu1和stu2指向同一个内存块Ⅰ）
             }
             //子域二
-            using (var scope2 = Container.Instance.BeginLifetimeScope())
+            using (var scope2 = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 var stuA = scope2.Resolve<StudentEntity>();
                 Console.WriteLine($"第3次打印：{stuA.Name}");
@@ -177,14 +173,14 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         public static void TestInstancePerMatchingLifetimeScope()
         {
             //注册
-            Container.Init(x =>
+            ConsoleContainer.Init(x =>
                 {
                     x.RegisterType<StudentEntity>().InstancePerMatchingLifetimeScope("myTag");
                     return x;
                 }
             );
             //myScope标签子域一
-            using (var myScope1 = Container.Instance.BeginLifetimeScope("myTag"))
+            using (var myScope1 = ConsoleContainer.Instance.BeginLifetimeScope("myTag"))
             {
                 var stu1 = myScope1.Resolve<StudentEntity>();
                 stu1.Name = "张三";
@@ -195,7 +191,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
                 //解析了2次，但2次都是同一个实例（stu1和stu2指向同一个内存块Ⅰ）
             }
             //myScope标签子域二
-            using (var myScope2 = Container.Instance.BeginLifetimeScope("myTag"))
+            using (var myScope2 = ConsoleContainer.Instance.BeginLifetimeScope("myTag"))
             {
                 var stuA = myScope2.Resolve<StudentEntity>();
                 Console.WriteLine($"第3次打印：{stuA.Name}");
@@ -203,7 +199,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
                 //但是因为和上面不是同一个子域，所以解析出的实例stuA与之前的并不是同一个实例，指向另一个内存块Ⅱ
             }
             //无标签子域三
-            using (var noTagScope = Container.Instance.BeginLifetimeScope())
+            using (var noTagScope = ConsoleContainer.Instance.BeginLifetimeScope())
             {
                 try
                 {
@@ -224,7 +220,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         public static void TestInstancePerRequest()
         {
             //注册
-            Container.Init(x =>
+            ConsoleContainer.Init(x =>
                 {
                     x.RegisterType<StudentEntity>().InstancePerRequest();
                     //x.RegisterType<StudentEntity>().InstancePerMatchingLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag);

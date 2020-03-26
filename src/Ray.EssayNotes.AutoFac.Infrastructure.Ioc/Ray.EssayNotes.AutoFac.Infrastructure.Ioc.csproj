@@ -92,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiContainer.cs" />
-    <Compile Include="Container.cs" />
+    <Compile Include="ConsoleContainer.cs" />
     <Compile Include="Helpers\ReflectionHelper.cs" />
     <Compile Include="MvcContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
