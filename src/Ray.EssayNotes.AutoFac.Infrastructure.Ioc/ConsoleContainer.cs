@@ -44,13 +44,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void MyBuild(ContainerBuilder builder)
         {
-            //BuildContainerFunc1(builder);
-            //BuildContainerFunc2(builder);
-            //BuildContainerFunc3(builder);
-            //BuildContainerFunc4(builder);
-            //BuildContainerFunc5(builder);
-            //BuildContainerFunc6(builder);
-            //BuildContainerFunc8(builder);
+
         }
 
         #region 几种注册特性测试

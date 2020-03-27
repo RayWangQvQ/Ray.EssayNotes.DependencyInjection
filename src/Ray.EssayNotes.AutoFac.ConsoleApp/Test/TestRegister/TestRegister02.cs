@@ -19,9 +19,12 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             string name = stuService.GetStuName(1);
 
             Console.WriteLine(name);
+
+            PrintComponent();
         }
 
         /// <summary>
+        /// RegisterType
         /// 只指定实例类型（type）
         /// </summary>
         /// <param name="builder"></param>

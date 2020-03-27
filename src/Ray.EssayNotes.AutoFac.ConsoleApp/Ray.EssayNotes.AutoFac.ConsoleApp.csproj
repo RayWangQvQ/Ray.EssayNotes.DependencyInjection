@@ -48,12 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\JsonHelper.cs" />
-    <Compile Include="Helpers\LimitPropsContractResolver.cs" />
+    <Compile Include="DtoMyComponentRegistration.cs" />
     <Compile Include="Test\ITest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\TestRegister\TestRegister02.cs" />
+    <Compile Include="Test\TestRegister\TestRegister05.cs" />
     <Compile Include="Test\TestRegister\TestRegister04.cs" />
     <Compile Include="Test\TestRegister\TestRegister03.cs" />
     <Compile Include="Test\TestRegister\TestRegister01.cs" />
@@ -68,6 +68,10 @@
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Infrastructure.Ioc\Ray.EssayNotes.AutoFac.Infrastructure.Ioc.csproj">
       <Project>{af9c2961-d671-424b-8f96-b4aebb0288ae}</Project>
       <Name>Ray.EssayNotes.AutoFac.Infrastructure.Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Infrastructure\Ray.EssayNotes.AutoFac.Infrastructure.csproj">
+      <Project>{4ea3e32c-676f-4b7d-8120-eff716244e7d}</Project>
+      <Name>Ray.EssayNotes.AutoFac.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj">
       <Project>{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}</Project>

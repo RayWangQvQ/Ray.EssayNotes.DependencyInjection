@@ -11,6 +11,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
     public class TestRegister01 : TestRegisterBase
     {
         /// <summary>
+        /// RegisterType + As
         /// 指定实例类型（type）和服务类型（interface）
         /// </summary>
         /// <param name="builder"></param>

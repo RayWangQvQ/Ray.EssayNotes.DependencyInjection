@@ -11,18 +11,17 @@ namespace Ray.EssayNotes.AutoFac.Service.Service
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
-        /// <summary>
-        /// 构造注入
-        /// </summary>
-        /// <param name="studentRepository"></param>
+
         public StudentService(IStudentRepository studentRepository)
         {
             _studentRepository = studentRepository;
         }
-        /// <summary>
-        /// 构造注入
-        /// </summary>
-        /// <param name="studentRepository"></param>
+
+        public StudentService(IStudentRepository studentRepository, string test)
+        {
+            _studentRepository = studentRepository;
+        }
+
         public StudentService(StudentRepository studentRepository)
         {
             _studentRepository = studentRepository;

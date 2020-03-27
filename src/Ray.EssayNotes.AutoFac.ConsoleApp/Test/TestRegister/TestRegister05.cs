@@ -8,21 +8,22 @@ using Ray.EssayNotes.AutoFac.Service.Service;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
-    public class TestRegister04 : TestRegisterBase
+    public class TestRegister05 : TestRegisterBase
     {
         /// <summary>
-        /// Register + 委托
-        /// 拉姆达表达式注册
+        /// 自己指定构造函数
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
         protected override Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder)
         {
-            builder.Register(x => new StudentRepository())
-                .As<IStudentRepository>();
+            builder.RegisterType<StudentRepository>()
+                .As<IStudentRepository>()
+                .AsSelf();
 
-            builder.Register(x => new StudentService(x.Resolve<IStudentRepository>()))
-                .As<IStudentService>();
+            builder.RegisterType<StudentService>()
+                .UsingConstructor(typeof(IStudentRepository), typeof(string))
+                .As<IStudentService>(); ;
 
             return builder;
         }
