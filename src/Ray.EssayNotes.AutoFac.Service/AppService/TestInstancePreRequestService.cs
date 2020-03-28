@@ -1,8 +1,8 @@
 ﻿//本地项目包
 using Ray.EssayNotes.AutoFac.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
 
-namespace Ray.EssayNotes.AutoFac.Service.Service
+namespace Ray.EssayNotes.AutoFac.Service.AppService
 {
     public class TestInstancePreRequestService : ITestInstancePreRequestService
     {

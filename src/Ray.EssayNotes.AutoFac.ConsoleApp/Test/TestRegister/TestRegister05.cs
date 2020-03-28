@@ -3,8 +3,8 @@ using Autofac;
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
-using Ray.EssayNotes.AutoFac.Service.Service;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
+using Ray.EssayNotes.AutoFac.Service.AppService;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
@@ -21,9 +21,9 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
                 .As<IStudentRepository>()
                 .AsSelf();
 
-            builder.RegisterType<StudentService>()
+            builder.RegisterType<StudentAppService>()
                 .UsingConstructor(typeof(IStudentRepository), typeof(string))
-                .As<IStudentService>(); ;
+                .As<IStudentAppService>(); ;
 
             return builder;
         }

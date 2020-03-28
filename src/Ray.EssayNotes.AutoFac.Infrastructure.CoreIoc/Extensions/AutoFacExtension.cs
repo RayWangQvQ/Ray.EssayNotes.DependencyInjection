@@ -17,7 +17,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
         /// <returns></returns>
         public static IWebHostBuilder HookAutoFacIntoPipeline(this IWebHostBuilder builder)
         {
-            builder.ConfigureServices(services => services.AddAutofac());
+            //builder.ConfigureServices(services => services.AddAutofac());
             return builder;
         }
     }

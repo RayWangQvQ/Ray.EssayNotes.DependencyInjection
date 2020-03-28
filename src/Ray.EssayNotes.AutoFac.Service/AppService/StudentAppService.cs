@@ -1,28 +1,23 @@
 ﻿//本地项目包
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
 
-namespace Ray.EssayNotes.AutoFac.Service.Service
+namespace Ray.EssayNotes.AutoFac.Service.AppService
 {
     /// <summary>
     /// 学生逻辑处理
     /// </summary>
-    public class StudentService : IStudentService
+    public class StudentAppService : IStudentAppService
     {
         private readonly IStudentRepository _studentRepository;
 
-        public StudentService(IStudentRepository studentRepository)
+        public StudentAppService(IStudentRepository studentRepository)
         {
             _studentRepository = studentRepository;
         }
 
-        public StudentService(IStudentRepository studentRepository, string test)
-        {
-            _studentRepository = studentRepository;
-        }
-
-        public StudentService(StudentRepository studentRepository)
+        public StudentAppService(StudentRepository studentRepository)
         {
             _studentRepository = studentRepository;
         }

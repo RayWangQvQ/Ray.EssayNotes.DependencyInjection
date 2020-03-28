@@ -7,7 +7,7 @@ using Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister;
 //本地项目包
 using Ray.EssayNotes.AutoFac.Domain.Entity;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
-using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp
 {
@@ -34,7 +34,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             //从容器中解析出对象（可以理解为根生命域(the “root lifetime scope”)
             //这种方式解析出的对象如果不能自动释放，其生命周期则与程序同样长，多了之后可能会造成内存溢出，这里只是为了好理解，并不建议使用
             //建议使用下面用的利用子生命域解析的方式
-            IStudentService stuService = ConsoleContainer.Instance.Resolve<IStudentService>();
+            IStudentAppService stuService = ConsoleContainer.Instance.Resolve<IStudentAppService>();
             string name = stuService.GetStuName(id);
             Console.WriteLine(name);
         }

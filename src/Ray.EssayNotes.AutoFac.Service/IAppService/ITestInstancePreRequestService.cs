@@ -1,5 +1,5 @@
 ﻿
-namespace Ray.EssayNotes.AutoFac.Service.IService
+namespace Ray.EssayNotes.AutoFac.Service.IAppService
 {
     public interface ITestInstancePreRequestService
     {

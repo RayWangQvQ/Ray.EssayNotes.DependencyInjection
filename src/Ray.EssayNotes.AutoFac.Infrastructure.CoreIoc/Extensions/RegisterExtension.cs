@@ -8,8 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 //本地项目包
 using Ray.EssayNotes.AutoFac.Repository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
-using Ray.EssayNotes.AutoFac.Service.Service;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
+using Ray.EssayNotes.AutoFac.Service.AppService;
 using Ray.EssayNotes.AutoFac.Domain.Entity;
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 
@@ -33,9 +33,9 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions
             services.AddScoped<IBaseRepository<TeacherEntity>, BaseRepository<TeacherEntity>>();
             services.AddScoped<IBaseRepository<BookEntity>, BaseRepository<BookEntity>>();
             //注册Service
-            services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<ITeacherService, TeacherService>();
-            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IStudentAppService, StudentAppService>();
+            services.AddScoped<ITeacherService, TeacherAppService>();
+            services.AddScoped<IBookService, BookAppService>();
             services.AddScoped<ITestInstancePreRequestService, TestInstancePreRequestService>();
             //注册DbContext
             services.AddScoped<MyDbContext>();

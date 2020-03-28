@@ -7,8 +7,8 @@ using Autofac.Core;
 //本地项目包
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
-using Ray.EssayNotes.AutoFac.Service.Service;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
+using Ray.EssayNotes.AutoFac.Service.AppService;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
@@ -55,7 +55,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void BuildContainerFunc4(ContainerBuilder builder)
         {
-            builder.RegisterType<StudentService>();
+            builder.RegisterType<StudentAppService>();
             builder.RegisterType<StudentRepository>();
             //builder.RegisterType(typeof(StudentService));
             //builder.RegisterType(typeof(StudentRepository));
@@ -70,10 +70,10 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         public static void BuildContainerFunc5(ContainerBuilder builder)
         {
             //builder.RegisterType<TeacherRepository>().As<ITeacherRepository>();
-            builder.Register(x => new TeacherService { TeacherRepository = x.ResolveOptional<ITeacherRepository>() })
+            builder.Register(x => new TeacherAppService { TeacherRepository = x.ResolveOptional<ITeacherRepository>() })
                 .As<ITeacherService>();
 
-            builder.RegisterType<TeacherService>()
+            builder.RegisterType<TeacherAppService>()
                 .PropertiesAutowired();
         }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         {
             builder.RegisterGeneric(typeof(BaseRepository<>))
                 .As(typeof(IBaseRepository<>));
-            builder.RegisterType<BookService>()
+            builder.RegisterType<BookAppService>()
                 .As<IBookService>();
         }
         /// <summary>
@@ -103,7 +103,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
                 .IfNotRegistered(typeof(ITeacherRepository));
 
             //OnlyIf
-            builder.RegisterType<TeacherService>()
+            builder.RegisterType<TeacherAppService>()
                 .AsSelf()
                 .As<ITeacherService>()
                 .OnlyIf(x =>
@@ -137,11 +137,11 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void BuildContainerFunc9(ContainerBuilder builder)
         {
-            builder.RegisterType<StudentService>();
+            builder.RegisterType<StudentAppService>();
 
-            builder.RegisterType<StudentService>().AsSelf()
-                .As<StudentService>()
-                .As(typeof(StudentService))
+            builder.RegisterType<StudentAppService>().AsSelf()
+                .As<StudentAppService>()
+                .As(typeof(StudentAppService))
                 .AsImplementedInterfaces();//常用
         }
         #endregion

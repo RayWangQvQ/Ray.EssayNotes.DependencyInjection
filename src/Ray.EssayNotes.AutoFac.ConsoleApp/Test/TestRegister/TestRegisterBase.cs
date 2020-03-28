@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
-using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Newtonsoft.Json;
 using Ray.EssayNotes.AutoFac.Infrastructure.Helpers;
 using Autofac.Core.Activators.Reflection;
@@ -42,7 +42,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         /// </summary>
         protected void PrintResult()
         {
-            IStudentService stuService = ConsoleContainer.Instance.Resolve<IStudentService>();
+            IStudentAppService stuService = ConsoleContainer.Instance.Resolve<IStudentAppService>();
             string name = stuService.GetStuName(1);
             Console.WriteLine($"输出：{name}");
         }

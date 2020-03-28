@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,15 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IService\IBookService.cs" />
-    <Compile Include="IService\IStudentService.cs" />
-    <Compile Include="IService\ITeacherService.cs" />
-    <Compile Include="IService\ITestInstancePreRequestService.cs" />
+    <Compile Include="IAppService\IBookAppService.cs" />
+    <Compile Include="IAppService\IStudentAppService.cs" />
+    <Compile Include="IAppService\ITeacherAppService.cs" />
+    <Compile Include="IAppService\ITestInstancePreRequestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\BookService.cs" />
-    <Compile Include="Service\StudentService.cs" />
-    <Compile Include="Service\TeacherService.cs" />
-    <Compile Include="Service\TestInstancePreRequestService.cs" />
+    <Compile Include="AppService\BookAppService.cs" />
+    <Compile Include="AppService\StudentAppService.cs" />
+    <Compile Include="AppService\TeacherAppService.cs" />
+    <Compile Include="AppService\TestInstancePreRequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj">

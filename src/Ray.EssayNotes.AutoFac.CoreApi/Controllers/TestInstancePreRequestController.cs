@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ray.EssayNotes.AutoFac.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

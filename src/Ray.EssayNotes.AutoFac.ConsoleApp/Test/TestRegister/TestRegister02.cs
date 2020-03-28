@@ -3,8 +3,8 @@ using Autofac;
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IService;
-using Ray.EssayNotes.AutoFac.Service.Service;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
+using Ray.EssayNotes.AutoFac.Service.AppService;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
@@ -15,7 +15,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             //初始化容器，将需要用到的组件添加到容器中
             ConsoleContainer.Init(RegisterFunc);
 
-            IStudentService stuService = ConsoleContainer.Instance.Resolve<StudentService>();
+            IStudentAppService stuService = ConsoleContainer.Instance.Resolve<StudentAppService>();
             string name = stuService.GetStuName(1);
 
             Console.WriteLine(name);
@@ -31,7 +31,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         /// <returns></returns>
         protected override Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder)
         {
-            builder.RegisterType<StudentService>();
+            builder.RegisterType<StudentAppService>();
             builder.RegisterType<StudentRepository>()
                 .AsSelf();
 

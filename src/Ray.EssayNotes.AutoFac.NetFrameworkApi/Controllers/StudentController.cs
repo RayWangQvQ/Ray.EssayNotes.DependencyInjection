@@ -1,7 +1,7 @@
 ﻿//系统包
 using System.Web.Http;
 //本地项目包
-using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
 
 namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Controllers
 {
@@ -10,13 +10,13 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Controllers
     /// </summary>
     public class StudentController : ApiController
     {
-        private readonly IStudentService _studentService;
+        private readonly IStudentAppService _studentService;
 
         /// <summary>
         /// 构造注入
         /// </summary>
         /// <param name="studentService"></param>
-        public StudentController(IStudentService studentService)
+        public StudentController(IStudentAppService studentService)
         {
             _studentService = studentService;
         }

@@ -56,14 +56,14 @@
     <Compile Include="Repository\TeacherRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj">
-      <Project>{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}</Project>
-      <Name>Ray.EssayNotes.AutoFac.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj">
+      <Project>{6fd460a1-5d4f-496c-b14d-a47f7aabd8a1}</Project>
+      <Name>Ray.EssayNotes.AutoFac.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

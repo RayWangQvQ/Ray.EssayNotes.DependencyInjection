@@ -1,6 +1,7 @@
 ﻿//系统包
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {
@@ -8,11 +9,13 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
                 //第一种：使用自带DI
                 //.UseStartup<Startup>();
 
@@ -21,6 +24,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
                 //.UseStartup<StartupWithAutoFac>();
 
                 //第三种：添加AutoFac接管依赖注入
-                .UseStartup<StartupOnlyAutoFac>();
+                webBuilder.UseStartup<StartupOnlyAutoFac>();
+            });
+
     }
 }

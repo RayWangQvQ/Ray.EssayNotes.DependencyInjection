@@ -1,7 +1,7 @@
 ﻿//系统包
 using Microsoft.AspNetCore.Mvc;
 //本地三方包
-using Ray.EssayNotes.AutoFac.Service.IService;
+using Ray.EssayNotes.AutoFac.Service.IAppService;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
 {
@@ -11,8 +11,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly IStudentService _studentService;
-        public StudentController(IStudentService studentService)
+        private readonly IStudentAppService _studentService;
+        public StudentController(IStudentAppService studentService)
         {
             _studentService = studentService;
         }

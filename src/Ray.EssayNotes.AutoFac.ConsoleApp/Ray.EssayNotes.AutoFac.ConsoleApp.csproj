@@ -82,7 +82,7 @@
       <Name>Ray.EssayNotes.AutoFac.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj">
-      <Project>{93B88795-3FF2-4F11-B00D-49455BA71674}</Project>
+      <Project>{93b88795-3ff2-4f11-b00d-49455ba71674}</Project>
       <Name>Ray.EssayNotes.AutoFac.Service</Name>
     </ProjectReference>
   </ItemGroup>
