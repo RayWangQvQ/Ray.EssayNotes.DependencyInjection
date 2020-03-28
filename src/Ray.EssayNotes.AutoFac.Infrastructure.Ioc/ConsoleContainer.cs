@@ -48,21 +48,6 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         }
 
         #region 几种注册特性测试
-
-        /// <summary>
-        /// 方法4：指定类型（type）
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void BuildContainerFunc4(ContainerBuilder builder)
-        {
-            builder.RegisterType<StudentAppService>();
-            builder.RegisterType<StudentRepository>();
-            //builder.RegisterType(typeof(StudentService));
-            //builder.RegisterType(typeof(StudentRepository));
-            //还可以自己指定构造函数
-            //builder.RegisterType<StudentRepository>()
-            //    .UsingConstructor(typeof(StudentRepository));
-        }
         /// <summary>
         /// 方法5：属性注入
         /// </summary>
@@ -76,17 +61,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             builder.RegisterType<TeacherAppService>()
                 .PropertiesAutowired();
         }
-        /// <summary>
-        /// 方法6：泛型注入
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void BuildContainerFunc6(ContainerBuilder builder)
-        {
-            builder.RegisterGeneric(typeof(BaseRepository<>))
-                .As(typeof(IBaseRepository<>));
-            builder.RegisterType<BookAppService>()
-                .As<IBookService>();
-        }
+
         /// <summary>
         /// 方法7：已注册内容进行判断
         /// </summary>
@@ -129,20 +104,6 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 
             builder.RegisterGeneric(typeof(BaseRepository<>))
                 .As(typeof(IBaseRepository<>));
-        }
-
-        /// <summary>
-        /// 暴露类型
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void BuildContainerFunc9(ContainerBuilder builder)
-        {
-            builder.RegisterType<StudentAppService>();
-
-            builder.RegisterType<StudentAppService>().AsSelf()
-                .As<StudentAppService>()
-                .As(typeof(StudentAppService))
-                .AsImplementedInterfaces();//常用
         }
         #endregion
     }

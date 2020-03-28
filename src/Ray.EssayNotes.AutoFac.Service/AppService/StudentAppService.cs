@@ -17,10 +17,17 @@ namespace Ray.EssayNotes.AutoFac.Service.AppService
             _studentRepository = studentRepository;
         }
 
-        public StudentAppService(StudentRepository studentRepository)
+        public StudentAppService(StudentRepository studentRepository, ITeacherRepository teacherRepository)
         {
             _studentRepository = studentRepository;
         }
+
+        public StudentAppService(StudentRepository studentRepository, ITeacherRepository teacherRepository, string test)
+        {
+            _studentRepository = studentRepository;
+        }
+
+        public ITeacherRepository TeacherRepository { get; set; }
 
         public string GetStuName(long id)
         {

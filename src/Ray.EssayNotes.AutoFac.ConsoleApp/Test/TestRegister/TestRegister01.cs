@@ -10,19 +10,33 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister01 : TestRegisterBase
     {
+        public override void Run()
+        {
+            //初始化容器，将需要用到的组件添加到容器中
+            ConsoleContainer.Init(RegisterFunc);
+
+            IStudentAppService stuService = ConsoleContainer.Instance.Resolve<StudentAppService>();
+            string name = stuService.GetStuName(1);
+
+            Console.WriteLine(name);
+
+            PrintComponent();
+        }
+
         /// <summary>
-        /// RegisterType + As
-        /// 指定实例类型（type）和服务类型（interface）
+        /// 指定实例类型（type）
+        /// 【RegisterType】
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
         protected override Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder)
         {
-            builder.RegisterType<StudentRepository>()//指定实例类型
-                .As<IStudentRepository>();//指定服务类型
+            builder.RegisterType<StudentAppService>();
+            builder.RegisterType<StudentRepository>();
 
-            builder.RegisterType(typeof(StudentAppService))
-                .As(typeof(IStudentAppService));
+            //除了泛型，还可以传入type
+            //builder.RegisterType(typeof(StudentService));
+            //builder.RegisterType(typeof(StudentRepository));
             return builder;
         }
     }

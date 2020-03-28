@@ -40,7 +40,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         /// <summary>
         /// 打印结果
         /// </summary>
-        protected void PrintResult()
+        protected virtual void PrintResult()
         {
             IStudentAppService stuService = ConsoleContainer.Instance.Resolve<IStudentAppService>();
             string name = stuService.GetStuName(1);
@@ -59,7 +59,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             };
 
             IComponentRegistry component = ConsoleContainer.Instance.ComponentRegistry;//注册处
-            List<IComponentRegistration> registrations = component.Registrations.ToList();//注册登记表
+            List<IComponentRegistration> registrations = component.Registrations.ToList();//注册信息表
             registrations.RemoveAt(0);
 
             //因为属性类型都是接口，不好用AutoMapper，所以用了json
@@ -73,6 +73,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
                 item.SetSupplyFields(source);
             }
 
+            Console.WriteLine("注册表信息：");
             Console.WriteLine(JsonConvert.SerializeObject(dtoMyComponentRegistrations, jSetting).AsFormatJsonString());
         }
     }

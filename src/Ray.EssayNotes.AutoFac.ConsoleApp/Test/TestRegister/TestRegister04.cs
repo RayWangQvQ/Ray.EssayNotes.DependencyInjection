@@ -21,7 +21,10 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             builder.Register(x => new StudentRepository())
                 .As<IStudentRepository>();
 
-            builder.Register(x => new StudentAppService(x.Resolve<IStudentRepository>()))
+            builder.Register(x => new StudentAppService(x.Resolve<IStudentRepository>())//指定参数
+            {
+                //TeacherRepository = x.Resolve<ITeacherRepository>()//实现【参数注入】（与属性注入不同，这里如果容器找不到解析会报异常，属性注入不会）
+            })
                 .As<IStudentAppService>();
 
             return builder;

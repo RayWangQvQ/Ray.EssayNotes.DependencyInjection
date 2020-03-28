@@ -52,11 +52,14 @@
     <Compile Include="Test\ITest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\TestRegister\TestRegister02.cs" />
+    <Compile Include="Test\TestRegister\TestRegister01.cs" />
+    <Compile Include="Test\TestRegister\TestRegister08.cs" />
+    <Compile Include="Test\TestRegister\TestRegister07.cs" />
+    <Compile Include="Test\TestRegister\TestRegister06.cs" />
     <Compile Include="Test\TestRegister\TestRegister05.cs" />
     <Compile Include="Test\TestRegister\TestRegister04.cs" />
     <Compile Include="Test\TestRegister\TestRegister03.cs" />
-    <Compile Include="Test\TestRegister\TestRegister01.cs" />
+    <Compile Include="Test\TestRegister\TestRegister02.cs" />
     <Compile Include="Test\TestRegister\TestRegisterBase.cs" />
     <Compile Include="Test\TestRegister\TestRegisterFactory.cs" />
   </ItemGroup>
