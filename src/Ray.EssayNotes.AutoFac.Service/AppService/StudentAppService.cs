@@ -17,6 +17,11 @@ namespace Ray.EssayNotes.AutoFac.Service.AppService
             _studentRepository = studentRepository;
         }
 
+        public StudentAppService(StudentRepository studentRepository)
+        {
+            _studentRepository = studentRepository;
+        }
+
         public StudentAppService(StudentRepository studentRepository, ITeacherRepository teacherRepository)
         {
             _studentRepository = studentRepository;

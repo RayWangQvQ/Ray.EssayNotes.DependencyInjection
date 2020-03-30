@@ -43,7 +43,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void MyBuild(ContainerBuilder builder)
         {
-            var assemblies = ReflectionHelper.GetAllAssembliesIIS();
+            var assemblies = ReflectionHelper.GetAllAssembliesWebIIS();
 
             //注册仓储 && Service
             builder.RegisterAssemblyTypes(assemblies)//程序集内所有具象类（concrete classes）

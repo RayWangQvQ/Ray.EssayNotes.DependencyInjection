@@ -31,8 +31,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         /// <returns></returns>
         protected override Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder)
         {
-            builder.RegisterType<StudentAppService>();
             builder.RegisterType<StudentRepository>();
+            builder.RegisterType<StudentAppService>();
 
             //除了泛型，还可以传入type
             //builder.RegisterType(typeof(StudentService));

@@ -9,6 +9,7 @@ namespace Ray.EssayNotes.AutoFac.Repository.Repository
     /// </summary>
     public class TeacherRepository : BaseRepository<TeacherEntity>, ITeacherRepository
     {
+        public string TestStr { get; set; }
         public string GetName(long id)
         {
             return "教师李四";

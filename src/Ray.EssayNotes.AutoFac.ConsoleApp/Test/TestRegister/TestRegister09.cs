@@ -21,7 +21,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         /// <returns></returns>
         protected override Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder)
         {
-            Assembly[] assemblies = Infrastructure.Helpers.ReflectionHelper.GetAllAssembliesIIS();
+            Assembly[] assemblies = Infrastructure.Helpers.ReflectionHelper.GetAllAssemblies();
 
             builder.RegisterAssemblyTypes(assemblies)
                 .Where(cc => cc.Name.EndsWith("Repository") |//筛选程序集内所有具象类（concrete classes）
@@ -37,7 +37,5 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
             return builder;
         }
-
-        //另外还有一种指定参数的方法，在拉姆达注册里
     }
 }

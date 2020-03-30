@@ -17,7 +17,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
         {
             while (true)
             {
-                Console.WriteLine("\r\n请输入测试编号(01-08)：");
+                Console.WriteLine("\r\n请输入测试编号(01-09)：");
 
                 string testNum = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(testNum)) continue;

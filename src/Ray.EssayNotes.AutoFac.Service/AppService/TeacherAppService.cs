@@ -14,6 +14,12 @@ namespace Ray.EssayNotes.AutoFac.Service.AppService
         /// </summary>
         public ITeacherRepository TeacherRepository { get; set; }
 
+        public IStudentRepository StudentRepository { get; set; }
+
+        public string TestStr { get; set; }
+
+        public int TestInt;//不是属性，不可以属性注入
+
         public string GetTeacherName(long id)
         {
             return TeacherRepository?.Get(111).Name;
