@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Helpers
+namespace Ray.EssayNotes.AutoFac.Infrastructure.Helpers
 {
     /// <summary>
     /// 反射辅助类
@@ -30,14 +30,14 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Helpers
         }
 
         /// <summary>
-        ///  获取Asp.Net FrameWork Web项目所有程序集
+        ///  获取托管在IIS上的Asp.Net FrameWork项目所有程序集
         /// </summary>
         /// <returns></returns>
-        public static Assembly[] GetAllAssembliesWeb()
+        public static Assembly[] GetAllAssembliesIIS()
         {
-            Assembly[] assemblies = System.Web.Compilation.BuildManager
-                .GetReferencedAssemblies()
-                .Cast<Assembly>()
+            //应用第一次启动时IIS托管应用里面所有的程序集都被加载进 AppDomain , 但是 当AppDomain被IIS回收时, 程序集只会按需加载.
+            //使用如下方法会立刻强制相关的程序集加载进 AppDomain 使其可以被用于模块扫描.
+            Assembly[] assemblies = System.Web.Compilation.BuildManager.GetReferencedAssemblies().Cast<Assembly>()
                 .Where(x => x.FullName.Contains("Ray"))
                 .ToArray();
             return assemblies;

@@ -9,6 +9,7 @@ using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Ray.EssayNotes.AutoFac.Service.AppService;
+using Ray.EssayNotes.AutoFac.Infrastructure.Helpers;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
 {
@@ -63,35 +64,12 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         }
 
         /// <summary>
-        /// 方法7：已注册内容进行判断
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void BuildContainerFunc7(ContainerBuilder builder)
-        {
-            //IfNotRegistered
-            builder.RegisterType<TeacherRepository>()
-                .As<ITeacherRepository>()
-                .IfNotRegistered(typeof(ITeacherRepository));
-
-            builder.RegisterType<TeacherRepository>()
-                .AsSelf()
-                .IfNotRegistered(typeof(ITeacherRepository));
-
-            //OnlyIf
-            builder.RegisterType<TeacherAppService>()
-                .AsSelf()
-                .As<ITeacherService>()
-                .OnlyIf(x =>
-                    x.IsRegistered(new TypedService(typeof(ITeacherRepository))) ||
-                    x.IsRegistered(new TypedService(typeof(TeacherRepository))));
-        }
-        /// <summary>
         /// 方法8：通过反射程序集
         /// </summary>
         /// <param name="builder"></param>
         public static void BuildContainerFunc8(ContainerBuilder builder)
         {
-            Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssemblies();
+            Assembly[] assemblies = ReflectionHelper.GetAllAssembliesIIS();
 
             builder.RegisterAssemblyTypes(assemblies)//程序集内所有具象类（concrete classes）
                 .Where(cc => cc.Name.EndsWith("Repository") |//筛选

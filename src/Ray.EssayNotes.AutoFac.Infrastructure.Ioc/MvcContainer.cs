@@ -7,6 +7,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 //本地项目包
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
+using Ray.EssayNotes.AutoFac.Infrastructure.Helpers;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 
 
@@ -44,7 +45,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <param name="builder"></param>
         public static void MyBuild(Autofac.ContainerBuilder builder)
         {
-            Assembly[] assemblies = Helpers.ReflectionHelper.GetAllAssembliesWeb();
+            Assembly[] assemblies = ReflectionHelper.GetAllAssembliesIIS();
 
             //注册仓储 && Service
             builder.RegisterAssemblyTypes(assemblies)//程序集内所有具象类（concrete classes）

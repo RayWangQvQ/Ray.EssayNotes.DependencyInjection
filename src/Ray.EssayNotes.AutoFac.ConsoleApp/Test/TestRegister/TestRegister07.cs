@@ -33,7 +33,5 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
             return builder;
         }
-
-        //另外还有一种指定参数的方法，在拉姆达注册里
     }
 }

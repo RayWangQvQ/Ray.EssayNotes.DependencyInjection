@@ -93,7 +93,6 @@
   <ItemGroup>
     <Compile Include="ApiContainer.cs" />
     <Compile Include="ConsoleContainer.cs" />
-    <Compile Include="Helpers\ReflectionHelper.cs" />
     <Compile Include="MvcContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -102,6 +101,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Infrastructure\Ray.EssayNotes.AutoFac.Infrastructure.csproj">
+      <Project>{4EA3E32C-676F-4B7D-8120-EFF716244E7D}</Project>
+      <Name>Ray.EssayNotes.AutoFac.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj">
       <Project>{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}</Project>
       <Name>Ray.EssayNotes.AutoFac.Domain</Name>
