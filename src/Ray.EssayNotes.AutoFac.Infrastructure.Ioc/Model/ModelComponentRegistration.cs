@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using Autofac;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Autofac.Core;
 
-namespace Ray.EssayNotes.AutoFac.ConsoleApp
+namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Model
 {
-    public class DtoMyComponentRegistration
+    public class ModelComponentRegistration
     {
 
         /// <summary>

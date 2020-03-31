@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\DtoToken.cs" />
     <Compile Include="IAppService\IBookAppService.cs" />
     <Compile Include="IAppService\IStudentAppService.cs" />
     <Compile Include="IAppService\ITeacherAppService.cs" />

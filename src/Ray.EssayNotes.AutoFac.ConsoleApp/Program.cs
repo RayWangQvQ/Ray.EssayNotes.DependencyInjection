@@ -3,6 +3,7 @@ using System;
 //三方包
 using Autofac;
 using Ray.EssayNotes.AutoFac.ConsoleApp.Test;
+using Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope;
 using Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister;
 //本地项目包
 using Ray.EssayNotes.AutoFac.Domain.Entity;
@@ -15,9 +16,16 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
     {
         static void Main(string[] args)
         {
+            //TestRegister();
+
+            TestLifetimeScope();
+        }
+
+        private static void TestRegister()
+        {
             while (true)
             {
-                Console.WriteLine("\r\n请输入测试编号(01-09)：");
+                Console.WriteLine("\r\n请输入【注册】测试编号(01-12)：");
 
                 string testNum = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(testNum)) continue;
@@ -26,47 +34,16 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
             }
         }
 
-        /// <summary>
-        /// 输出学生姓名
-        /// </summary>
-        /// <param name="id"></param>
-        public static void PrintStudentName(long id)
+        private static void TestLifetimeScope()
         {
-            //从容器中解析出对象（可以理解为根生命域(the “root lifetime scope”)
-            //这种方式解析出的对象如果不能自动释放，其生命周期则与程序同样长，多了之后可能会造成内存溢出，这里只是为了好理解，并不建议使用
-            //建议使用下面用的利用子生命域解析的方式
-            IStudentAppService stuService = ConsoleContainer.Instance.Resolve<IStudentAppService>();
-            string name = stuService.GetStuName(id);
-            Console.WriteLine(name);
-        }
-
-        /// <summary>
-        /// 输出教师姓名
-        /// </summary>
-        /// <param name="id"></param>
-        public static void PrintTeacherName(long id)
-        {
-            // 创建一个生命域, 解析对象，使用完后, 自动释放掉所有解析资源
-            using (ILifetimeScope scope = ConsoleContainer.Instance.BeginLifetimeScope())
+            while (true)
             {
-                ITeacherService teacherService = scope.Resolve<ITeacherService>();
-                string name = teacherService.GetTeacherName(id);
-                Console.WriteLine(name);
-            }
-        }
+                Console.WriteLine("\r\n请输入【生命周期】测试编号(01-12)：");
 
-        /// <summary>
-        /// 输出书本名称
-        /// </summary>
-        /// <param name="id"></param>
-        public static void PrintBookTitle(long id)
-        {
-            // 创建一个生命域, 解析对象，使用完后, 自动释放掉所有解析资源
-            using (ILifetimeScope scope = ConsoleContainer.Instance.BeginLifetimeScope())
-            {
-                IBookService bookService = scope.ResolveOptional<IBookService>();
-                string title = bookService.GetTitle(id);
-                Console.WriteLine(title);
+                string testNum = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(testNum)) continue;
+                ITest test = TestLifetimeScopeFactory.Create(testNum);
+                test.Run();
             }
         }
 

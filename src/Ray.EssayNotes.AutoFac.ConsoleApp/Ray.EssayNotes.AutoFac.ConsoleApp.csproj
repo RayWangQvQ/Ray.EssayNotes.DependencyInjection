@@ -48,10 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DtoMyComponentRegistration.cs" />
     <Compile Include="Test\ITest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\TestLifetimeScope\TestLifetimeScope02.cs" />
+    <Compile Include="Test\TestLifetimeScope\TestLifetimeScope03.cs" />
+    <Compile Include="Test\TestLifetimeScope\TestLifetimeScope01.cs" />
+    <Compile Include="Test\TestLifetimeScope\TestLifetimeScopeBase.cs" />
+    <Compile Include="Test\TestLifetimeScope\TestLifetimeScopeFactory.cs" />
     <Compile Include="Test\TestRegister\TestRegister01.cs" />
     <Compile Include="Test\TestRegister\TestRegister12.cs" />
     <Compile Include="Test\TestRegister\TestRegister11.cs" />
@@ -93,5 +97,6 @@
       <Name>Ray.EssayNotes.AutoFac.Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
