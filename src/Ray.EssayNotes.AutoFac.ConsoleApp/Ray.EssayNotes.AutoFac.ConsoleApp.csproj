@@ -51,6 +51,7 @@
     <Compile Include="Test\ITest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\ITestFactory.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope02.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope04.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope03.cs" />

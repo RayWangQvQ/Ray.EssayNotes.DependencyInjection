@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
-    public class TestLifetimeScopeFactory
+    public class TestLifetimeScopeFactory : ITestFactory
     {
-        public static TestLifetimeScopeBase Create(string num)
+        public ITest Create(string num)
         {
             string classFullName = $"Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope.TestLifetimeScope{num}";
             Type type = Type.GetType(classFullName);
             dynamic obj = type?.Assembly.CreateInstance(classFullName);
             return obj;
         }
+
+        public string TestType => "生命周期作用域";
+        public string NumRange => "01-07";
     }
 }

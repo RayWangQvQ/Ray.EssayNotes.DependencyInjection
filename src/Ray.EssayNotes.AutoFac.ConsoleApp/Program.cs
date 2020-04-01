@@ -1,5 +1,6 @@
 ﻿//系统包
 using System;
+using System.Collections.Generic;
 //三方包
 using Ray.EssayNotes.AutoFac.ConsoleApp.Test;
 using Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope;
@@ -11,33 +12,25 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //TestRegister();
+            var dic = new Dictionary<string, ITestFactory>
+            {
+                {"1", new TestRegisterFactory()},
+                {"2", new TestLifetimeScopeFactory()}
+            };
 
-            TestLifetimeScope();
-        }
-
-        private static void TestRegister()
-        {
             while (true)
             {
-                Console.WriteLine("\r\n请输入【注册】测试编号(01-12)：");
+                Console.WriteLine("\r\n请输入要测试的类型（1.测试注册；2.测试生命周期）：");
+                string key = Console.ReadLine();
 
+                if (string.IsNullOrWhiteSpace(key)) continue;
+                bool isSuccess = dic.TryGetValue(key, out ITestFactory factory);
+                if (!isSuccess) continue;
+
+                Console.WriteLine($"\r\n请输入【{factory.TestType}】测试编号({factory.NumRange})：");
                 string testNum = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(testNum)) continue;
-                ITest test = TestRegisterFactory.Create(testNum);
-                test.Run();
-            }
-        }
-
-        private static void TestLifetimeScope()
-        {
-            while (true)
-            {
-                Console.WriteLine("\r\n请输入【生命周期】测试编号(01-06)：");
-
-                string testNum = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(testNum)) continue;
-                ITest test = TestLifetimeScopeFactory.Create(testNum);
+                ITest test = factory.Create(testNum);
                 test.Run();
             }
         }
