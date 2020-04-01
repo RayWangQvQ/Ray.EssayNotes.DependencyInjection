@@ -17,7 +17,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public override ContainerBuilder RegisterFunc(ContainerBuilder builder)
         {
             builder.RegisterType<DtoToken>()
-                .AsSelf()
                 .InstancePerMatchingLifetimeScope("testScopeName");//表明：只能在名称为testScopeName的域内被解析，并且在该域内单例
 
             return builder;

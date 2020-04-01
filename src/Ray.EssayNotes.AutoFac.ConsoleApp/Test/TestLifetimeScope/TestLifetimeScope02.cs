@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
-using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions;
 using Ray.EssayNotes.AutoFac.Service.Dtos;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
@@ -17,7 +16,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public override ContainerBuilder RegisterFunc(ContainerBuilder builder)
         {
             builder.RegisterType<DtoToken>()
-                .AsSelf()
                 .InstancePerDependency();//如果不指定生命周期，这也是默认的选项
 
             return builder;

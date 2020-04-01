@@ -1,13 +1,8 @@
 ﻿using System;
 using Autofac;
-using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Ray.EssayNotes.AutoFac.Service.AppService;
-using System.Collections.Generic;
-using Autofac.Core;
-using System.Reflection;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
@@ -43,4 +38,5 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             return builder;
         }
     }
+
 }

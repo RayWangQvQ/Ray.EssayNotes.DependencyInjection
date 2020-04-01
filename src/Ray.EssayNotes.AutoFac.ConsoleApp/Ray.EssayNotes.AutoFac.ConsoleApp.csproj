@@ -54,6 +54,7 @@
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope02.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope04.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope03.cs" />
+    <Compile Include="Test\TestLifetimeScope\TestLifetimeScope07.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope06.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope05.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScope01.cs" />

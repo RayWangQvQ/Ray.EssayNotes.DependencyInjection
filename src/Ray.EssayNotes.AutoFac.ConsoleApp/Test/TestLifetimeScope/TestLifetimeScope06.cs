@@ -17,7 +17,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public override ContainerBuilder RegisterFunc(ContainerBuilder builder)
         {
             builder.RegisterType<DtoToken>()
-                .AsSelf()
                 .InstancePerRequest();
             //.InstancePerMatchingLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag)
             //.InstancePerMatchingLifetimeScope("AutofacWebRequest");
