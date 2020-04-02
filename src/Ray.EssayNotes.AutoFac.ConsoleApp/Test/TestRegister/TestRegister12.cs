@@ -8,6 +8,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister12 : TestRegisterBase
     {
+        public override string Title => "属性注入3";
+
         protected override void PrintResult()
         {
             var teacherService = ConsoleContainer.Instance.Resolve<TeacherAppService>();

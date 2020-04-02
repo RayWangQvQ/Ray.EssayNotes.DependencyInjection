@@ -10,6 +10,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister06 : TestRegisterBase
     {
+        public override string Title => "拉姆达表达式注册";
+
         /// <summary>
         /// 拉姆达表达式注册
         /// 【Register】+ 委托

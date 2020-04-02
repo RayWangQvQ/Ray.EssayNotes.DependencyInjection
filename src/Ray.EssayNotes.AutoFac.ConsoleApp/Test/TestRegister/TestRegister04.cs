@@ -10,6 +10,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister04 : TestRegisterBase
     {
+        public override string Title => "自己指定构造函数";
+
         /// <summary>
         /// 自己指定构造函数
         /// 【UsingConstructor】

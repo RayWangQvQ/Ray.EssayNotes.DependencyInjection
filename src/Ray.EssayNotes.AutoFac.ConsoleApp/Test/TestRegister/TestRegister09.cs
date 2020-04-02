@@ -13,6 +13,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister09 : TestRegisterBase
     {
+        public override string Title => "扫描程序集注册";
+
         /// <summary>
         /// 扫描程序集注册
         /// 【RegisterAssemblyTypes】

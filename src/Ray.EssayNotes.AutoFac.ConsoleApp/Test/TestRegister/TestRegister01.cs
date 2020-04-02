@@ -23,8 +23,10 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             PrintComponent();
         }
 
+        public override string Title => "注册实例类型（type）";
+
         /// <summary>
-        /// 指定实例类型（type）
+        /// 注册实例类型（type）
         /// 【RegisterType】
         /// </summary>
         /// <param name="builder"></param>

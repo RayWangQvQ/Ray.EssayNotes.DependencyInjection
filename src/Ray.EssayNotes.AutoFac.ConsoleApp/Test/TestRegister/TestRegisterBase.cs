@@ -32,6 +32,11 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         }
 
         /// <summary>
+        /// 测试内容
+        /// </summary>
+        public abstract string Title { get; }
+
+        /// <summary>
         /// 注册
         /// </summary>
         /// <param name="builder"></param>

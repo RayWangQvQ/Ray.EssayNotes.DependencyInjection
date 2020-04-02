@@ -10,6 +10,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister02 : TestRegisterBase
     {
+        public override string Title => "注册实例类型（type）和服务类型（interface）";
+
         /// <summary>
         /// 注册实例类型（type）和服务类型（interface）
         /// 【RegisterType】+【As】

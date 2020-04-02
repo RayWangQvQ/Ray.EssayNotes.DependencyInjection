@@ -10,6 +10,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister03 : TestRegisterBase
     {
+        public override string Title => "注册实例对象";
+
         /// <summary>
         /// 注册实例对象
         /// 【RegisterInstance】

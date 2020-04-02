@@ -12,6 +12,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister08 : TestRegisterBase
     {
+        public override string Title => "条件注册（如果没注册过、仅当）";
+
         protected override void PrintResult()
         {
             string name = "";

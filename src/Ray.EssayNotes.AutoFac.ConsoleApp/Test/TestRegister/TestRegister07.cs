@@ -11,6 +11,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
     public class TestRegister07 : TestRegisterBase
     {
+        public override string Title => "注册泛型";
+
         protected override void PrintResult()
         {
             IBookService bookService = ConsoleContainer.Instance.Resolve<IBookService>();
