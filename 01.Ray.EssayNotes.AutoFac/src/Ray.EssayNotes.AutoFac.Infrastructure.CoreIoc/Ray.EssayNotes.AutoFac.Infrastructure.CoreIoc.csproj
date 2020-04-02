@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Domain\Ray.EssayNotes.AutoFac.Domain.csproj" />
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj" />
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Repository\Ray.EssayNotes.AutoFac.Repository.csproj" />
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj" />

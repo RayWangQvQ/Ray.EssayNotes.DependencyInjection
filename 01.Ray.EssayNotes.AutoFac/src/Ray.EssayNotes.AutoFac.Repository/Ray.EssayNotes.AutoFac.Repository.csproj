@@ -60,7 +60,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Model\Ray.EssayNotes.AutoFac.Domain.csproj">
+    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Domain\Ray.EssayNotes.AutoFac.Domain.csproj">
       <Project>{6fd460a1-5d4f-496c-b14d-a47f7aabd8a1}</Project>
       <Name>Ray.EssayNotes.AutoFac.Domain</Name>
     </ProjectReference>
