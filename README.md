@@ -2,8 +2,8 @@
 
 ## 文章目录
 
-* 01.Ray.EssayNotes.AutoFac：控制反转/依赖注入理论入门、Autofac使用
-* 02.Ray.EssayNotes.DependencyInjection：自己实现一个简单的依赖注入容器
+* [01.Ray.EssayNotes.AutoFac：控制反转/依赖注入理论入门、Autofac使用](https://github.com/WangRui321/Ray.EssayNotes.DependencyInjection/blob/master/01.Ray.EssayNotes.AutoFac/README.md)
+* [02.Ray.EssayNotes.DependencyInjection：自己实现一个简单的依赖注入容器](https://github.com/WangRui321/Ray.EssayNotes.DependencyInjection/tree/master/02.Ray.EssayNotes.DependencyInjection)
 
 ---
 
