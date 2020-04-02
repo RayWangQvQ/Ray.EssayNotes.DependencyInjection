@@ -29,7 +29,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
                 bool isSuccess = dic.TryGetValue(key, out ITestFactory factory);
                 if (!isSuccess) continue;
 
-                Console.WriteLine($"\r\n请输入【{factory.TestType}】测试编号：({factory.SelectionRange})：");
+                Console.WriteLine($"\r\n请输入【{factory.TestType}】测试编号：({factory.GetSelectionRange})：");
                 string testNum = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(testNum)) continue;
                 ITest test = factory.Create(testNum);

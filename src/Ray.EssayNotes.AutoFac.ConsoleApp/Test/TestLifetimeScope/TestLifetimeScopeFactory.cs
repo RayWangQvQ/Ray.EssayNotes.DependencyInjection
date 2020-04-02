@@ -9,8 +9,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
     public class TestLifetimeScopeFactory : ITestFactory
     {
-        private static Dictionary<string, string> _remarkDic = new Dictionary<string, string>();
-
         public ITest Create(string num)
         {
             string classFullName = $"Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope.TestLifetimeScope{num}";
@@ -20,6 +18,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         }
 
         public string TestType => "生命周期作用域";
-        public string SelectionRange => _remarkDic.GetSelectionToStr();
+
+        public string GetSelectionRange => "01-07";
     }
 }

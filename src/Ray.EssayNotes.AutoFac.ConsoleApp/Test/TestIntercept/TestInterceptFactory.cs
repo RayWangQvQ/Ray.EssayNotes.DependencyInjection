@@ -9,7 +9,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
     public class TestInterceptFactory : ITestFactory
     {
-        private static Dictionary<string, string> _remarkDic = new Dictionary<string, string>();
 
         public ITest Create(string num)
         {
@@ -21,6 +20,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
         public string TestType => "拦截器";
 
-        public string SelectionRange => _remarkDic.GetSelectionToStr();
+        public string GetSelectionRange => "01-04";
     }
 }

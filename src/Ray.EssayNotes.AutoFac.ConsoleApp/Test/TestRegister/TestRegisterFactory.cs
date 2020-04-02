@@ -21,6 +21,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
         public string TestType => "注册";
 
-        public string SelectionRange => "01 - 12";
+        public string GetSelectionRange => "01 - 12";
     }
 }

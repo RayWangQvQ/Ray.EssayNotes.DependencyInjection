@@ -15,6 +15,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test
 
         string TestType { get; }
 
-        string SelectionRange { get; }
+        string GetSelectionRange { get; }
     }
 }
