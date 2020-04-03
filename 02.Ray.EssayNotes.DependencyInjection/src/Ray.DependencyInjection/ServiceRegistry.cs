@@ -6,7 +6,7 @@ namespace Ray.DependencyInjection
 {
     /// <summary>
     /// 愿望清单
-    /// 记录了想要什么服务、服务的时长、构造服务的方法等
+    /// 记录了想要什么服务、构造服务的方法、服务的作用域和有效时长等
     /// 机器猫会根据愿望清单从口袋里生成对应实物
     /// </summary>
     public class ServiceRegistry

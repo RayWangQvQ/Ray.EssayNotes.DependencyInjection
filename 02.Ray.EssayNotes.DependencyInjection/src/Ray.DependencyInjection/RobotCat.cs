@@ -18,11 +18,11 @@ namespace Ray.DependencyInjection
         internal readonly RobotCat Root;
 
         /// <summary>
-        /// 愿望清单Dic
+        /// 愿望清单池
         /// </summary>
         internal readonly ConcurrentDictionary<Type, ServiceRegistry> RegistryDic;
         /// <summary>
-        /// 非Transient的服务实例Dic
+        /// 服务实例池
         /// </summary>
         private readonly ConcurrentDictionary<Key, object> _serviceDic;
 
@@ -40,7 +40,7 @@ namespace Ray.DependencyInjection
         /// </summary>
         public RobotCat()
         {
-            Root = this;//如果没有父容器，说明自己就是根容器，指向自己
+            Root = this;//自己就是根容器，没有父容器，指向自己
 
             RegistryDic = new ConcurrentDictionary<Type, ServiceRegistry>();
             _serviceDic = new ConcurrentDictionary<Key, object>();
@@ -54,10 +54,10 @@ namespace Ray.DependencyInjection
         /// <param name="parent">父容器</param>
         internal RobotCat(RobotCat parent)
         {
-            Root = parent.Root;//指向父容器的_root，如果父容器也是非根容器，则继续指向父容器，最后其实指向的就是根容器
+            Root = parent.Root;//指向父容器的_root，如果父容器也是非根容器，则继续指向父容器，最后其实指向的就是根容器。即所有非根容器的Root都指向根容器
 
-            RegistryDic = Root.RegistryDic;//注册表dic全部都存储在根容器中
-            _serviceDic = new ConcurrentDictionary<Key, object>();//实例对象存储在当前容器中
+            RegistryDic = Root.RegistryDic;//愿望清单池指向根容器的愿望清单池，即非根容器没有愿望清单池，向非根容器添加愿望清单，都会存储到根容器的愿望清单池中
+            _serviceDic = new ConcurrentDictionary<Key, object>();//服务实例存储在当前容器中的服务实例池中
 
             _disposables = new ConcurrentBag<IDisposable>();
         }
@@ -97,7 +97,7 @@ namespace Ray.DependencyInjection
         /// <summary>
         /// 获取服务实例
         /// </summary>
-        /// <param name="serviceType">服务实现类型</param>
+        /// <param name="serviceType">服务类型</param>
         /// <returns></returns>
         public object GetService(Type serviceType)
         {
@@ -186,7 +186,7 @@ namespace Ray.DependencyInjection
                     return service;
                 }
 
-                //不存在
+                //如果不存在，就根据愿望清单里保存的生成方法，先创建实例对象，再存储到相应的实例池中
                 service = registry.Factory(this, genericArguments);//创建
                 serviceDic[key] = service;//添加到服务实例字典
                 if (service is IDisposable disposable)//添加到可释放实例字典

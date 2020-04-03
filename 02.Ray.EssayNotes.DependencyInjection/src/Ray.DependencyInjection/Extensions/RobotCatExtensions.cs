@@ -163,10 +163,12 @@ namespace Ray.DependencyInjection.Extensions
             //3.构造参数
             ParameterInfo[] parameterInfos = constructorInfo.GetParameters();
             //4.构造
+            //4.1.如果构造不需要参数，直接反射创建实例
             if (parameterInfos.Length == 0)
             {
                 return Activator.CreateInstance(type);
             }
+            //4.2.如果构造需要参数，则去容器获取/生成实例，作为参数（这里就是“构造注入”的实现原理）
             var arguments = new object[parameterInfos.Length];
             for (int index = 0; index < arguments.Length; index++)
             {

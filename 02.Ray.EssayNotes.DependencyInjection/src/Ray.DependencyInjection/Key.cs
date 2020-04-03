@@ -5,7 +5,7 @@ namespace Ray.DependencyInjection
     internal class Key : IEquatable<Key>
     {
         /// <summary>
-        /// 注册表
+        /// 愿望清单（注册信息表）
         /// </summary>
         public ServiceRegistry Registry { get; }
         /// <summary>
