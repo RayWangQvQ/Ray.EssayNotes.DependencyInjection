@@ -23,15 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.NetF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.NetFrameworkApi", "Ray.EssayNotes.AutoFac.NetFrameworkApi\Ray.EssayNotes.AutoFac.NetFrameworkApi.csproj", "{DC8A8C6E-0CC9-4132-84D2-68D5C884F7C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc", "Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc\Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.csproj", "{DB975478-C21C-488A-A3A9-381359F6C5CA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.AutoFac.CoreApi", "Ray.EssayNotes.AutoFac.CoreApi\Ray.EssayNotes.AutoFac.CoreApi.csproj", "{ABBF9450-8B16-4068-A15B-E8ADA6546346}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Domain", "Ray.EssayNotes.AutoFac.Domain\Ray.EssayNotes.AutoFac.Domain.csproj", "{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.Infrastructure", "Ray.Infrastructure\Ray.Infrastructure.csproj", "{4E030A9C-61E2-48CA-A537-F39542A7917C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.Infrastructure", "Ray.Infrastructure\Ray.Infrastructure.csproj", "{4E030A9C-61E2-48CA-A537-F39542A7917C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Infrastructure.Ioc", "Ray.EssayNotes.AutoFac.Infrastructure.Ioc\Ray.EssayNotes.AutoFac.Infrastructure.Ioc.csproj", "{6E2EC4FC-19F8-479A-A2D5-F16FA3854D84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.AutoFac.Infrastructure.Ioc", "Ray.EssayNotes.AutoFac.Infrastructure.Ioc\Ray.EssayNotes.AutoFac.Infrastructure.Ioc.csproj", "{6E2EC4FC-19F8-479A-A2D5-F16FA3854D84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +57,6 @@ Global
 		{DC8A8C6E-0CC9-4132-84D2-68D5C884F7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8A8C6E-0CC9-4132-84D2-68D5C884F7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC8A8C6E-0CC9-4132-84D2-68D5C884F7C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB975478-C21C-488A-A3A9-381359F6C5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB975478-C21C-488A-A3A9-381359F6C5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB975478-C21C-488A-A3A9-381359F6C5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB975478-C21C-488A-A3A9-381359F6C5CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,7 +83,6 @@ Global
 		{558110B1-CE59-4B51-B814-80C8D41EF046} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
 		{27F776C7-31B7-419C-9F8B-DBFB0B6AFDB1} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
 		{DC8A8C6E-0CC9-4132-84D2-68D5C884F7C9} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
-		{DB975478-C21C-488A-A3A9-381359F6C5CA} = {27B7EC5C-81CD-4B06-B647-6EC3838C7B2F}
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
 		{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1} = {509FBEA7-F090-4216-95AB-F2042D2535FB}
 		{4E030A9C-61E2-48CA-A537-F39542A7917C} = {27B7EC5C-81CD-4B06-B647-6EC3838C7B2F}

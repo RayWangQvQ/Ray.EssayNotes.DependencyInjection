@@ -1,21 +1,28 @@
-﻿//微软包
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-//本地项目包
-using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions;
+using Ray.EssayNotes.AutoFac.Service.Di;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        public IConfigurationRoot Configuration { get; private set; }
 
-        public Startup(IConfiguration configuration)
+        public ILifetimeScope AutofacContainer { get; private set; }
+
+        public Startup(IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+               .SetBasePath(env.ContentRootPath)
+               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+               .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+               .AddEnvironmentVariables();
+            this.Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -23,23 +30,24 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         {
             services.AddControllers();
             //自定义注册
-            services.AddMyServices();
+            //services.AddMyServices();
+        }
 
-            /*
-            //自定义批量注册
-            Assembly[] assemblies = ReflectionHelper.GetAllAssembliesCoreWeb();
-            //repository
-            Assembly repositoryAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Repository"));
-            services.AddAssemblyServices(repositoryAssemblies);
-            //service  
-            Assembly serviceAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Service"));
-            services.AddAssemblyServices(serviceAssemblies);
-            */
+        /// <summary>
+        /// Autofac注册
+        /// </summary>
+        /// <param name="builder"></param>
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.AddRepositories()
+                .AddAppServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

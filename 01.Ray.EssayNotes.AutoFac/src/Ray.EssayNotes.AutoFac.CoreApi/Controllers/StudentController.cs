@@ -9,6 +9,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
     /// 学生模块接口
     /// </summary>
     [ApiController]
+    [Route("[controller]")]
     public class StudentController : ControllerBase
     {
         private readonly IStudentAppService _studentService;
@@ -17,8 +18,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
             _studentService = studentService;
         }
 
-        [Route("Student/GetStuNameById")]
-        public string GetStuNameById(long id)
+        [HttpGet]
+        public string Get(long id)
         {
             return _studentService.GetStuName(id);
         }

@@ -19,7 +19,6 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-
             //1.初始化容器，注册组件
             MyContainer.Init(builder =>
             {
@@ -30,8 +29,6 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc
             System.Web.Mvc.IDependencyResolver autoFacResolver = new Autofac.Integration.Mvc.AutofacDependencyResolver(MyContainer.Instance);
             //将AutoFac解析器设置为系统DI解析器
             DependencyResolver.SetResolver(autoFacResolver);
-
-
         }
     }
 }
