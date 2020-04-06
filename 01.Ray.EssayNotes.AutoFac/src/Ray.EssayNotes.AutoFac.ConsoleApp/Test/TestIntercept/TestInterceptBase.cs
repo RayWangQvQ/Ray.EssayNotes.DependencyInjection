@@ -12,7 +12,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
     {
         public void Run()
         {
-            ConsoleContainer.Init(RegisterFunc);
+            MyContainer.Init(RegisterFunc);
 
             PrintComponent();
 
@@ -25,7 +25,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
         public virtual void PrintComponent()
         {
-            string jsonStr = ConsoleContainer.Instance.PrintComponent();
+            string jsonStr = MyContainer.Instance.PrintComponent();
             Console.WriteLine(jsonStr);
         }
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ray.EssayNotes.AutoFac.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {

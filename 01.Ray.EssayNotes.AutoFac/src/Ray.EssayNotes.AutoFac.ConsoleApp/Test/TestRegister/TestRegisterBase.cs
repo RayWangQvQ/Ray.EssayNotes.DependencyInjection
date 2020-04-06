@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Newtonsoft.Json;
-using Ray.EssayNotes.AutoFac.Infrastructure.Helpers;
-using Autofac.Core.Activators.Reflection;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Model;
+using Ray.Infrastructure.Helpers;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
@@ -22,7 +19,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         public virtual void Run()
         {
             //初始化容器，将需要用到的组件添加到容器中
-            ConsoleContainer.Init(RegisterFunc);
+            MyContainer.Init(RegisterFunc);
 
             //打印结果
             PrintResult();
@@ -50,7 +47,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         {
             //从容器中解析出对象（可以理解为根生命域(the “root lifetime scope”)
             //这种方式解析出的对象，其生命周期与程序同样长，多了之后可能会造成内存溢出，真实开发场景并不建议使用
-            IStudentAppService stuService = ConsoleContainer.Instance.Resolve<IStudentAppService>();
+            IStudentAppService stuService = MyContainer.Instance.Resolve<IStudentAppService>();
             string name = stuService.GetStuName(1);
             Console.WriteLine($"输出：{name}");
         }
@@ -66,7 +63,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
                 ContractResolver = new LimitPropsContractResolver(new string[] { "Target" }, false)
             };
 
-            IComponentRegistry component = ConsoleContainer.Instance.ComponentRegistry;//注册处
+            IComponentRegistry component = MyContainer.Instance.ComponentRegistry;//注册处
             List<IComponentRegistration> registrations = component.Registrations.ToList();//注册信息表
             registrations.RemoveAt(0);
 

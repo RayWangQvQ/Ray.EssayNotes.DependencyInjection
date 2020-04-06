@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Ray.EssayNotes.AutoFac.Infrastructure.Extensions
+namespace Ray.Infrastructure.Extensions
 {
     public static class DictionaryExtension
     {

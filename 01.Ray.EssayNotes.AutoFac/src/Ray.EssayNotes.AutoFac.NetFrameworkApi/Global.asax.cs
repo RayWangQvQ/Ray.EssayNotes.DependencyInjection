@@ -19,7 +19,8 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //初始化容器，并返回适用于WebApi的AutoFac解析器
-            System.Web.Http.Dependencies.IDependencyResolver autoFacResolver = ApiContainer.Init();
+            MyContainer.Init();
+            System.Web.Http.Dependencies.IDependencyResolver autoFacResolver = new Autofac.Integration.WebApi.AutofacWebApiDependencyResolver(MyContainer.Instance);
             //获取HttpConfiguration
             HttpConfiguration config = GlobalConfiguration.Configuration;
             //将AutoFac解析器设置为系统DI解析器

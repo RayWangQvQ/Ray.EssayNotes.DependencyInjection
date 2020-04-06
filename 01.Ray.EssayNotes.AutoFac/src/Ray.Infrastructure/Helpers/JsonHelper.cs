@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 
-namespace Ray.EssayNotes.AutoFac.Infrastructure.Helpers
+namespace Ray.Infrastructure.Helpers
 {
     public static class JsonHelper
     {

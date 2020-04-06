@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 
-namespace Ray.EssayNotes.AutoFac.Infrastructure.Helpers
+namespace Ray.Infrastructure.Helpers
 {
     public class AutoMapperHelper
     {

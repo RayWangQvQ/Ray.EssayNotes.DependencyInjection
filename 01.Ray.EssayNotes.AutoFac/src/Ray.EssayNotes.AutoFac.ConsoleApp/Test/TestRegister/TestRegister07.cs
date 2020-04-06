@@ -15,7 +15,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
         protected override void PrintResult()
         {
-            IBookService bookService = ConsoleContainer.Instance.Resolve<IBookService>();
+            IBookService bookService = MyContainer.Instance.Resolve<IBookService>();
             string tite = bookService.GetTitle(1);
             Console.WriteLine($"输出：{tite}");
         }

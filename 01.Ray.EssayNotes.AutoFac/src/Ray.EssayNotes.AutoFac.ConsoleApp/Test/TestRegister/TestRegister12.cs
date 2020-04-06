@@ -12,7 +12,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
         protected override void PrintResult()
         {
-            var teacherService = ConsoleContainer.Instance.Resolve<TeacherAppService>();
+            var teacherService = MyContainer.Instance.Resolve<TeacherAppService>();
             string s = teacherService.TestStr + teacherService.TestInt;
             Console.WriteLine(s);
         }

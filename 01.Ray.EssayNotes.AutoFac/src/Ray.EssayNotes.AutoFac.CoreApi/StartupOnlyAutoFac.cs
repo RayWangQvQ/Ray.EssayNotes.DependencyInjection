@@ -1,40 +1,33 @@
-﻿//微软包
+﻿//系统包
+using System;
+//微软包
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 //本地项目包
-using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions;
+using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {
-    public class Startup
+    public class StartupOnlyAutoFac
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        public StartupOnlyAutoFac(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            //自定义注册
-            services.AddMyServices();
+            services.AddControllers()
+                .AddControllersAsServices();//把控制器当作服务注册
 
-            /*
-            //自定义批量注册
-            Assembly[] assemblies = ReflectionHelper.GetAllAssembliesCoreWeb();
-            //repository
-            Assembly repositoryAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Repository"));
-            services.AddAssemblyServices(repositoryAssemblies);
-            //service  
-            Assembly serviceAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Service"));
-            services.AddAssemblyServices(serviceAssemblies);
-            */
+            return CoreContainer.Init(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

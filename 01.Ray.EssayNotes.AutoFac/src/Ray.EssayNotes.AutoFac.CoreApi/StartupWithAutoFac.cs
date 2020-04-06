@@ -1,19 +1,22 @@
 ﻿//微软包
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+//三方包
+using Autofac;
 //本地项目包
-using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.Extensions;
+using Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc;
+using Microsoft.Extensions.Hosting;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {
-    public class Startup
+    public class StartupWithAutoFac
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        public StartupWithAutoFac(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -22,19 +25,16 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //自定义注册
-            services.AddMyServices();
+        }
 
-            /*
-            //自定义批量注册
-            Assembly[] assemblies = ReflectionHelper.GetAllAssembliesCoreWeb();
-            //repository
-            Assembly repositoryAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Repository"));
-            services.AddAssemblyServices(repositoryAssemblies);
-            //service  
-            Assembly serviceAssemblies = assemblies.FirstOrDefault(x => x.FullName.Contains(".Service"));
-            services.AddAssemblyServices(serviceAssemblies);
-            */
+        /// <summary>
+        /// 利用该方法可以使用AutoFac辅助注册，该方法在ConfigureServices()之后执行，所以当发生覆盖注册时，以后者为准。
+        /// 不要再利用构建起去创建AutoFac容器了，系统已经接管了。
+        /// </summary>
+        /// <param name="builder"></param>
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.MyBuild();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -24,7 +24,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 
         protected override void PrintResult()
         {
-            using (var testScope = ConsoleContainer.Instance.BeginLifetimeScope("testScopeName"))
+            using (var testScope = MyContainer.Instance.BeginLifetimeScope("testScopeName"))
             {
                 var instance1 = testScope.Resolve<DtoToken>();//实例化，并将实例持久化到该域内
                 Console.WriteLine($"【testScopeName】第1次：{instance1.Guid}");
@@ -32,7 +32,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
                 var instance2 = testScope.Resolve<DtoToken>();//直接从域内获取持久化的实例
                 Console.WriteLine($"【testScopeName】第2次：{instance2.Guid}");
 
-                using (var defScope = ConsoleContainer.Instance.BeginLifetimeScope("abc"))
+                using (var defScope = MyContainer.Instance.BeginLifetimeScope("abc"))
                 {
                     try
                     {
@@ -46,7 +46,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
                 }
             }
 
-            using (var abcScope = ConsoleContainer.Instance.BeginLifetimeScope())
+            using (var abcScope = MyContainer.Instance.BeginLifetimeScope())
             {
                 try
                 {

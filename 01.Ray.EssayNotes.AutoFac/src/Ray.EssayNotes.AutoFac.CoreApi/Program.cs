@@ -1,5 +1,4 @@
 ﻿//系统包
-using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -15,10 +14,17 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .UseServiceProviderFactory(new AutofacServiceProviderFactory())
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.UseStartup<Startup>();
+                //第一种：使用自带DI
+                //.UseStartup<Startup>();
+
+                //第二种：添加AutoFac作为辅助容器
+                //.HookAutoFacIntoPipeline()
+                //.UseStartup<StartupWithAutoFac>();
+
+                //第三种：添加AutoFac接管依赖注入
+                webBuilder.UseStartup<StartupOnlyAutoFac>();
             });
 
     }

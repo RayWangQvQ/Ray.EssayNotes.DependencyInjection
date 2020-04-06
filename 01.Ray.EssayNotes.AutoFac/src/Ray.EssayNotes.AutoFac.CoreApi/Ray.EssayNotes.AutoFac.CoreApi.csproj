@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc\Ray.EssayNotes.AutoFac.Infrastructure.CoreIoc.csproj" />
+    <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Infrastructure.Ioc\Ray.EssayNotes.AutoFac.Infrastructure.Ioc.csproj" />
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj" />
   </ItemGroup>
 

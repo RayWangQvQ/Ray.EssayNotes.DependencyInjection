@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Autofac.Core;
 using Newtonsoft.Json;
-using Ray.EssayNotes.AutoFac.Infrastructure.Helpers;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Model;
+using Ray.Infrastructure.Helpers;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions
 {

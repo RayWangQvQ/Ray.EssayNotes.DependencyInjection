@@ -33,7 +33,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
         protected override void PrintResult()
         {
-            var service = ConsoleContainer.Instance.Resolve<ITestIntercept03AppService>();
+            var service = MyContainer.Instance.Resolve<ITestIntercept03AppService>();
 
             var re = service.DoSomething();
             Console.WriteLine(re);

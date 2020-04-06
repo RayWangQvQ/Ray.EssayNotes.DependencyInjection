@@ -16,7 +16,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public virtual void Run()
         {
             //初始化容器，将需要用到的组件添加到容器中
-            ConsoleContainer.Init(RegisterFunc);
+            MyContainer.Init(RegisterFunc);
 
             //打印注册信息
             PrintComponent();
@@ -32,7 +32,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public virtual void PrintComponent()
         {
             //打印注册信息
-            Console.WriteLine(ConsoleContainer.Instance.PrintComponent<DtoToken>());
+            Console.WriteLine(MyContainer.Instance.PrintComponent<DtoToken>());
         }
 
         /// <summary>

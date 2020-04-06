@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Ray.EssayNotes.AutoFac.Infrastructure.Helpers
+namespace Ray.Infrastructure.Helpers
 {
     /// <summary>
     /// Summary description for LimitPropsContractResolver
