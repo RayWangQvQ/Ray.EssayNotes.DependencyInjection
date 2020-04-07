@@ -31,8 +31,8 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Controllers
             Console.WriteLine($"_orderService1:{_orderService1.GetHashCode()}");
             Console.WriteLine($"_orderService2:{_orderService2.GetHashCode()}");
 
-            this.PrintFromRootScope();
-            this.PrintFromRequestServiceScope();
+            //this.PrintFromRootScope();
+            //this.PrintFromRequestServiceScope();
 
             Console.WriteLine($"========请求结束=======");
 

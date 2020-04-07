@@ -6,7 +6,7 @@ using Ray.EssayNotes.Di.ScopeAndDisposableDemo.IServices;
 namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Controllers
 {
     /// <summary>
-    /// 测试单例的示范03：自己new出的实例注册，在跟容器解析会不会被释放
+    /// 测试单例的释放03：自己new出的实例注册，在跟容器解析会不会被释放
     /// </summary>
     [Route("[controller]")]
     [ApiController]
@@ -34,7 +34,7 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Controllers
             Console.WriteLine($"_orderService1:{_orderService1.GetHashCode()}");
             Console.WriteLine($"_orderService2:{_orderService2.GetHashCode()}");
 
-            this.PrintFromRootScope();
+            //this.PrintFromRootScope();
 
             Console.WriteLine($"========请求结束=======");
             _hostApplicationLifetime.StopApplication();//使整个应用停止

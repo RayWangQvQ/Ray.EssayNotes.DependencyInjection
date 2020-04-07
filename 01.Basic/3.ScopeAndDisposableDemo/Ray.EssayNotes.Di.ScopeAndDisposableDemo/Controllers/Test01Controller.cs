@@ -35,7 +35,7 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Controllers
             Console.WriteLine($"_orderService2:{_orderService2.GetHashCode()}");
 
             //打印下持久化实例池、可释放实例池
-            this.PrintFromRequestServiceScope();
+            //this.PrintFromRequestServiceScope();
 
             Console.WriteLine($"========请求结束=======");
 

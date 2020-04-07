@@ -7,12 +7,12 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Services
     {
         public OrderService()
         {
-            Console.WriteLine($"Create Instance:{this.GetHashCode()}");
+            Console.WriteLine($"【Create Instance】{this}：{this.GetHashCode()}");
         }
 
         public void Dispose()
         {
-            Console.WriteLine($"Dispose：{this.GetHashCode()}");
+            Console.WriteLine($"【Dispose】{this}：{this.GetHashCode()}");
         }
     }
 }

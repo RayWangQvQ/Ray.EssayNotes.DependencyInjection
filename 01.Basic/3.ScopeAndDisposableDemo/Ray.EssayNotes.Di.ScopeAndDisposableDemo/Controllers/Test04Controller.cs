@@ -34,7 +34,7 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Controllers
             Console.WriteLine($"_orderService1:{_orderService1.GetHashCode()}");
             Console.WriteLine($"_orderService2:{_orderService2.GetHashCode()}");
 
-            this.PrintFromRootScope();
+            //this.PrintFromRootScope();
 
             Console.WriteLine($"========请求结束=======");
             _hostApplicationLifetime.StopApplication();//使整个应用停止

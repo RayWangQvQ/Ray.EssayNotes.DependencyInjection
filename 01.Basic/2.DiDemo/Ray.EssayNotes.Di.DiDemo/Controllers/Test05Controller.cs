@@ -11,25 +11,20 @@ namespace Ray.EssayNotes.Di.DiDemo.Controllers
     [ApiController]
     public class Test05Controller : ControllerBase
     {
-        private readonly MyDto _myDto1;
         private readonly OtherDto _otherDto;
 
         /// <summary>
         /// 构造注入
         /// </summary>
-        /// <param name="myDto1"></param>
-        /// <param name="myDto2"></param>
-        public Test05Controller(MyDto myDto1,
-            OtherDto otherDto)
+        /// <param name="otherDto"></param>
+        public Test05Controller(OtherDto otherDto)
         {
-            _myDto1 = myDto1;
             _otherDto = otherDto;
         }
 
         [HttpGet]
         public bool Get()
         {
-            Console.WriteLine($"_myDto1:{_myDto1.GetHashCode()}");
             Console.WriteLine($"_myDto2:{_otherDto.GetHashCode()}");
             Console.WriteLine($"_myDto2.MyDto:{_otherDto.MyDto.GetHashCode()}");
 

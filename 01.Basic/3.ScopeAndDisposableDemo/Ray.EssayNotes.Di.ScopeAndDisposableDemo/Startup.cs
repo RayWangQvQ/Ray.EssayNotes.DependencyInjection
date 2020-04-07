@@ -78,8 +78,6 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo
         {
             var instance = new OrderService();
             services.AddSingleton<IOrderService>(instance);
-
-            var test = services.FirstOrDefault(x => x.ServiceType == typeof(IOrderService));
         }
 
 

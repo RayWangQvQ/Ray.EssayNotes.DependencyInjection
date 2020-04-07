@@ -1,6 +1,6 @@
 # 启动
 
-该demo用于测试ASP.NET Core程序的启动。
+该demo用于测试ASP.NET Core程序的启动，比如启动顺序、Startup类是什么时候被调用的、服务是什么时候注册到容器的？
 
 ## 配置IHostBuilder构建器
 

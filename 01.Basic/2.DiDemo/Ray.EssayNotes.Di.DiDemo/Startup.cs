@@ -28,21 +28,21 @@ namespace Ray.EssayNotes.Di.DiDemo
             //Test02(services);
             //Test03(services);
             //Test04(services);
-            //Test05(services);
+            Test05(services);
             //Test06(services);
             //Test07(services);
             //Test08(services);
-            Test09(services);
+            //Test09(services);
         }
 
         /// <summary>
-        /// 测试构造注入
+        /// 测试构造注入 + 三种生命周期作用域
         /// </summary>
         private void Test01(IServiceCollection services)
         {
-            services.AddTransient<IMyTransientService, MyTransientService>();
-            services.AddScoped<IMyScopedService, MyScopedService>();
-            services.AddSingleton<IMySingletonService, MySingletonService>();
+            services.AddTransient<IMyTransientService, MyTransientService>();//瞬时实例
+            services.AddScoped<IMyScopedService, MyScopedService>();//域内单例
+            services.AddSingleton<IMySingletonService, MySingletonService>();//全局单例
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Ray.EssayNotes.Di.DiDemo
         /// </summary>
         private void Test05(IServiceCollection services)
         {
-            //services.AddScoped(serviceProvider => new MyDto());
+            services.AddScoped(serviceProvider => new MyDto());
 
             services.AddScoped(serviceProvider => new OtherDto
             {
