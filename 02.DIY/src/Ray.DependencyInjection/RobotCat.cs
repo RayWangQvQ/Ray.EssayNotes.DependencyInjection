@@ -18,18 +18,19 @@ namespace Ray.DependencyInjection
         internal readonly RobotCat Root;
 
         /// <summary>
-        /// 愿望清单池
+        /// 愿望清单池（注册信息池）
         /// </summary>
         internal readonly ConcurrentDictionary<Type, ServiceRegistry> RegistryDic;
         /// <summary>
-        /// 服务实例池
+        /// 服务实例池（持久化实例池）
         /// </summary>
         private readonly ConcurrentDictionary<Key, object> _serviceDic;
-
         /// <summary>
-        /// 实现了IDisposable接口（可释放的）服务实例集合
+        /// 可释放实例池
+        /// （存放实现了IDisposable接口的对象）
         /// </summary>
         private readonly ConcurrentBag<IDisposable> _disposables;
+
         /// <summary>
         /// 是否已释放服务实例
         /// </summary>
@@ -44,7 +45,6 @@ namespace Ray.DependencyInjection
 
             RegistryDic = new ConcurrentDictionary<Type, ServiceRegistry>();
             _serviceDic = new ConcurrentDictionary<Key, object>();
-
             _disposables = new ConcurrentBag<IDisposable>();
         }
 
@@ -188,8 +188,8 @@ namespace Ray.DependencyInjection
 
                 //如果不存在，就根据愿望清单里保存的生成方法，先创建实例对象，再存储到相应的实例池中
                 service = registry.Factory(this, genericArguments);//创建
-                serviceDic[key] = service;//添加到服务实例字典
-                if (service is IDisposable disposable)//添加到可释放实例字典
+                serviceDic[key] = service;//添加到持久化服务实例池
+                if (service is IDisposable disposable)//添加到可释放实例池中
                 {
                     disposables.Add(disposable);
                 }
