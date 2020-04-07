@@ -8,6 +8,7 @@ using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions;
 using Ray.EssayNotes.AutoFac.Service.Dtos;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
+using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
@@ -32,7 +33,8 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public virtual void PrintComponent()
         {
             //打印注册信息
-            Console.WriteLine(MyContainer.Instance.PrintComponent<DtoToken>());
+            var jsonStr = MyContainer.Instance.PrintComponent<DtoToken>();
+            Console.WriteLine(jsonStr.AsFormatJsonStr());
         }
 
         /// <summary>

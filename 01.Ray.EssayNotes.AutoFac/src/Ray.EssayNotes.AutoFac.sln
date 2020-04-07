@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Service", "Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj", "{93B88795-3FF2-4F11-B00D-49455BA71674}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Repository", "Ray.EssayNotes.AutoFac.Repository\Ray.EssayNotes.AutoFac.Repository.csproj", "{B72435F6-5C75-4039-BBEA-2122FA2565A3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.ConsoleApp", "Ray.EssayNotes.AutoFac.ConsoleApp\Ray.EssayNotes.AutoFac.ConsoleApp.csproj", "{558110B1-CE59-4B51-B814-80C8D41EF046}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Domain", "2.Domain", "{509FBEA7-F090-4216-95AB-F2042D2535FB}"
@@ -25,11 +21,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.NetF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.AutoFac.CoreApi", "Ray.EssayNotes.AutoFac.CoreApi\Ray.EssayNotes.AutoFac.CoreApi.csproj", "{ABBF9450-8B16-4068-A15B-E8ADA6546346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Domain", "Ray.EssayNotes.AutoFac.Domain\Ray.EssayNotes.AutoFac.Domain.csproj", "{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.Infrastructure", "Ray.Infrastructure\Ray.Infrastructure.csproj", "{4E030A9C-61E2-48CA-A537-F39542A7917C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.AutoFac.Infrastructure.Ioc", "Ray.EssayNotes.AutoFac.Infrastructure.Ioc\Ray.EssayNotes.AutoFac.Infrastructure.Ioc.csproj", "{6E2EC4FC-19F8-479A-A2D5-F16FA3854D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Domain", "Ray.EssayNotes.AutoFac.Domain\Ray.EssayNotes.AutoFac.Domain.csproj", "{1CF658A4-0787-452D-8F95-CF1E7F4E51BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Repository", "Ray.EssayNotes.AutoFac.Repository\Ray.EssayNotes.AutoFac.Repository.csproj", "{383DD0D4-261C-49B0-B667-02066C28961A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.AutoFac.Service", "Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj", "{D0D17238-AAD9-4C62-8AE3-105743C6C246}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{93B88795-3FF2-4F11-B00D-49455BA71674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93B88795-3FF2-4F11-B00D-49455BA71674}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93B88795-3FF2-4F11-B00D-49455BA71674}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93B88795-3FF2-4F11-B00D-49455BA71674}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B72435F6-5C75-4039-BBEA-2122FA2565A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B72435F6-5C75-4039-BBEA-2122FA2565A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B72435F6-5C75-4039-BBEA-2122FA2565A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B72435F6-5C75-4039-BBEA-2122FA2565A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{558110B1-CE59-4B51-B814-80C8D41EF046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{558110B1-CE59-4B51-B814-80C8D41EF046}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{558110B1-CE59-4B51-B814-80C8D41EF046}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,10 +53,6 @@ Global
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E030A9C-61E2-48CA-A537-F39542A7917C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E030A9C-61E2-48CA-A537-F39542A7917C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E030A9C-61E2-48CA-A537-F39542A7917C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,20 +61,32 @@ Global
 		{6E2EC4FC-19F8-479A-A2D5-F16FA3854D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E2EC4FC-19F8-479A-A2D5-F16FA3854D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E2EC4FC-19F8-479A-A2D5-F16FA3854D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF658A4-0787-452D-8F95-CF1E7F4E51BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF658A4-0787-452D-8F95-CF1E7F4E51BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF658A4-0787-452D-8F95-CF1E7F4E51BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF658A4-0787-452D-8F95-CF1E7F4E51BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383DD0D4-261C-49B0-B667-02066C28961A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383DD0D4-261C-49B0-B667-02066C28961A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383DD0D4-261C-49B0-B667-02066C28961A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383DD0D4-261C-49B0-B667-02066C28961A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D17238-AAD9-4C62-8AE3-105743C6C246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D17238-AAD9-4C62-8AE3-105743C6C246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D17238-AAD9-4C62-8AE3-105743C6C246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D17238-AAD9-4C62-8AE3-105743C6C246}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{93B88795-3FF2-4F11-B00D-49455BA71674} = {18BF93E5-8D50-4979-A58E-C803C6146288}
-		{B72435F6-5C75-4039-BBEA-2122FA2565A3} = {3E610E50-DFB0-4726-80FC-6DB8245B65C6}
 		{558110B1-CE59-4B51-B814-80C8D41EF046} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
 		{27F776C7-31B7-419C-9F8B-DBFB0B6AFDB1} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
 		{DC8A8C6E-0CC9-4132-84D2-68D5C884F7C9} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
 		{ABBF9450-8B16-4068-A15B-E8ADA6546346} = {002CD5B7-03B5-4D2B-9C10-FC75AFC905AD}
-		{6FD460A1-5D4F-496C-B14D-A47F7AABD8A1} = {509FBEA7-F090-4216-95AB-F2042D2535FB}
 		{4E030A9C-61E2-48CA-A537-F39542A7917C} = {27B7EC5C-81CD-4B06-B647-6EC3838C7B2F}
 		{6E2EC4FC-19F8-479A-A2D5-F16FA3854D84} = {27B7EC5C-81CD-4B06-B647-6EC3838C7B2F}
+		{1CF658A4-0787-452D-8F95-CF1E7F4E51BF} = {509FBEA7-F090-4216-95AB-F2042D2535FB}
+		{383DD0D4-261C-49B0-B667-02066C28961A} = {3E610E50-DFB0-4726-80FC-6DB8245B65C6}
+		{D0D17238-AAD9-4C62-8AE3-105743C6C246} = {18BF93E5-8D50-4979-A58E-C803C6146288}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FE23DC9-0214-4316-A9D3-7F2E82520C51}

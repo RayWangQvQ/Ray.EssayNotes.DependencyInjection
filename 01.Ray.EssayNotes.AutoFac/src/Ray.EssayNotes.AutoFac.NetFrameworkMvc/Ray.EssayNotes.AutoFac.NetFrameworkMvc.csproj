@@ -204,11 +204,11 @@
       <Name>Ray.EssayNotes.AutoFac.Infrastructure.Ioc</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Repository\Ray.EssayNotes.AutoFac.Repository.csproj">
-      <Project>{b72435f6-5c75-4039-bbea-2122fa2565a3}</Project>
+      <Project>{383dd0d4-261c-49b0-b667-02066c28961a}</Project>
       <Name>Ray.EssayNotes.AutoFac.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj">
-      <Project>{93b88795-3ff2-4f11-b00d-49455ba71674}</Project>
+      <Project>{d0d17238-aad9-4c62-8ae3-105743c6c246}</Project>
       <Name>Ray.EssayNotes.AutoFac.Service</Name>
     </ProjectReference>
   </ItemGroup>

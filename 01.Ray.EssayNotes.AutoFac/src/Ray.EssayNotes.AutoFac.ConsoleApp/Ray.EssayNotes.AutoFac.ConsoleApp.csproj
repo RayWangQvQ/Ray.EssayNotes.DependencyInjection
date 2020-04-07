@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Domain\Ray.EssayNotes.AutoFac.Domain.csproj">
-      <Project>{6fd460a1-5d4f-496c-b14d-a47f7aabd8a1}</Project>
+      <Project>{1cf658a4-0787-452d-8f95-cf1e7f4e51bf}</Project>
       <Name>Ray.EssayNotes.AutoFac.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Infrastructure.Ioc\Ray.EssayNotes.AutoFac.Infrastructure.Ioc.csproj">
@@ -116,11 +116,11 @@
       <Name>Ray.EssayNotes.AutoFac.Infrastructure.Ioc</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Repository\Ray.EssayNotes.AutoFac.Repository.csproj">
-      <Project>{B72435F6-5C75-4039-BBEA-2122FA2565A3}</Project>
+      <Project>{383dd0d4-261c-49b0-b667-02066c28961a}</Project>
       <Name>Ray.EssayNotes.AutoFac.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.EssayNotes.AutoFac.Service\Ray.EssayNotes.AutoFac.Service.csproj">
-      <Project>{93b88795-3ff2-4f11-b00d-49455ba71674}</Project>
+      <Project>{d0d17238-aad9-4c62-8ae3-105743c6c246}</Project>
       <Name>Ray.EssayNotes.AutoFac.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ray.Infrastructure\Ray.Infrastructure.csproj">

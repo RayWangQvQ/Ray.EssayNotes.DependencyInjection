@@ -4,6 +4,7 @@ using System.Linq;
 using Autofac.Core;
 using Newtonsoft.Json;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Model;
+using Ray.Infrastructure.Extensions;
 using Ray.Infrastructure.Helpers;
 
 namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions
@@ -52,7 +53,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions
                 item.SetSupplyFields(source);
             }
 
-            return JsonConvert.SerializeObject(dtoMyComponentRegistrations, jSetting).AsFormatJsonString();
+            return JsonConvert.SerializeObject(dtoMyComponentRegistrations, jSetting);
         }
     }
 }

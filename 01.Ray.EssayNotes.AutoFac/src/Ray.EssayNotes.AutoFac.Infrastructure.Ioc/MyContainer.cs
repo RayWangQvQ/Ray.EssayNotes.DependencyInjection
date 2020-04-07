@@ -23,20 +23,10 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             var builder = new Autofac.ContainerBuilder();
 
             //注册组件
-            MyBuild(builder);
             func?.Invoke(builder);
 
             //利用构建器创建容器
             Instance = builder.Build();
-        }
-
-        /// <summary>
-        /// 自定义注册
-        /// </summary>
-        /// <param name="builder"></param>
-        public static void MyBuild(ContainerBuilder builder)
-        {
-
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions;
+using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
@@ -26,7 +27,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
         public virtual void PrintComponent()
         {
             string jsonStr = MyContainer.Instance.PrintComponent();
-            Console.WriteLine(jsonStr);
+            Console.WriteLine(jsonStr.AsFormatJsonStr());
         }
 
         /// <summary>

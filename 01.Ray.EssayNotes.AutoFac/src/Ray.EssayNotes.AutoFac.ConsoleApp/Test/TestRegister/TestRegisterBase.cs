@@ -7,7 +7,9 @@ using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Newtonsoft.Json;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Model;
+using Ray.Infrastructure.Extensions;
 using Ray.Infrastructure.Helpers;
+using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
@@ -57,29 +59,9 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         /// </summary>
         protected virtual void PrintComponent()
         {
-            var jSetting = new JsonSerializerSettings
-            {
-                //NullValueHandling = NullValueHandling.Ignore,
-                ContractResolver = new LimitPropsContractResolver(new string[] { "Target" }, false)
-            };
-
-            IComponentRegistry component = MyContainer.Instance.ComponentRegistry;//注册处
-            List<IComponentRegistration> registrations = component.Registrations.ToList();//注册信息表
-            registrations.RemoveAt(0);
-
-            //因为属性类型都是接口，不好用AutoMapper，所以用了json
-            string jsonStr = JsonConvert.SerializeObject(registrations, jSetting);
-            var dtoMyComponentRegistrations = JsonConvert.DeserializeObject<List<ModelComponentRegistration>>(jsonStr);
-
-            for (var i = 0; i < dtoMyComponentRegistrations.Count; i++)
-            {
-                var item = dtoMyComponentRegistrations[i];
-                IComponentRegistration source = registrations[i];
-                item.SetSupplyFields(source);
-            }
-
+            string jsonStr = MyContainer.Instance.PrintComponent();
             Console.WriteLine("注册表信息：");
-            Console.WriteLine(JsonConvert.SerializeObject(dtoMyComponentRegistrations, jSetting).AsFormatJsonString());
+            Console.WriteLine(jsonStr.AsFormatJsonStr());
         }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.Di;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
@@ -35,6 +36,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
 
         /// <summary>
         /// Autofac注册
+        /// 不需要执行build构建容器，构建的工作由Core框架完成
         /// </summary>
         /// <param name="builder"></param>
         public void ConfigureContainer(ContainerBuilder builder)
@@ -46,7 +48,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+            //可以拿到根容器存储下，方便以后调用
+            MyContainer.Instance = app.ApplicationServices.GetAutofacRoot() as IContainer;//IContainer实现了ILifetimeScope接口
 
             if (env.IsDevelopment())
             {

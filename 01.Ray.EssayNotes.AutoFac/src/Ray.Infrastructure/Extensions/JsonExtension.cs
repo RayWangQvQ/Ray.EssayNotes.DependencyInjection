@@ -1,14 +1,17 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using Newtonsoft.Json;
 
-namespace Ray.Infrastructure.Helpers
+namespace Ray.Infrastructure.Extensions
 {
-    public static class JsonHelper
+    public static class JsonExtension
     {
         /// <summary>json格式化</summary>
         /// <param name="str">The string.</param>
         /// <returns>System.String.</returns>
-        public static string AsFormatJsonString(this string str)
+        public static string AsFormatJsonStr(this string str)
         {
             var jsonSerializer = new JsonSerializer();
             var jsonTextReader = new JsonTextReader((TextReader)new StringReader(str));
