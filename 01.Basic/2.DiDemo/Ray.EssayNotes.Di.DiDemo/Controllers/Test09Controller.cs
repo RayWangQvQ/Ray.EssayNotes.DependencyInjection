@@ -12,12 +12,11 @@ namespace Ray.EssayNotes.Di.DiDemo.Controllers
     public class Test09Controller : ControllerBase
     {
         private readonly GenericDto<MyDto> _genericDto;
+
         /// <summary>
         /// 构造注入
         /// </summary>
-        /// <param name="myTransientService"></param>
-        /// <param name="myScopedService"></param>
-        /// <param name="mySingletonService"></param>
+        /// <param name="genericDto"></param>
         public Test09Controller(GenericDto<MyDto> genericDto)
         {
             _genericDto = genericDto;

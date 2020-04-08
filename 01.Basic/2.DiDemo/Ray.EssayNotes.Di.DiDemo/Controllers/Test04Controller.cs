@@ -19,8 +19,7 @@ namespace Ray.EssayNotes.Di.DiDemo.Controllers
         /// </summary>
         /// <param name="myDto1"></param>
         /// <param name="myDto2"></param>
-        public Test04Controller(MyDto myDto1,
-            MyDto myDto2)
+        public Test04Controller(MyDto myDto1, MyDto myDto2)
         {
             _myDto1 = myDto1;
             _myDto2 = myDto2;

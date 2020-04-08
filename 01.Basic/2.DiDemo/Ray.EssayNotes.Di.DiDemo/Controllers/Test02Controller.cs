@@ -18,12 +18,9 @@ namespace Ray.EssayNotes.Di.DiDemo.Controllers
         }
 
         [HttpGet]
-        public bool Get([FromServices]IMyTransientService myTransientService1,
-            [FromServices]IMyTransientService myTransientService2,
-            [FromServices]IMyScopedService myScopedService1,
-            [FromServices]IMyScopedService myScopedService2,
-            [FromServices]IMySingletonService mySingletonService1,
-            [FromServices]IMySingletonService mySingletonService2)
+        public bool Get([FromServices]IMyTransientService myTransientService1, [FromServices]IMyTransientService myTransientService2,
+            [FromServices]IMyScopedService myScopedService1, [FromServices]IMyScopedService myScopedService2,
+            [FromServices]IMySingletonService mySingletonService1, [FromServices]IMySingletonService mySingletonService2)
         {
             Console.WriteLine($"【瞬时实例】myTransientService1:{myTransientService1.GetHashCode()}");
             Console.WriteLine($"【瞬时实例】myTransientService2:{myTransientService2.GetHashCode()}");

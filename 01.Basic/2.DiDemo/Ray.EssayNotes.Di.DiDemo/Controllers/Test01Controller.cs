@@ -27,12 +27,9 @@ namespace Ray.EssayNotes.Di.DiDemo.Controllers
         /// <param name="myScopedService2"></param>
         /// <param name="mySingletonService1"></param>
         /// <param name="mySingletonService2"></param>
-        public Test01Controller(IMyTransientService myTransientService1,
-            IMyTransientService myTransientService2,
-            IMyScopedService myScopedService1,
-            IMyScopedService myScopedService2,
-            IMySingletonService mySingletonService1,
-            IMySingletonService mySingletonService2)
+        public Test01Controller(IMyTransientService myTransientService1, IMyTransientService myTransientService2,
+            IMyScopedService myScopedService1, IMyScopedService myScopedService2,
+            IMySingletonService mySingletonService1, IMySingletonService mySingletonService2)
         {
             _myTransientService1 = myTransientService1;
             _myTransientService2 = myTransientService2;

@@ -26,11 +26,11 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo
         {
             services.AddControllers();
 
-            //Test01(services);
+            Test01(services);
             //Test02(services);
             //Test03(services);
             //Test04(services);
-            Test05(services);
+            //Test05(services);
         }
 
         /// <summary>

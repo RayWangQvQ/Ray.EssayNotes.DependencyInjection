@@ -24,11 +24,11 @@ namespace Ray.EssayNotes.Di.DiDemo
         {
             services.AddControllers();
 
-            //Test01(services);
+            Test01(services);
             //Test02(services);
             //Test03(services);
             //Test04(services);
-            Test05(services);
+            //Test05(services);
             //Test06(services);
             //Test07(services);
             //Test08(services);
@@ -75,7 +75,8 @@ namespace Ray.EssayNotes.Di.DiDemo
         /// </summary>
         private void Test04(IServiceCollection services)
         {
-            services.AddScoped(serviceProvider => new MyDto());
+            services.AddScoped(serviceProvider => 
+                new MyDto());
         }
 
         /// <summary>

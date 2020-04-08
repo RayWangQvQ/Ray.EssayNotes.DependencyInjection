@@ -25,8 +25,8 @@ namespace Ray.EssayNotes.Di.DiDemo.Controllers
         [HttpGet]
         public bool Get()
         {
-            Console.WriteLine($"_myDto2:{_otherDto.GetHashCode()}");
-            Console.WriteLine($"_myDto2.MyDto:{_otherDto.MyDto.GetHashCode()}");
+            Console.WriteLine($"_otherDto:{_otherDto.GetHashCode()}");
+            Console.WriteLine($"_otherDto.MyDto:{_otherDto.MyDto.GetHashCode()}");
 
             Console.WriteLine($"========请求结束=======");
 

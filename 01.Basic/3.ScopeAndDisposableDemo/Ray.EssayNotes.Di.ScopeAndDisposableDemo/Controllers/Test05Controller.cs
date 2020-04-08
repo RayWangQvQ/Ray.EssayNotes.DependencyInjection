@@ -21,7 +21,9 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Controllers
         /// </summary>
         /// <param name="orderService1"></param>
         /// <param name="orderService2"></param>
-        public Test05Controller(IOrderService orderService1, IOrderService orderService2, IHostApplicationLifetime hostApplicationLifetime)
+        /// <param name="hostApplicationLifetime"></param>
+        public Test05Controller(IOrderService orderService1, IOrderService orderService2,
+            IHostApplicationLifetime hostApplicationLifetime)
         {
             this._orderService1 = orderService1;
             this._orderService2 = orderService2;
@@ -34,7 +36,7 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo.Controllers
             Console.WriteLine($"_orderService1:{_orderService1.GetHashCode()}");
             Console.WriteLine($"_orderService2:{_orderService2.GetHashCode()}");
 
-            //this.PrintFromRootScope();
+            this.PrintFromRootScope();
 
             Console.WriteLine($"========请求结束=======");
             _hostApplicationLifetime.StopApplication();//使整个应用停止
