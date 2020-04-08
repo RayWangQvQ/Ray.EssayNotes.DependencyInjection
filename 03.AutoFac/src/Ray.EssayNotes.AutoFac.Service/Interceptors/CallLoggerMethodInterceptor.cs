@@ -1,28 +1,46 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using Castle.DynamicProxy;
 
 namespace Ray.EssayNotes.AutoFac.Service.Interceptors
 {
-    public class CallLoggerInterceptor : Castle.DynamicProxy.IInterceptor
+    public class CallLoggerMethodInterceptor : Castle.DynamicProxy.IInterceptor
     {
         private readonly TextWriter _output;
 
-        public CallLoggerInterceptor(TextWriter output)
+        public CallLoggerMethodInterceptor(TextWriter output)
         {
             _output = output;
         }
 
         public void Intercept(IInvocation invocation)
         {
-            //进入被拦截对象的方法前，做些什么
-            PrintRequestInfo(invocation);
+            MethodInfo mi = invocation.MethodInvocationTarget
+                            ?? invocation.Method;
 
-            //调用目标
-            invocation.Proceed();
+            //如果目标函数没有添加指定的特性，则直接执行目标函数
+            if (mi.GetCustomAttributes<CallLoggerAttribute>(true).FirstOrDefault() == null)
+            {
+                invocation.Proceed();
+                return;
+            }
 
-            //目标执行后，做些什么
-            PrintResponseInfo(invocation);
+            //如果添加了指定的特性，则执行拦截
+            try
+            {
+                PrintRequestInfo(invocation);
+                invocation.Proceed();
+                PrintResponseInfo(invocation);
+            }
+            catch (System.Exception ex)
+            {
+                //todo:记录日志
+                throw;
+            }
         }
 
         /// <summary>

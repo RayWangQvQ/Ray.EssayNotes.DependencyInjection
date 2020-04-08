@@ -45,11 +45,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
     [Intercept(typeof(CallLoggerInterceptor))]
     public class TestIntercept01AppService : ITestInterceptAppService
     {
-        public TestIntercept01AppService()
-        {
-
-        }
-
         public string DoSomething()
         {
             return "Do Something successfully!";

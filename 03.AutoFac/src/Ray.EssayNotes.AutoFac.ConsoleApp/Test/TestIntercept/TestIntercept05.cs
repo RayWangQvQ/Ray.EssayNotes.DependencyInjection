@@ -6,7 +6,7 @@ using Ray.EssayNotes.AutoFac.Service.Interceptors;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
-    public class TestIntercept04 : TestInterceptBase
+    public class TestIntercept05 : TestInterceptBase
     {
         /// <summary>
         /// 在注册被拦截组件时直接关联具体的拦截器，被拦截类和接口都不需要再关联
@@ -17,7 +17,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
         {
             builder.Register(c => new CallLoggerInterceptor(Console.Out));
 
-            builder.RegisterType<TestIntercept04AppService>()
+            builder.RegisterType<TestIntercept05AppService>()
                 .AsImplementedInterfaces()
                 .EnableInterfaceInterceptors()
                 .InterceptedBy(typeof(CallLoggerInterceptor));
@@ -36,15 +36,16 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
         }
     }
 
-    public interface ITestIntercept04AppService
+    public interface ITestIntercept05AppService
     {
         string DoSomething();
 
         void DoSomethingAnother(string str1, string str2);
     }
 
-    public class TestIntercept04AppService : ITestIntercept04AppService
+    public class TestIntercept05AppService : ITestIntercept05AppService
     {
+        [CallLogger]
         public string DoSomething()
         {
             return "Do Something successfully!";

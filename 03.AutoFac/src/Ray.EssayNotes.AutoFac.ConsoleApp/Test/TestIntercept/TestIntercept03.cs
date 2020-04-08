@@ -52,11 +52,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
     public class TestIntercept03AppService : ITestIntercept03AppService
     {
-        public TestIntercept03AppService()
-        {
-
-        }
-
         public string DoSomething()
         {
             return "Do Something successfully!";

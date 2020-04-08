@@ -54,11 +54,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
     [Intercept("log-calls")]
     public class TestIntercept02AppService : ITestIntercept02AppService
     {
-        public TestIntercept02AppService()
-        {
-
-        }
-
         public string DoSomething()
         {
             return "Do Something successfully!";
