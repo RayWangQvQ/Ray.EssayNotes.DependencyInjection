@@ -29,7 +29,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
             builder.RegisterType<StudentAppService>()
                 .UsingConstructor(typeof(StudentRepository), typeof(ITeacherRepository))
-                .As<IStudentAppService>(); ;
+                .As<IStudentAppService>();
 
             return builder;
         }

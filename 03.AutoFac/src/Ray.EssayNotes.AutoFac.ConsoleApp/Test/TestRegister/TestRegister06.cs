@@ -13,7 +13,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         public override string Title => "拉姆达表达式注册";
 
         /// <summary>
-        /// 拉姆达表达式注册
+        /// 委托工厂注册
         /// 【Register】+ 委托
         /// </summary>
         /// <param name="builder"></param>
