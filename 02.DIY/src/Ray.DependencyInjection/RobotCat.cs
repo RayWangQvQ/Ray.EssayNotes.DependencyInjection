@@ -18,15 +18,17 @@ namespace Ray.DependencyInjection
         internal readonly RobotCat Root;
 
         /// <summary>
-        /// 愿望清单池（注册信息池）
+        /// 愿望清单池
+        /// （注册信息池）
         /// </summary>
         internal readonly ConcurrentDictionary<Type, ServiceRegistry> RegistryDic;
         /// <summary>
-        /// 服务实例池（持久化实例池）
+        /// 实物池
+        /// （持久化实例池）
         /// </summary>
         private readonly ConcurrentDictionary<Key, object> _serviceDic;
         /// <summary>
-        /// 可释放实例池
+        /// 可回收实物池
         /// （存放实现了IDisposable接口的对象）
         /// </summary>
         private readonly ConcurrentBag<IDisposable> _disposables;
@@ -57,9 +59,8 @@ namespace Ray.DependencyInjection
             Root = parent.Root;//指向父容器的_root，如果父容器也是非根容器，则继续指向父容器，最后其实指向的就是根容器。即所有非根容器的Root都指向根容器
 
             RegistryDic = Root.RegistryDic;//愿望清单池指向根容器的愿望清单池，即非根容器没有愿望清单池，向非根容器添加愿望清单，都会存储到根容器的愿望清单池中
-            _serviceDic = new ConcurrentDictionary<Key, object>();//服务实例存储在当前容器中的服务实例池中
-
-            _disposables = new ConcurrentBag<IDisposable>();
+            _serviceDic = new ConcurrentDictionary<Key, object>();//持久化服务实例存储在当前容器中
+            _disposables = new ConcurrentBag<IDisposable>();//可释放实例存在在当前容器中
         }
 
         /// <summary>
