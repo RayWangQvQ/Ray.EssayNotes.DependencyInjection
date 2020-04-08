@@ -23,7 +23,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         protected override void PrintResult()
         {
             // 创建一个子生命域, 在其内部解析对象，使用完后, 所有解析资源会随子域一起释放掉
-            using (var scope = MyContainer.Instance.BeginLifetimeScope())
+            using (var scope = MyContainer.Root.BeginLifetimeScope())
             {
                 var stuService = scope.Resolve<IStudentAppService>();
                 string s = stuService.GetStuName(1);

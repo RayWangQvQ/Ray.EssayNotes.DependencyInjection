@@ -7,12 +7,7 @@ namespace Ray.EssayNotes.AutoFac.Repository
     {
         public MyDbContext()
         {
-            Tag = Guid.NewGuid();
+            Console.WriteLine($"【CreateInstance】：{this.GetHashCode()}");
         }
-
-        /// <summary>
-        /// 实例化时间
-        /// </summary>
-        public Guid Tag { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
         protected override void PrintResult()
         {
-            var teacherService = MyContainer.Instance.Resolve<ITeacherService>();
+            var teacherService = MyContainer.Root.Resolve<ITeacherService>();
             string s = teacherService.GetTeacherName(1);
             Console.WriteLine(s);
         }

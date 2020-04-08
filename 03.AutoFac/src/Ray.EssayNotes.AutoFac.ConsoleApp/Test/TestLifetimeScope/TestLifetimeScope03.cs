@@ -25,13 +25,13 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         protected override void PrintResult()
         {
             //直接从根容器取
-            var instance1 = MyContainer.Instance.Resolve<DtoToken>();
+            var instance1 = MyContainer.Root.Resolve<DtoToken>();
             Console.WriteLine($"第1次：{instance1.Guid}");
 
-            var instance2 = MyContainer.Instance.Resolve<DtoToken>();
+            var instance2 = MyContainer.Root.Resolve<DtoToken>();
             Console.WriteLine($"第2次：{instance2.Guid}");
 
-            using (var scope = MyContainer.Instance.BeginLifetimeScope())
+            using (var scope = MyContainer.Root.BeginLifetimeScope())
             {
                 var instance3 = scope.Resolve<DtoToken>();
                 Console.WriteLine($"第3次：{instance3.Guid}");

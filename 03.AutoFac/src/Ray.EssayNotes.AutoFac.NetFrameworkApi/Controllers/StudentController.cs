@@ -24,11 +24,10 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Controllers
         /// <summary>
         /// 获取学生姓名
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("Student/GetStuNameById")]
-        public string GetStuNameById(long id)
+        public string GetStuNameById()
         {
             return _studentService.GetStuName(123);
         }

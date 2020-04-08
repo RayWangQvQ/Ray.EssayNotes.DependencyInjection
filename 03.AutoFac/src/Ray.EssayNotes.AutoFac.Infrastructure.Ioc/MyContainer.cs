@@ -10,7 +10,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
         /// <summary>
         /// 容器
         /// </summary>
-        public static Autofac.IContainer Instance;
+        public static Autofac.ILifetimeScope Root;//以前是用IContainer
 
         /// <summary>
         /// 初始化容器
@@ -26,7 +26,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc
             func?.Invoke(builder);
 
             //利用构建器创建容器
-            Instance = builder.Build();
+            Root = builder.Build();
         }
     }
 }

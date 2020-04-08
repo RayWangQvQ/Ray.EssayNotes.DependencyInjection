@@ -24,7 +24,7 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi
                 new Startup().ConfigureServices(builder);
                 return builder;
             });
-            System.Web.Http.Dependencies.IDependencyResolver autoFacResolver = new Autofac.Integration.WebApi.AutofacWebApiDependencyResolver(MyContainer.Instance);
+            System.Web.Http.Dependencies.IDependencyResolver autoFacResolver = new Autofac.Integration.WebApi.AutofacWebApiDependencyResolver(MyContainer.Root);
             //获取HttpConfiguration
             HttpConfiguration config = GlobalConfiguration.Configuration;
             //将AutoFac解析器设置为系统DI解析器

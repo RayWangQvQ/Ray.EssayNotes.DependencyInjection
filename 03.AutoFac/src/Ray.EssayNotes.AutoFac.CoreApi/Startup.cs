@@ -14,8 +14,6 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
     {
         public IConfigurationRoot Configuration { get; private set; }
 
-        public ILifetimeScope AutofacContainer { get; private set; }
-
         public Startup(IWebHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -49,7 +47,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //可以拿到根容器存储下，方便以后调用
-            MyContainer.Instance = app.ApplicationServices.GetAutofacRoot() as IContainer;//IContainer实现了ILifetimeScope接口
+            MyContainer.Root = app.ApplicationServices.GetAutofacRoot();
 
             if (env.IsDevelopment())
             {

@@ -26,7 +26,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
         public virtual void PrintComponent()
         {
-            string jsonStr = MyContainer.Instance.PrintComponent();
+            string jsonStr = MyContainer.Root.PrintComponent();
             Console.WriteLine(jsonStr.AsFormatJsonStr());
         }
 

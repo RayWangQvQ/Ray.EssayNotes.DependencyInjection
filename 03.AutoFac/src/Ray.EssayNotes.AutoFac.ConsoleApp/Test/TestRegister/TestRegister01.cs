@@ -15,7 +15,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             //初始化容器，将需要用到的组件添加到容器中
             MyContainer.Init(RegisterFunc);
 
-            IStudentAppService stuService = MyContainer.Instance.Resolve<StudentAppService>();
+            IStudentAppService stuService = MyContainer.Root.Resolve<StudentAppService>();
             string name = stuService.GetStuName(1);
 
             Console.WriteLine(name);

@@ -26,7 +26,7 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc
                 return builder;
             });
             //AutoFac解析器
-            System.Web.Mvc.IDependencyResolver autoFacResolver = new Autofac.Integration.Mvc.AutofacDependencyResolver(MyContainer.Instance);
+            System.Web.Mvc.IDependencyResolver autoFacResolver = new Autofac.Integration.Mvc.AutofacDependencyResolver(MyContainer.Root);
             //将AutoFac解析器设置为系统DI解析器
             DependencyResolver.SetResolver(autoFacResolver);
         }

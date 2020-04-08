@@ -33,7 +33,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public virtual void PrintComponent()
         {
             //打印注册信息
-            var jsonStr = MyContainer.Instance.PrintComponent<DtoToken>();
+            var jsonStr = MyContainer.Root.PrintComponent<DtoToken>();
             Console.WriteLine(jsonStr.AsFormatJsonStr());
         }
 
