@@ -28,8 +28,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //自定义注册
-            //services.AddMyServices();
+            //.AddControllersAsServices();
         }
 
         /// <summary>

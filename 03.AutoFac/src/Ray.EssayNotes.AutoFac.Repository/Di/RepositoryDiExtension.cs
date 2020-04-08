@@ -12,9 +12,13 @@ namespace Ray.EssayNotes.AutoFac.Service.Di
         {
             Assembly appServiceAssembly = Assembly.GetExecutingAssembly();
 
+            /** 如果是Core，不可以使用使用Autofac的InstancePerRequest，否则会报异常
+             * 可以换成InstancePerLifetimeScope，相当于Core的Scoped
+             * 
+             */
             builder.RegisterType<MyDbContext>()
-            .InstancePerLifetimeScope();
-            //.InstancePerRequest();//如果是Core，不可以使用使用Autofac的InstancePerRequest，否则会报异常，可以换成InstancePerLifetimeScope，相当于Core的Scoped
+            //.InstancePerLifetimeScope();
+            .InstancePerRequest();//
 
             builder.RegisterAssemblyTypes(appServiceAssembly)
                 .Where(cc => cc.Name.EndsWith("Repository"))//筛选具象类（concrete classes）
