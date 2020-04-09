@@ -72,6 +72,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\TestFactory.cs" />
+    <Compile Include="Test\TestIntercept\TestIntercept07.cs" />
     <Compile Include="Test\TestIntercept\TestIntercept06.cs" />
     <Compile Include="Test\TestIntercept\TestIntercept05.cs" />
     <Compile Include="Test\TestIntercept\TestIntercept04.cs" />

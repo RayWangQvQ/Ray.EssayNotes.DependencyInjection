@@ -7,11 +7,12 @@ using Ray.EssayNotes.AutoFac.Service.Interceptors;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
-    [Description("针对类内具体方法的拦截-（标记interface）")]
-    public class TestIntercept06 : TestInterceptBase
+    [Description("类拦截器（EnableClassInterceptors）")]
+    public class TestIntercept07 : TestInterceptBase
     {
         /// <summary>
-        /// 实现针对类内具体方法的拦截（标记interface）
+        /// 类拦截器
+        /// （如果注册的服务没有实现接口，则需要使用类拦截器）
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
@@ -19,9 +20,9 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
         {
             builder.Register(c => new CallLoggerMethodInterceptor(Console.Out));
 
-            builder.RegisterType<TestIntercept06AppService>()
-                .AsImplementedInterfaces()
-                .EnableInterfaceInterceptors()
+            builder.RegisterType<TestIntercept07AppService>()
+                .AsSelf()
+                .EnableClassInterceptors()
                 .InterceptedBy(typeof(CallLoggerMethodInterceptor));
 
             return builder;
@@ -29,7 +30,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
         protected override void PrintResult()
         {
-            var service = MyContainer.Root.Resolve<ITestIntercept06AppService>();
+            var service = MyContainer.Root.Resolve<TestIntercept07AppService>();
 
             var re = service.DoSomething();
             Console.WriteLine(re);
@@ -38,16 +39,9 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
         }
     }
 
-    public interface ITestIntercept06AppService
+    public class TestIntercept07AppService
     {
         [CallLogger]
-        string DoSomething();
-
-        void DoSomethingAnother(string str1, string str2);
-    }
-
-    public class TestIntercept06AppService : ITestIntercept06AppService
-    {
         public string DoSomething()
         {
             return "Do Something successfully!";

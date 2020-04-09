@@ -17,7 +17,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
         {
             MyContainer.Init(RegisterFunc);
 
-            PrintComponent();
+            //PrintComponent();
 
             PrintResult();
         }
