@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
+    [Description("拦截器")]
     public abstract class TestInterceptBase : ITest
     {
         public void Run()
@@ -19,8 +21,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
             PrintResult();
         }
-
-        public string Title { get; }
 
         public abstract Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder);
 

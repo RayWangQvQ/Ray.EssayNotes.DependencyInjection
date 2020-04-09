@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions;
@@ -6,6 +7,7 @@ using Ray.EssayNotes.AutoFac.Service.Dtos;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
+    [Description("指定标签域内单例")]
     public class TestLifetimeScope05 : TestLifetimeScopeBase
     {
         /// <summary>

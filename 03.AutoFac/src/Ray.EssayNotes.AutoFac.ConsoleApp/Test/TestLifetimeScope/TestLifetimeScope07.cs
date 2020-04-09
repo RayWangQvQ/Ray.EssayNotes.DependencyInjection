@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Autofac.Features.OwnedInstances;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
@@ -8,6 +9,7 @@ using Ray.EssayNotes.AutoFac.Service.Dtos;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
+    [Description("每次被拥有单例")]
     public class TestLifetimeScope07 : TestLifetimeScopeBase
     {
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.ComponentModel;
+using Autofac;
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using System.Reflection;
@@ -6,10 +7,9 @@ using Ray.Infrastructure.Helpers;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("扫描程序集注册")]
     public class TestRegister09 : TestRegisterBase
     {
-        public override string Title => "扫描程序集注册";
-
         /// <summary>
         /// 扫描程序集注册
         /// 【RegisterAssemblyTypes】

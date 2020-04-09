@@ -6,13 +6,13 @@ using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Ray.EssayNotes.AutoFac.Service.AppService;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("注册时指定参数（注册类型 + 参数）")]
     public class TestRegister05 : TestRegisterBase
     {
-        public override string Title => "注册时指定参数（注册类型 + 参数）";
-
         /// <summary>
         /// 注册时指定参数（注册类型 + 参数）
         /// 【WithParameter】

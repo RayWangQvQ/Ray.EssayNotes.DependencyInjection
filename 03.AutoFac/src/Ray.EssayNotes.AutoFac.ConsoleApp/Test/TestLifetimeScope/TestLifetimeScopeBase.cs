@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
+    [Description("生命周期作用域")]
     public abstract class TestLifetimeScopeBase : ITest
     {
         public virtual void Run()

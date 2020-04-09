@@ -3,7 +3,5 @@
     public interface ITest
     {
         void Run();
-
-        string Title { get; }
     }
 }

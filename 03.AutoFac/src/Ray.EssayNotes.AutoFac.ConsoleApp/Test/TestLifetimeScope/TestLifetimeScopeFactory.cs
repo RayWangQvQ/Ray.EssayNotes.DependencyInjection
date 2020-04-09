@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
-    public class TestLifetimeScopeFactory : ITestFactory
+    public class TestLifetimeScopeFactory : TestFactory
     {
-        public ITest Create(string num)
-        {
-            string classFullName = $"Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope.TestLifetimeScope{num}";
-            Type type = Type.GetType(classFullName);
-            dynamic obj = type?.Assembly.CreateInstance(classFullName);
-            return obj;
-        }
-
-        public string TestType => "生命周期作用域";
-
-        public string GetSelectionRange => "01-07";
+        public override Type TestBaseType => typeof(TestLifetimeScopeBase);
     }
 }

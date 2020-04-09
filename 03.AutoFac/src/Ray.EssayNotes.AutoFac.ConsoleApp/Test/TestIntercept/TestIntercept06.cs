@@ -7,11 +7,11 @@ using Ray.EssayNotes.AutoFac.Service.Interceptors;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
-    [Description("针对类内具体方法的拦截")]
-    public class TestIntercept05 : TestInterceptBase
+    [Description("针对类内具体方法的拦截-（标记interface）")]
+    public class TestIntercept06 : TestInterceptBase
     {
         /// <summary>
-        /// 实现针对类内具体方法的拦截
+        /// 实现针对类内具体方法的拦截（标记interface）
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
@@ -38,16 +38,16 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
         }
     }
 
-    public interface ITestIntercept05AppService
+    public interface ITestIntercept06AppService
     {
+        [CallLogger]
         string DoSomething();
 
         void DoSomethingAnother(string str1, string str2);
     }
 
-    public class TestIntercept05AppService : ITestIntercept05AppService
+    public class TestIntercept06AppService : ITestIntercept06AppService
     {
-        [CallLogger]
         public string DoSomething()
         {
             return "Do Something successfully!";

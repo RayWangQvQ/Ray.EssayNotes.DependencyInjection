@@ -6,14 +6,14 @@ using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Ray.EssayNotes.AutoFac.Service.AppService;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Autofac.Core;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("条件注册（如果没注册过、仅当）")]
     public class TestRegister08 : TestRegisterBase
     {
-        public override string Title => "条件注册（如果没注册过、仅当）";
-
         protected override void PrintResult()
         {
             string name = "";

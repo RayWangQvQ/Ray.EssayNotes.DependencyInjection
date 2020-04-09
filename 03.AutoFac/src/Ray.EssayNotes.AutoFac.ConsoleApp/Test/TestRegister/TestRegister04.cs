@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
@@ -8,10 +9,9 @@ using Ray.EssayNotes.AutoFac.Service.AppService;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("自己指定构造函数")]
     public class TestRegister04 : TestRegisterBase
     {
-        public override string Title => "自己指定构造函数";
-
         /// <summary>
         /// 自己指定构造函数
         /// 【UsingConstructor】

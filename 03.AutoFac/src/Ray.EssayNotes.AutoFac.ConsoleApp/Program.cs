@@ -1,6 +1,8 @@
 ﻿//系统包
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
 //三方包
 using Ray.EssayNotes.AutoFac.ConsoleApp.Test;
 using Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept;
@@ -13,7 +15,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var dic = new Dictionary<string, ITestFactory>
+            var dic = new Dictionary<string, TestFactory>
             {
                 {"1", new TestRegisterFactory()},
                 {"2", new TestLifetimeScopeFactory()},
@@ -26,10 +28,11 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp
                 string key = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(key)) continue;
-                bool isSuccess = dic.TryGetValue(key, out ITestFactory factory);
+                bool isSuccess = dic.TryGetValue(key, out TestFactory factory);
                 if (!isSuccess) continue;
 
-                Console.WriteLine($"\r\n请输入【{factory.TestType}】测试编号：({factory.GetSelectionRange})：");
+                Console.WriteLine($"\r\n请输入【{factory.TestBaseType.GetCustomAttribute<DescriptionAttribute>()?.Description ?? ""}】测试编号：\r\n{factory.SelectionRange}");
+
                 string testNum = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(testNum)) continue;
                 ITest test = factory.Create(testNum);

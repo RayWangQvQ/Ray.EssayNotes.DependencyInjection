@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using Ray.EssayNotes.AutoFac.Service.Interceptors;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
+    [Description("在被拦截类上关联拦截器标识")]
     public class TestIntercept02 : TestInterceptBase
     {
         /// <summary>

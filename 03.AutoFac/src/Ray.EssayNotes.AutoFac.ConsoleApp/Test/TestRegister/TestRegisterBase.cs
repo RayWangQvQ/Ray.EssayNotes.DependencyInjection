@@ -10,9 +10,11 @@ using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Model;
 using Ray.Infrastructure.Extensions;
 using Ray.Infrastructure.Helpers;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions;
+using System.ComponentModel;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("注册")]
     public abstract class TestRegisterBase : ITest
     {
         /// <summary>
@@ -29,11 +31,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             //打印组件信息
             PrintComponent();
         }
-
-        /// <summary>
-        /// 测试内容
-        /// </summary>
-        public abstract string Title { get; }
 
         /// <summary>
         /// 注册

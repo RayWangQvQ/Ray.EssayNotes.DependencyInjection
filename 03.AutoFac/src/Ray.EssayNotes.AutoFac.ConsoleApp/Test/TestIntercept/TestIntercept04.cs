@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
@@ -6,6 +7,7 @@ using Ray.EssayNotes.AutoFac.Service.Interceptors;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 {
+    [Description("在注册时关联拦截器")]
     public class TestIntercept04 : TestInterceptBase
     {
         /// <summary>

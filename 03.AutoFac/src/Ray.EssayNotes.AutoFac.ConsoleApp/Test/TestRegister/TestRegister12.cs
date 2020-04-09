@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
@@ -6,10 +7,9 @@ using Ray.EssayNotes.AutoFac.Service.AppService;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("属性注入3")]
     public class TestRegister12 : TestRegisterBase
     {
-        public override string Title => "属性注入3";
-
         protected override void PrintResult()
         {
             var teacherService = MyContainer.Root.Resolve<TeacherAppService>();

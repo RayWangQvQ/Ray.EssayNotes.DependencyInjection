@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
@@ -8,10 +9,9 @@ using Ray.EssayNotes.AutoFac.Service.AppService;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("拉姆达表达式注册")]
     public class TestRegister06 : TestRegisterBase
     {
-        public override string Title => "拉姆达表达式注册";
-
         /// <summary>
         /// 委托工厂注册
         /// 【Register】+ 委托

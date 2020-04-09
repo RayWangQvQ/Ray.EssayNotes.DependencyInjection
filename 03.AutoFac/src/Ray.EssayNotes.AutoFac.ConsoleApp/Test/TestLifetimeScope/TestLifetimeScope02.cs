@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Service.Dtos;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
+    [Description("瞬时实例（每次依赖一个实例）")]
     public class TestLifetimeScope02 : TestLifetimeScopeBase
     {
         /// <summary>

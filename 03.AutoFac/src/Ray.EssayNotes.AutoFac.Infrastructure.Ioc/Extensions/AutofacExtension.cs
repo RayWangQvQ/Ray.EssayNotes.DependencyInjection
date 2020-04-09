@@ -14,7 +14,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions
         /// <summary>
         /// 打印组件信息
         /// </summary>
-        public static string PrintComponent(this Autofac.IContainer container)
+        public static string PrintComponent(this Autofac.ILifetimeScope container)
         {
             IComponentRegistry component = container.ComponentRegistry;//注册处
             List<IComponentRegistration> registrations = component.Registrations.ToList();//注册信息表
@@ -26,7 +26,7 @@ namespace Ray.EssayNotes.AutoFac.Infrastructure.Ioc.Extensions
         /// <summary>
         /// 打印组件信息
         /// </summary>
-        public static string PrintComponent<T>(this Autofac.IContainer container)
+        public static string PrintComponent<T>(this Autofac.ILifetimeScope container)
         {
             IComponentRegistry component = container.ComponentRegistry;//注册处
             List<IComponentRegistration> registrations = component.RegistrationsFor(new TypedService(typeof(T))).ToList();//注册信息表

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
@@ -7,6 +8,7 @@ using Ray.EssayNotes.AutoFac.Service.IAppService;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 {
+    [Description("从根容器创建一个子域")]
     public class TestLifetimeScope01 : TestLifetimeScopeBase
     {
         public override ContainerBuilder RegisterFunc(ContainerBuilder builder)

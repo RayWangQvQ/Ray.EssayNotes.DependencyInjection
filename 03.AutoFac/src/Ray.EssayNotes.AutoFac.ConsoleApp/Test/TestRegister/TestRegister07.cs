@@ -6,13 +6,13 @@ using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Ray.EssayNotes.AutoFac.Service.AppService;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("注册泛型")]
     public class TestRegister07 : TestRegisterBase
     {
-        public override string Title => "注册泛型";
-
         protected override void PrintResult()
         {
             IBookService bookService = MyContainer.Root.Resolve<IBookService>();

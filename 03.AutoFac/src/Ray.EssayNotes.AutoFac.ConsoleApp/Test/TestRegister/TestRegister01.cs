@@ -5,9 +5,11 @@ using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
 using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Ray.EssayNotes.AutoFac.Service.AppService;
+using System.ComponentModel;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
+    [Description("注册实例类型（type）")]
     public class TestRegister01 : TestRegisterBase
     {
         public override void Run()
@@ -22,8 +24,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 
             PrintComponent();
         }
-
-        public override string Title => "注册实例类型（type）";
 
         /// <summary>
         /// 注册实例类型（type）
