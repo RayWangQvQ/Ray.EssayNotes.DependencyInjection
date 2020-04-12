@@ -19,7 +19,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         public override ContainerBuilder RegisterFunc(ContainerBuilder builder)
         {
             builder.RegisterType<DtoToken>()
-                .InstancePerMatchingLifetimeScope("testScopeName");//表明：只能在名称为testScopeName的域内被解析，并且在该域内单例
+                .InstancePerMatchingLifetimeScope("testScopeName");//表明：只能在名称为testScopeName的域内（包括多级子域）被解析，并且在该域内单例
 
             return builder;
         }
@@ -34,17 +34,17 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
                 var instance2 = testScope.Resolve<DtoToken>();//直接从域内获取持久化的实例
                 Console.WriteLine($"【testScopeName】第2次：{instance2.Guid}");
 
-                using (var defScope = MyContainer.Root.BeginLifetimeScope("abc"))
+                using (var defScope = testScope.BeginLifetimeScope())
                 {
-                    try
-                    {
-                        var instance3 = defScope.Resolve<DtoToken>();//尝试从一个标签并不匹配的域中解析会报异常
-                        Console.WriteLine($"【abc】第3次：{instance3.Guid}");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"【abc】第3次：{ex.Message}");
-                    }
+                    var instance3 = defScope.Resolve<DtoToken>();
+                    Console.WriteLine($"第3次：{instance3.Guid}");
+                }
+
+                using (var defScope = testScope.BeginLifetimeScope("abc"))
+                {
+                    var instance3 = defScope.Resolve<DtoToken>();
+                    Console.WriteLine($"【abc】第4次：{instance3.Guid}");
+
                 }
             }
 
@@ -53,11 +53,11 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
                 try
                 {
                     var instance1 = abcScope.Resolve<DtoToken>();
-                    Console.WriteLine($"【无标签】第4次：{instance1.Guid}");
+                    Console.WriteLine($"【无标签】第5次：{instance1.Guid}");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"【无标签】第4次：{ex.Message}");
+                    Console.WriteLine($"【无标签】第5次：{ex.Message}");
                 }
             }
         }
