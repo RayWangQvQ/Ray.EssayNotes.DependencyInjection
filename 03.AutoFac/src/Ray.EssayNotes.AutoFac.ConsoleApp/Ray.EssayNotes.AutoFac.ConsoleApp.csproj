@@ -91,9 +91,10 @@
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScopeBase.cs" />
     <Compile Include="Test\TestLifetimeScope\TestLifetimeScopeFactory.cs" />
     <Compile Include="Test\TestRegister\TestRegister01.cs" />
+    <Compile Include="Test\TestRegister\TestRegister10.cs" />
+    <Compile Include="Test\TestRegister\TestRegister13.cs" />
     <Compile Include="Test\TestRegister\TestRegister12.cs" />
     <Compile Include="Test\TestRegister\TestRegister11.cs" />
-    <Compile Include="Test\TestRegister\TestRegister10.cs" />
     <Compile Include="Test\TestRegister\TestRegister09.cs" />
     <Compile Include="Test\TestRegister\TestRegister08.cs" />
     <Compile Include="Test\TestRegister\TestRegister07.cs" />

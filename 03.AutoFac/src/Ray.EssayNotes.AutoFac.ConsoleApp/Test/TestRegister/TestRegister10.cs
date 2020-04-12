@@ -12,37 +12,40 @@ using System.Reflection;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
-    [Description("属性注入1")]
+    [Description("命名实例注入")]
     public class TestRegister10 : TestRegisterBase
     {
         protected override void PrintResult()
         {
-            var teacherService = MyContainer.Root.Resolve<ITeacherService>();
-            string s = teacherService.GetTeacherName(1);
-            Console.WriteLine(s);
+            var service = MyContainer.Root.Resolve<IMyService>();
+            Console.WriteLine($"{service.GetHashCode()}");
+
+            var other = MyContainer.Root.ResolveNamed<IMyService>("other");
+            Console.WriteLine($"{other.GetHashCode()}");
+
+            var services = MyContainer.Root.Resolve<IEnumerable<IMyService>>();
+            foreach (var item in services)
+            {
+                Console.WriteLine($"{item.GetHashCode()}");
+            }
+
         }
 
         /// <summary>
-        /// 属性注入方法1
-        /// 拉姆达
+        /// 命名实例注册
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
         protected override Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder)
         {
-            builder.Register(x => new TeacherRepository
-            {
-                TestStr = "test"
-            })
-                .AsImplementedInterfaces();
+            builder.RegisterType<MyService>()
+                .As<IMyService>()
+                .InstancePerLifetimeScope();
 
-            builder.Register(x => new TeacherAppService())
-                .OnActivated(e => e.Instance.TeacherRepository = e.Context.Resolve<ITeacherRepository>())
-                .AsImplementedInterfaces();
-
+            builder.RegisterType<MyOtherService>()
+                .Named<IMyService>("other")
+                .InstancePerLifetimeScope();
             return builder;
-
-            //拉姆达式属性注入（与属性注入不同，如果容器找不到，Resolve解析会报异常，属性注入不会）
         }
     }
 }

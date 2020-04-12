@@ -1,30 +1,25 @@
 ﻿using System;
+using System.ComponentModel;
 using Autofac;
-using Ray.EssayNotes.AutoFac.Domain.IRepository;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository.Repository;
-using Ray.EssayNotes.AutoFac.Service.IAppService;
 using Ray.EssayNotes.AutoFac.Service.AppService;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Autofac.Core;
-using System.Reflection;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
-    [Description("属性注入2")]
-    public class TestRegister12 : TestRegisterBase
+    [Description("属性注入3")]
+    public class TestRegister13 : TestRegisterBase
     {
         protected override void PrintResult()
         {
-            var teacherService = MyContainer.Root.Resolve<ITeacherService>();
-            string s = teacherService.GetTeacherName(1);
+            var teacherService = MyContainer.Root.Resolve<TeacherAppService>();
+            string s = teacherService.TestStr + teacherService.TestInt;
             Console.WriteLine(s);
         }
 
         /// <summary>
-        /// 属性注入方法2
-        /// 【RegisterType】+【PropertiesAutowired】
+        /// 属性注入方法3：绑定特定属性值
+        /// 【RegisterType】+【WithProperty】
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
@@ -34,10 +29,16 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
                 .AsImplementedInterfaces();
 
             builder.RegisterType<TeacherAppService>()
-                .PropertiesAutowired()
-                .AsImplementedInterfaces();
+                .WithProperty("TestStr", "test1")
+                .WithProperties(new TypedParameter[]
+                {
+                    new TypedParameter(typeof(int),9)
+                })
+                .AsImplementedInterfaces()
+                .AsSelf();
 
             return builder;
         }
     }
+
 }

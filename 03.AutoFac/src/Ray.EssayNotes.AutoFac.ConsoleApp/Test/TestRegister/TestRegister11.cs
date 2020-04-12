@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
 {
-    [Description("属性注入2")]
+    [Description("属性注入1")]
     public class TestRegister11 : TestRegisterBase
     {
         protected override void PrintResult()
@@ -23,21 +23,26 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         }
 
         /// <summary>
-        /// 属性注入方法2
-        /// 【RegisterType】+【PropertiesAutowired】
+        /// 属性注入方法1
+        /// 拉姆达
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
         protected override Autofac.ContainerBuilder RegisterFunc(Autofac.ContainerBuilder builder)
         {
-            builder.RegisterType<TeacherRepository>()
+            builder.Register(x => new TeacherRepository
+            {
+                TestStr = "test"
+            })
                 .AsImplementedInterfaces();
 
-            builder.RegisterType<TeacherAppService>()
-                .PropertiesAutowired()
+            builder.Register(x => new TeacherAppService())
+                .OnActivated(e => e.Instance.TeacherRepository = e.Context.Resolve<ITeacherRepository>())
                 .AsImplementedInterfaces();
 
             return builder;
+
+            //拉姆达式属性注入（与属性注入不同，如果容器找不到，Resolve解析会报异常，属性注入不会）
         }
     }
 }
