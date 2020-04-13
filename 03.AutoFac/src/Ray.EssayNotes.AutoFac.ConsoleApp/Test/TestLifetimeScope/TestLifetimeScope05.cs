@@ -26,39 +26,177 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 
         protected override void PrintResult()
         {
+            Print01();
+            Print02();
+            Print03();
+            Print04();
+            Print05();
+            Print06();
+            Print07();
+        }
+
+        /// <summary>
+        /// 直接从指定的标签域内解析
+        /// </summary>
+        private void Print01()
+        {
+            Console.WriteLine("testScopeName标签域内：");
+
             using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
             {
-                var instance1 = testScope.Resolve<DtoToken>();//实例化，并将实例持久化到该域内
-                Console.WriteLine($"【testScopeName】第1次：{instance1.Guid}");
-
-                var instance2 = testScope.Resolve<DtoToken>();//直接从域内获取持久化的实例
-                Console.WriteLine($"【testScopeName】第2次：{instance2.Guid}");
-
-                using (var defScope = testScope.BeginLifetimeScope())
+                for (int i = 1; i < 3; i++)
                 {
-                    var instance3 = defScope.Resolve<DtoToken>();
-                    Console.WriteLine($"第3次：{instance3.Guid}");
-                }
-
-                using (var defScope = testScope.BeginLifetimeScope("abc"))
-                {
-                    var instance3 = defScope.Resolve<DtoToken>();
-                    Console.WriteLine($"【abc】第4次：{instance3.Guid}");
-
+                    var instance = testScope.Resolve<DtoToken>();
+                    Console.WriteLine($"第{i}次：{instance.Guid}");
                 }
             }
+        }
 
-            using (var abcScope = MyContainer.Root.BeginLifetimeScope())
+        /// <summary>
+        /// 从根域内解析
+        /// </summary>
+        private void Print02()
+        {
+            Console.WriteLine("根域内：");
+
+            try
             {
-                try
+                for (int i = 1; i < 3; i++)
                 {
-                    var instance1 = abcScope.Resolve<DtoToken>();
-                    Console.WriteLine($"【无标签】第5次：{instance1.Guid}");
+                    var instance = MyContainer.Root.ResolveOptional<DtoToken>();
+                    Console.WriteLine($"第{i}次：{instance?.Guid}");
                 }
-                catch (Exception ex)
+            }
+            catch
+            {
+                Console.WriteLine("异常");
+            }
+        }
+
+        /// <summary>
+        /// 直接从无标签域
+        /// </summary>
+        private void Print03()
+        {
+            Console.WriteLine("无标签域内：");
+            try
+            {
+                using (var testScope = MyContainer.Root.BeginLifetimeScope())
                 {
-                    Console.WriteLine($"【无标签】第5次：{ex.Message}");
+                    for (int i = 1; i < 3; i++)
+                    {
+                        var instance = testScope.Resolve<DtoToken>();
+                        Console.WriteLine($"第{i}次：{instance.Guid}");
+                    }
                 }
+            }
+            catch
+            {
+                Console.WriteLine("异常");
+            }
+        }
+
+        /// <summary>
+        /// 直接从其他标签域
+        /// </summary>
+        private void Print04()
+        {
+            Console.WriteLine("其他标签域内：");
+            try
+            {
+                using (var testScope = MyContainer.Root.BeginLifetimeScope("abc"))
+                {
+                    for (int i = 1; i < 3; i++)
+                    {
+                        var instance = testScope.Resolve<DtoToken>();
+                        Console.WriteLine($"第{i}次：{instance.Guid}");
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("异常");
+            }
+        }
+
+        /// <summary>
+        /// 从指定标签域下的无标签域
+        /// </summary>
+        private void Print05()
+        {
+            Console.WriteLine("testScopeName.空：");
+            try
+            {
+                using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
+                {
+                    using (var scope = testScope.BeginLifetimeScope())
+                    {
+                        for (int i = 1; i < 3; i++)
+                        {
+                            var instance = scope.Resolve<DtoToken>();
+                            Console.WriteLine($"第{i}次：{instance.Guid}");
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("异常");
+            }
+        }
+
+        /// <summary>
+        /// 从指定标签域下的其他标签域
+        /// </summary>
+        private void Print06()
+        {
+            Console.WriteLine("testScopeName.aaa：");
+            try
+            {
+                using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
+                {
+                    using (var scope = testScope.BeginLifetimeScope("aaa"))
+                    {
+                        for (int i = 1; i < 3; i++)
+                        {
+                            var instance = scope.Resolve<DtoToken>();
+                            Console.WriteLine($"第{i}次：{instance.Guid}");
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("异常");
+            }
+        }
+
+        /// <summary>
+        /// 从指定标签域下的其他标签域下的其他标签域
+        /// </summary>
+        private void Print07()
+        {
+            Console.WriteLine("testScopeName.aaa.bbb：");
+            try
+            {
+                using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
+                {
+                    using (var scopeA = testScope.BeginLifetimeScope("aaa"))
+                    {
+                        using (var scopeB = scopeA.BeginLifetimeScope("bbb"))
+                        {
+                            for (int i = 1; i < 3; i++)
+                            {
+                                var instance = scopeB.Resolve<DtoToken>();
+                                Console.WriteLine($"第{i}次：{instance.Guid}");
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("异常");
             }
         }
     }
