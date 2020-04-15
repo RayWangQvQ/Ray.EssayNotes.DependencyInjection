@@ -28,7 +28,6 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             {
                 Console.WriteLine($"{item.GetHashCode()}");
             }
-
         }
 
         /// <summary>

@@ -30,22 +30,22 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         {
             using (var testScope = MyContainer.Root.BeginLifetimeScope("AutofacWebRequest"))
             {
-                var instance1 = testScope.Resolve<DtoToken>();//实例化，并将实例持久化到该域内
+                var instance1 = testScope.Resolve<DtoToken>();
                 Console.WriteLine($"【AutofacWebRequest】第1次：{instance1.Guid}");
 
-                var instance2 = testScope.Resolve<DtoToken>();//直接从域内获取持久化的实例
+                var instance2 = testScope.Resolve<DtoToken>();
                 Console.WriteLine($"【AutofacWebRequest】第2次：{instance2.Guid}");
 
-                using (var defScope = MyContainer.Root.BeginLifetimeScope("abc"))
+                using (var defScope = testScope.BeginLifetimeScope("abc"))
                 {
                     try
                     {
-                        var instance3 = defScope.Resolve<DtoToken>();//尝试从一个标签并不匹配的域中解析会报异常
-                        Console.WriteLine($"【abc】第3次：{instance3.Guid}");
+                        var instance3 = defScope.Resolve<DtoToken>();
+                        Console.WriteLine($"【AutofacWebRequest.abc】第3次：{instance3.Guid}");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"【abc】第3次：{ex.Message}");
+                        Console.WriteLine($"【AutofacWebRequest.abc】第3次：{ex.Message}");
                     }
                 }
             }
