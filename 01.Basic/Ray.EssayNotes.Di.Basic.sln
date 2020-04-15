@@ -3,21 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.StartupDemo", "1.StartupDemo", "{ADE30784-BB9B-4CEC-A25C-568B6FA8AEA2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.StartupDemo", "2.StartupDemo", "{ADE30784-BB9B-4CEC-A25C-568B6FA8AEA2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.DiDemo", "2.DiDemo", "{1E21B084-075E-470A-B22B-B405B87AB944}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.DiDemo", "3.DiDemo", "{1E21B084-075E-470A-B22B-B405B87AB944}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.ScopeAndDisposableDemo", "3.ScopeAndDisposableDemo", "{282B9561-1703-4A2A-8BA3-A62BD6E3EB7E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.StartupDemo", "1.StartupDemo\Ray.EssayNotes.Di.StartupDemo\Ray.EssayNotes.Di.StartupDemo.csproj", "{18434C5B-1E5A-4B38-B21B-D0ED692AC32C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.DiDemo", "2.DiDemo\Ray.EssayNotes.Di.DiDemo\Ray.EssayNotes.Di.DiDemo.csproj", "{49043272-DAD3-40D8-9EF5-AFB267FE5930}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.ScopeAndDisposableDemo", "3.ScopeAndDisposableDemo\Ray.EssayNotes.Di.ScopeAndDisposableDemo\Ray.EssayNotes.Di.ScopeAndDisposableDemo.csproj", "{CAF984E8-27F3-4080-942F-0D3E4D9AF7AC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.Infrastructure", "3.ScopeAndDisposableDemo\Ray.Infrastructure\Ray.Infrastructure.csproj", "{217B2B3A-8C37-4F99-AB47-54FAEF53D2BB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.ScopeAndDisposableDemo", "4.ScopeAndDisposableDemo", "{282B9561-1703-4A2A-8BA3-A62BD6E3EB7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Share", "0.Share", "{609A6331-2055-49E4-B0CF-967E3E166192}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.ContainerDemo", "1.ContainerDemo", "{74E475C1-9354-4CD6-9591-45ACC5F26FAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.ContainerDemo", "1.ContainerDemo\Ray.EssayNotes.Di.ContainerDemo\Ray.EssayNotes.Di.ContainerDemo.csproj", "{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.StartupDemo", "2.StartupDemo\Ray.EssayNotes.Di.StartupDemo\Ray.EssayNotes.Di.StartupDemo.csproj", "{94EE7FCD-FA01-42A4-9434-B97DBBF33895}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.DiDemo", "3.DiDemo\Ray.EssayNotes.Di.DiDemo\Ray.EssayNotes.Di.DiDemo.csproj", "{FA9055D7-C856-4A45-B7D9-7A50F40D9225}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.ScopeAndDisposableDemo", "4.ScopeAndDisposableDemo\Ray.EssayNotes.Di.ScopeAndDisposableDemo\Ray.EssayNotes.Di.ScopeAndDisposableDemo.csproj", "{44144F93-E671-423C-9614-1480DAB59D4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.Infrastructure", "0.Share\Ray.Infrastructure\Ray.Infrastructure.csproj", "{54D88113-7EC9-4009-A37D-3293E6518824}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,31 +29,36 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18434C5B-1E5A-4B38-B21B-D0ED692AC32C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18434C5B-1E5A-4B38-B21B-D0ED692AC32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18434C5B-1E5A-4B38-B21B-D0ED692AC32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18434C5B-1E5A-4B38-B21B-D0ED692AC32C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49043272-DAD3-40D8-9EF5-AFB267FE5930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49043272-DAD3-40D8-9EF5-AFB267FE5930}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49043272-DAD3-40D8-9EF5-AFB267FE5930}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49043272-DAD3-40D8-9EF5-AFB267FE5930}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CAF984E8-27F3-4080-942F-0D3E4D9AF7AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CAF984E8-27F3-4080-942F-0D3E4D9AF7AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CAF984E8-27F3-4080-942F-0D3E4D9AF7AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CAF984E8-27F3-4080-942F-0D3E4D9AF7AC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{217B2B3A-8C37-4F99-AB47-54FAEF53D2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{217B2B3A-8C37-4F99-AB47-54FAEF53D2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{217B2B3A-8C37-4F99-AB47-54FAEF53D2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{217B2B3A-8C37-4F99-AB47-54FAEF53D2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44144F93-E671-423C-9614-1480DAB59D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44144F93-E671-423C-9614-1480DAB59D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44144F93-E671-423C-9614-1480DAB59D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44144F93-E671-423C-9614-1480DAB59D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54D88113-7EC9-4009-A37D-3293E6518824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D88113-7EC9-4009-A37D-3293E6518824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D88113-7EC9-4009-A37D-3293E6518824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D88113-7EC9-4009-A37D-3293E6518824}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{18434C5B-1E5A-4B38-B21B-D0ED692AC32C} = {ADE30784-BB9B-4CEC-A25C-568B6FA8AEA2}
-		{49043272-DAD3-40D8-9EF5-AFB267FE5930} = {1E21B084-075E-470A-B22B-B405B87AB944}
-		{CAF984E8-27F3-4080-942F-0D3E4D9AF7AC} = {282B9561-1703-4A2A-8BA3-A62BD6E3EB7E}
-		{217B2B3A-8C37-4F99-AB47-54FAEF53D2BB} = {609A6331-2055-49E4-B0CF-967E3E166192}
+		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D} = {74E475C1-9354-4CD6-9591-45ACC5F26FAF}
+		{94EE7FCD-FA01-42A4-9434-B97DBBF33895} = {ADE30784-BB9B-4CEC-A25C-568B6FA8AEA2}
+		{FA9055D7-C856-4A45-B7D9-7A50F40D9225} = {1E21B084-075E-470A-B22B-B405B87AB944}
+		{44144F93-E671-423C-9614-1480DAB59D4F} = {282B9561-1703-4A2A-8BA3-A62BD6E3EB7E}
+		{54D88113-7EC9-4009-A37D-3293E6518824} = {609A6331-2055-49E4-B0CF-967E3E166192}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1B23EF1-30FB-4352-A628-EEE59391AF6D}

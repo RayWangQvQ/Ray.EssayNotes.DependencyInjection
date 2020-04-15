@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ray.Infrastructure\Ray.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\0.Share\Ray.Infrastructure\Ray.Infrastructure.csproj" />
   </ItemGroup>
 
 
