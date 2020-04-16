@@ -11,13 +11,12 @@ namespace Ray.Infrastructure.Extensions
         /// <summary>json格式化</summary>
         /// <param name="str">The string.</param>
         /// <returns>System.String.</returns>
-        public static string AsFormatJsonString(this string str)
+        public static string AsFormatJsonStr(this string str)
         {
             var jsonSerializer = new JsonSerializer();
             var jsonTextReader = new JsonTextReader((TextReader)new StringReader(str));
             object obj = jsonSerializer.Deserialize((JsonReader)jsonTextReader);
-            if (obj == null)
-                return str;
+            if (obj == null) return str;
             var stringWriter = new StringWriter();
             var jsonTextWriter1 = new JsonTextWriter((TextWriter)stringWriter)
             {
