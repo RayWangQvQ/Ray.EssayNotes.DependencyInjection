@@ -5,8 +5,9 @@ using System.Reflection;
 using System.Text;
 using Newtonsoft.Json;
 using Microsoft.CSharp;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Ray.Infrastructure.Extensions
+namespace System
 {
     public static class MsDiExtension
     {
@@ -42,6 +43,28 @@ namespace Ray.Infrastructure.Extensions
                 as IEnumerable<object>;
 
             return objList ?? new List<object>();
+        }
+
+        /// <summary>
+        /// 获取容器引擎（ServiceProviderEngine）对象
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <returns></returns>
+        public static object GetEngine(this IServiceProvider serviceProvider)
+        {
+            if (serviceProvider.GetType() == typeof(ServiceProvider))//根容器
+            {
+                return serviceProvider.GetFieldValue("_engine");
+            }
+            if (serviceProvider.GetType().Name.EndsWith("ServiceProviderEngine"))//引擎
+            {
+                return serviceProvider;
+            }
+            if (serviceProvider.GetType().Name.Contains("ServiceProviderEngineScope"))//引擎域
+            {
+                return serviceProvider.GetPropertyValue("Engine");
+            }
+            return null;
         }
     }
 }

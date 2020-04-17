@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
 using Ray.EssayNotes.Di.Further.Test;
-using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.Di.Further
 {
@@ -9,13 +8,17 @@ namespace Ray.EssayNotes.Di.Further
     {
         public static IServiceProvider ServiceProviderRoot { get; set; }
 
+        public static IServiceScope ChildScope1 { get; set; }
+
+        public static IServiceScope ChildScope2 { get; set; }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
 
             while (true)
             {
-                Console.WriteLine($"\r\n请输入测试用例编号：{JsonSerializer.Serialize(TestFactory.Selections).AsFormatJsonStr()}");
+                Console.WriteLine($"\r\n请输入测试用例编号：{TestFactory.Selections.AsFormatJsonStr()}");
                 string num = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(num)) continue;
 

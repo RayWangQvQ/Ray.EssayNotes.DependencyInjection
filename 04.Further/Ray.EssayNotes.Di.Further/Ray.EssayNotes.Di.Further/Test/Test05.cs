@@ -5,42 +5,36 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
-using Ray.Infrastructure.Extensions;
 using Ray.EssayNotes.Di.Further.Extensions;
 
 namespace Ray.EssayNotes.Di.Further.Test
 {
-    [Description("生成一个子域/子容器，查看其内部引擎")]
+    [Description("子域")]
     public class Test05 : TestBase
     {
         public override void Print()
         {
-            using (IServiceScope sub = Program.ServiceProviderRoot.CreateScope())
+            if (Program.ChildScope1 == null)
             {
-                Console.WriteLine($"子域对象：{sub.GetType()}({sub.GetHashCode()})");//子域类型是一个ServiceProviderEngineScope对象（引擎域）
+                var factory = Program.ServiceProviderRoot.GetRequiredService<IServiceScopeFactory>();
+                Program.ChildScope1 = factory.CreateScope();
 
-                var fields = sub.GetFieldsWithValue()
-                    .Where(x => !x.Key.Contains("Backing"))
-                    .ToShowDictionary();
-                Console.WriteLine($"子域（引擎域）字段：{fields.AsFormatJsonStr()}");
-
-                var props = sub.GetPropertiesWithValue()
-                    .ToShowDictionary(); ;
-                Console.WriteLine($"子域（引擎域）属性：{props.AsFormatJsonStr()}");
-
-                //子域下的引擎
-                var engine = sub.GetPropertyValue("Engine");
-                Console.WriteLine($"引擎对象：{engine.GetType()}({engine.GetHashCode()})");
-
-                var engine_fields = engine.GetFieldsWithValue()
-                    .Where(x => !x.Key.Contains("Backing"))
-                    .ToShowDictionary();
-                Console.WriteLine($"引擎字段：{engine_fields.AsFormatJsonStr()}");
-
-                var engine_props = engine.GetPropertiesWithValue()
-                    .ToShowDictionary();
-                Console.WriteLine($"引擎属性：{engine_props.AsFormatJsonStr()}");
+                /**
+                 * 这里是先获取工厂，然后利用工厂生产一个子域
+                 * 相当于把Program.ServiceProviderRoot.CreateScope()拆成两步
+                 */
             }
+
+            Console.WriteLine($"子域对象：{Program.ChildScope1.GetType()}({Program.ChildScope1.GetHashCode()})");//子域类型是一个ServiceProviderEngineScope对象（引擎域）
+
+            var fields = Program.ChildScope1.GetFieldsWithValue()
+                .Where(x => !x.Key.Contains("Backing"))
+                .ToShowDictionary();
+            Console.WriteLine($"子域（引擎域）字段：{fields.AsFormatJsonStr()}");
+
+            var props = Program.ChildScope1.GetPropertiesWithValue()
+                .ToShowDictionary();
+            Console.WriteLine($"子域（引擎域）属性：{props.AsFormatJsonStr()}");
         }
     }
 }

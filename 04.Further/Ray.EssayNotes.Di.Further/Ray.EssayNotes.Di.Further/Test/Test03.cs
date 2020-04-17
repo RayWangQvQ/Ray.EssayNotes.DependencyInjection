@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
-using Ray.Infrastructure.Extensions;
 using Ray.EssayNotes.Di.Further.Extensions;
 
 namespace Ray.EssayNotes.Di.Further.Test

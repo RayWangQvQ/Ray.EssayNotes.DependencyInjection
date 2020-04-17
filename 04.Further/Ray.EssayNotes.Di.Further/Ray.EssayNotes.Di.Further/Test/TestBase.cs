@@ -6,7 +6,6 @@ using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Ray.EssayNotes.Di.ContainerDemo.IServices;
 using Ray.EssayNotes.Di.ContainerDemo.Services;
-using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.Di.Further.Test
 {
