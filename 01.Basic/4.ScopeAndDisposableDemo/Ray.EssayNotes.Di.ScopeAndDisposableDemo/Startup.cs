@@ -26,11 +26,12 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo
         {
             services.AddControllers();
 
-            Test01(services);
+            //Test01(services);
             //Test02(services);
             //Test03(services);
             //Test04(services);
             //Test05(services);
+            Test06(services);
         }
 
         /// <summary>
@@ -78,6 +79,15 @@ namespace Ray.EssayNotes.Di.ScopeAndDisposableDemo
         {
             var instance = new OrderService();
             services.AddSingleton<IOrderService>(instance);
+        }
+
+        /// <summary>
+        /// 测试根域释放，子域会不会被释放
+        /// </summary>
+        /// <param name="services"></param>
+        private void Test06(IServiceCollection services)
+        {
+            services.AddScoped<IOrderService, OrderService>();
         }
 
 

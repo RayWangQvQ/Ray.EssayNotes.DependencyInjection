@@ -30,7 +30,7 @@
 
 ### IServiceProvider£¨ÈİÆ÷£©
 
-Ö»ÓĞÒ»¸öÖ°Ôğ£º»ñÈ¡ÊµÀı¡£
+Ö»ÓĞÒ»¸öÖ°Ôğ£º×÷ÎªÈİÆ÷¶ÔÍâÌá¹©ÊµÀı¶ÔÏó¡£
 
 ÆäÎ´¼Ì³ĞÈÎºÎ½Ó¿Ú£¬Ö»ÓĞÒ»¸öGetService()·½·¨¡£
 
@@ -79,7 +79,10 @@
 
 ### IServiceProviderEngine£¨ÈİÆ÷ÒıÇæ£©
 
-Ö°Ôğ£º
+ÓĞ2¸öÖ°Ôğ£º
+
+* ±£´æÒ»¸öÖ¸Ïò¸ùÓòµÄµØÖ·£¨RootScopeÊôĞÔ£©
+* ±¾ÉíÍ¬Ê±×÷ÎªÒ»¸öÈİÆ÷£¨¼Ì³ĞÁËIServiceProvider½Ó¿Ú£©
 
 
 ±È¼Û¸´ÔÓµÄÒ»¸ö½Ó¿Ú£¬ÄÚ²¿·â×°ÁËÒ»¸öÖ¸Ïò¸ùÓòµÄÒıÓÃ¡£
@@ -97,13 +100,13 @@
 
 ## ¼¸¸öºËĞÄÊµÏÖ
 
-### ServiceProvider£¨ÈİÆ÷£©
+### ServiceProvider£¨¸ùÈİÆ÷£©
 
 Ö÷ÒªÊµÏÖÈİÆ÷¹¦ÄÜ£¨IServiceProvider£©¡£
 
 ¸Ã¶ÔÏó·Ç³£¼òµ¥£¬ÄÚ²¿·â×°ÁËÒ»¸öIServiceProviderEngine£¨ÈİÆ÷ÒıÇæ£©¶ÔÏó£¬ÀûÓÃ´úÀíÄ£Ê½£¬ÈÃÒıÇæÈ¥ÊµÏÖ¾ßÌåµÄÈİÆ÷¹¦ÄÜ¡£
 
-Ä¿µÄÊÇÎªÁËÎªDIÈİÆ÷½øĞĞÒ»²ã·â×°¸ôÀë¡£
+ÕâÑù×öµÄÄ¿µÄÊÇÎªÁËÎªDIÈİÆ÷½øĞĞÒ»²ã·â×°¸ôÀë¡£
 
 ¿ÉÒÔ¿´µ½GetService()±¾ÉíÊ²Ã´¶¼Ã»ÓĞ×ö£¬Ö»ÊÇÖ±½Óµ÷ÓÃµÄÒıÇæµÄGetService()·½·¨£º
 
@@ -123,15 +126,21 @@
 
 ~~~
 
+ÖµµÃÖ¸³öµÄÊÇ£¬ServiceProviderÊÇÒ»¸öÌØÊâµÄÈİÆ÷£¬Ö»ÓĞÓÉServiceCollection´´½¨µÄ¸ùÈİÆ÷²Å»áÊÇ¸ÃÊµÏÖÀàĞÍ¡£
+
+µ±ÎÒÃÇ´´½¨×ÓÈİÆ÷Ê±£¬×ÓÈİÆ÷µÄÀàĞÍ²¢²»ÊÇServiceProviderÀàĞÍ£¬¶øÊÇÏÂÃæ»á½«µÄÒıÇæÓòÊµÏÖÀàĞÍ¡£
+
 ### ServiceProviderEngine£¨ÈİÆ÷ÒıÇæ£©
 
 ±È¼Û¸´ÔÓ£¬¼´ÊµÏÖÁËÈİÆ÷ÒıÇæ¹¦ÄÜ£¨IServiceProviderEngine£©£¬Ò²ÊµÏÖÁËÈİÆ÷¹¦ÄÜ£¨IServiceProvider£©£¬»¹ÊµÏÖÁËÓò¹¤³§¹¦ÄÜ£¨IServiceScopeFactory£©¡£
 
 * ×÷ÎªÈİÆ÷ÒıÇæÖ°Ôğ
 
-RootScope£¨Ö¸Ïò¸ùÓòµÄÒıÓÃ£©Ö¸ÏòµÄÊÇµ±Ç°ÒıÇæËùÔÚµÄÒıÇæÓò¡£
+    + ÒıÇæÖ°Ôğ1£º±£´æÖ¸Ïò¸úÈİÆ÷µÄµØÖ·
 
-RootScopeºÍRoot±¾ÖÊÊÇÍ¬Ò»¸öServiceProviderEngineScope¶ÔÏó£¬Ö»ÊÇ²»Í¬µÄ¶àÌ¬±íÏÖ¶øÒÑ¡£
+RootScopeÊôĞÔ£¨Ö¸Ïò¸ùÓòµÄÒıÓÃ£©Ö¸ÏòµÄÊÇ¸ùÒıÇæÓò¡£
+
+RootScopeºÍRoot±¾ÖÊÊÇÍ¬Ò»¸öÒıÇæÓò¶ÔÏó£¨ServiceProviderEngineScope¶ÔÏó£©£¬Ö»ÊÇ²»Í¬µÄ¶àÌ¬±íÏÖ¶øÒÑ¡£
 
 ~~~
   internal abstract class ServiceProviderEngine : IServiceProviderEngine, IServiceProvider, IDisposable, IAsyncDisposable, IServiceScopeFactory
@@ -160,11 +169,119 @@ RootScopeºÍRoot±¾ÖÊÊÇÍ¬Ò»¸öServiceProviderEngineScope¶ÔÏó£¬Ö»ÊÇ²»Í¬µÄ¶àÌ¬±íÏÖ¶øÒ
 
 ~~~
 
+×¢Òâ£¬ÒıÇæ¶ÔÏóÊÇÎ¨Ò»µÄ£¬¼´Èç¹û²úÉúÁË¶à¸öÓò£¬Ã¿¸öÓòÄÚ¶¼»á°ü¹üÒ»¸öÒıÇæ£¬µ«ÊÇÕâĞ©ËùÓĞµÄÒıÇæÆäÊµ¶¼ÊÇÍ¬Ò»¸ö¶ÔÏó¡£
+
+ÒıÇæ¶ÔÏóµÄ´´½¨ÊÇÔÚ´´½¨¸ùÈİÆ÷£¨ServiceProvider£©Ê±·¢ÉúµÄ£º
+
+~~~
+    public sealed class ServiceProvider : IServiceProvider, IDisposable, IServiceProviderEngineCallback, IAsyncDisposable
+    {
+        private readonly IServiceProviderEngine _engine;
+
+        internal ServiceProvider(IEnumerable<ServiceDescriptor> serviceDescriptors, ServiceProviderOptions options)
+        {
+            switch (options.Mode)
+            {
+                case ServiceProviderMode.Default:
+                    if (RuntimeFeature.IsSupported("IsDynamicCodeCompiled"))
+                    {
+                        _engine = new DynamicServiceProviderEngine(serviceDescriptors, callback);
+                    }
+                    else
+                    {
+                        _engine = new RuntimeServiceProviderEngine(serviceDescriptors, callback);
+                    }
+                    break;
+                case ServiceProviderMode.Dynamic:
+                    _engine = new DynamicServiceProviderEngine(serviceDescriptors, callback);
+                    break;
+                case ServiceProviderMode.Runtime:
+                    _engine = new RuntimeServiceProviderEngine(serviceDescriptors, callback);
+                    break;
+                case ServiceProviderMode.ILEmit:
+                    _engine = new ILEmitServiceProviderEngine(serviceDescriptors, callback);
+                    break;
+                case ServiceProviderMode.Expressions:
+                    _engine = new ExpressionsServiceProviderEngine(serviceDescriptors, callback);
+                    break;
+                default:
+                    throw new NotSupportedException("Mode");
+            }
+            //...
+        }
+    }
+
+~~~
+
+ÇÒµÚÒ»´Î´´½¨ÒıÇæ¶ÔÏóÊ±£¬ÒıÇæ»á´´½¨°ü¹ü×Ô¼ºµÄÒıÇæÓò£¨ServiceProviderEngineScope£©£¬¸ÃÒıÇæÓò¾ÍÊÇ¸ùÓò¡£
+
+¶øÒÔºó´´½¨×ÓÓò£¨×ÓÒıÇæÓò£©Ê±£¬×öµÄÖ»ÊÇnewÒ»¸öÒıÇæÓò£¬²¢°ÑÒıÇæµÄÒıÓÃ·Åµ½¸Ã×ÓÒıÇæÓòÖĞ¡£
+
+ËùÒÔ¸ùÓòºÍ×ÓÓòµÄ´´½¨Á÷³ÌÊÇ£º
+
+* ¶Ô¸ùÓòÀ´Ëµ£¬ÊÇ¸ùÈİÆ÷£¨ServiceProvider£©ÏÈ´´½¨ÒıÇæ¶ÔÏó£¨ÒıÇæ×÷Îª¸úÈİÆ÷µÄÒ»¸öË½ÓĞ±äÁ¿£©£¬ÔÚ¹¹ÔìÒıÇæÊ±£¬ÒıÇæ»áÖ÷¶¯newÒ»¸öÒıÇæÓò£¬²¢°Ñ×Ô¼ºµÄÒıÓÃ·Å½øÁËÕâ¸öÒıÇæÓòµÄÍ¬Ê±£¬Ò²½«×Ô¼ºµÄRootScopeÖ¸Ïò¸ÃÓò¡£
+* ¶Ô×ÓÓòÀ´Ëµ£¬ÊÇÒıÇæ¶ÔÏó×÷Îª¹¤³§Ö°ÄÜ£¬È¥´´½¨ÁËÒ»¸ö×ÓÒıÇæÓò¶ÔÏó£¬¸Ã×ÓÒıÇæÓò¶ÔÏóËù°ü¹üµÄÒıÇæÊôĞÔ£¨Engine£©Ö¸Ïò×Ô¼º¡£
+
+    + ÒıÇæÖ°Ôğ2£º±¾Éí×÷ÎªÒ»¸öÈİÆ÷
+
+    ·Åµ½ÏÂÃæµÄÈİÆ÷Ö°ÄÜ·ÖÎö¡£
+
+* ×÷ÎªÈİÆ÷Ö°ÄÜ
+
+ÒıÇæ¶ÔÏóÍ¬Ê±Ò²ÊµÏÖÁËIServiceProviderÈİÆ÷Ö°ÄÜ£¬¸ÃÖ°ÄÜ²»¶ÔÍâ¿ª·Å£¬Ö»ÊÇ×÷ÎªÈİÆ÷/ÓòµÄ´úÀíÊµÏÖ£¬ÈİÆ÷¶¼ÊÇÍ¨¹ıÒıÇæ¶ÔÏóÀ´ÊµÏÖ»ñÈ¡ÊµÀıµÄ¹¦ÄÜ¡£
+
+* ×÷ÎªÓò¹¤³§Ö°ÄÜ
+
+ÒıÇæ»¹×öÎªÓò¹¤³§£¬¸ºÔğÉú³É×ÓÓò£¨ServiceProviderEngineScope£©¡£
+
+ÎÒÃÇ´´½¨×ÓÓòµÄCreateScope()À©Õ¹·½·¨ÄÚ²¿ÊÇÕâÑùÊµÏÖ£º
+
+~~~
+    public static class ServiceProviderServiceExtensions
+    {
+        //
+        // ÕªÒª:
+        //     Creates a new Microsoft.Extensions.DependencyInjection.IServiceScope that can
+        //     be used to resolve scoped services.
+        //
+        // ²ÎÊı:
+        //   provider:
+        //     The System.IServiceProvider to create the scope from.
+        //
+        // ·µ»Ø½á¹û:
+        //     A Microsoft.Extensions.DependencyInjection.IServiceScope that can be used to
+        //     resolve scoped services.
+        public static IServiceScope CreateScope(this IServiceProvider provider)
+        {
+            return provider.GetRequiredService<IServiceScopeFactory>().CreateScope();
+        }
+        //...
+    }
+
+~~~
+
+¿ÉÒÔ¿´µ½£¬ÆäÊµ×öÁË2²½£¬Ê×ÏÈ´ÓÈİÆ÷ÖĞ»ñÈ¡IServiceScopeFactoryÓò¹¤³§£¬ÕâÀï»ñÈ¡µÄÓò¹¤³§ÆäÊµ¾ÍÊÇÒıÇæ¶ÔÏó£»È»ºóµ÷ÓÃÒıÇæ¶ÔÏóµÄCreateScope·½·¨´´½¨×ÓÒıÇæÓò£º
+
+~~~
+    internal abstract class ServiceProviderEngine : IServiceProviderEngine, IServiceProvider, IDisposable, IAsyncDisposable, IServiceScopeFactory
+    {
+        public IServiceScope CreateScope()
+        {
+            if (_disposed)
+            {
+                ThrowHelper.ThrowObjectDisposedException();
+            }
+            return new ServiceProviderEngineScope(this);
+        }
+    }
+
+~~~
+
 ### ServiceProviderEngineScope£¨ÒıÇæÓò£©
 
 ¼´ÊµÏÖÁËÓòÖ°Ôğ£¨IServiceScope£©£¬Ò²ÊµÏÖÁËÈİÆ÷Ö°Ôğ£¨IServiceProvider£©¡£
 
-¹¹ÔìÊ±ĞèÒª´«ÈëÒ»¸öÒıÇæ¶ÔÏó£º
+¹¹ÔìÊ±±ØĞë´«ÈëÒıÇæ¶ÔÏó£¬ÒıÇæÓòÊ¹ÓÃ×Ô¼ºµÄEngineÊôĞÔ¼ÇÂ¼ÒıÇæ¶ÔÏóµÄµØÖ·£º
 
 ~~~
   internal class ServiceProviderEngineScope : IServiceScope, IDisposable, IServiceProvider, IAsyncDisposable
