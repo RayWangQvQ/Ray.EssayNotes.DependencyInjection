@@ -128,7 +128,7 @@
 
 ÖµµÃÖ¸³öµÄÊÇ£¬ServiceProviderÊÇÒ»¸öÌØÊâµÄÈİÆ÷£¬Ö»ÓĞÓÉServiceCollection´´½¨µÄ¸ùÈİÆ÷²Å»áÊÇ¸ÃÊµÏÖÀàĞÍ¡£
 
-µ±ÎÒÃÇ´´½¨×ÓÈİÆ÷Ê±£¬×ÓÈİÆ÷µÄÀàĞÍ²¢²»ÊÇServiceProviderÀàĞÍ£¬¶øÊÇÏÂÃæ»á½«µÄÒıÇæÓòÊµÏÖÀàĞÍ¡£
+µ±ÎÒÃÇ´´½¨×ÓÈİÆ÷Ê±£¬×ÓÈİÆ÷µÄÀàĞÍ²¢²»ÊÇServiceProviderÀàĞÍ£¬¶øÊÇÏÂÃæ»á½²µÄÒıÇæÓò£¨ServiceProviderEngineScope£©ÊµÏÖÀàĞÍ¡£
 
 ### ServiceProviderEngine£¨ÈİÆ÷ÒıÇæ£©
 
@@ -156,7 +156,7 @@ RootScopeºÍRoot±¾ÖÊÊÇÍ¬Ò»¸öÒıÇæÓò¶ÔÏó£¨ServiceProviderEngineScope¶ÔÏó£©£¬Ö»ÊÇ²»Í
 
     public ServiceProviderEngineScope Root { get; }
 
-    public IServiceScope RootScope
+    public IServiceScope RootScope=>(IServiceScope) this.Root;
     {
       get
       {
@@ -304,7 +304,7 @@ RootScopeºÍRoot±¾ÖÊÊÇÍ¬Ò»¸öÒıÇæÓò¶ÔÏó£¨ServiceProviderEngineScope¶ÔÏó£©£¬Ö»ÊÇ²»Í
 
     ¼´ÔÚÓò±»ÊÍ·ÅÇ°£¬»áµ÷ÓÃÓòµÄDispose()·½·¨£¬¸Ã·½·¨»áÈ¥±éÀúÓòÄÚµÄ¿ÉÊÍ·ÅÊµÀı³Ø£¬°¤¸öÖ´ĞĞÊµÀıµÄDisposable·½·¨ÊµÏÖ¶ÔÄÚ´æ×ÊÔ´µÄÊÍ·Å¡£
 
-    ~~~
+~~~
 
   internal class ServiceProviderEngineScope : IServiceScope, IDisposable, IServiceProvider, IAsyncDisposable
   {
@@ -343,16 +343,16 @@ RootScopeºÍRoot±¾ÖÊÊÇÍ¬Ò»¸öÒıÇæÓò¶ÔÏó£¨ServiceProviderEngineScope¶ÔÏó£©£¬Ö»ÊÇ²»Í
     //...
   }
 
-    ~~~
+~~~
 
     + ·â×°ÈİÆ÷¹¦ÄÜ
 
     ·â×°°ü¹üµÄÈİÆ÷¶ÔÏóÖ¸Ïò×Ô¼º±¾Éí¡£
 
-    ~~~
+~~~
   internal class ServiceProviderEngineScope : IServiceScope, IDisposable, IServiceProvider, IAsyncDisposable
   {
-    public IServiceProvider ServiceProvider
+    public IServiceProvider ServiceProvider => (IServiceProvider) this;
     {
       get
       {
@@ -361,7 +361,7 @@ RootScopeºÍRoot±¾ÖÊÊÇÍ¬Ò»¸öÒıÇæÓò¶ÔÏó£¨ServiceProviderEngineScope¶ÔÏó£©£¬Ö»ÊÇ²»Í
     }
     //...
   }
-    ~~~
+~~~
 
 * ×÷ÎªÈİÆ÷Ö°Ôğ
 

@@ -17,6 +17,8 @@ namespace Ray.EssayNotes.Di.Further.Test
             if (Program.ChildScope1 == null)
                 Program.ChildScope1 = Program.ServiceProviderRoot.CreateScope();
 
+            Program.ChildScope1.ServiceProvider.CreateScope();
+
             //子域下的引擎
             var engine = Program.ChildScope1.GetPropertyValue("Engine");
             Console.WriteLine($"子域下的引擎对象：{engine.GetType()}({engine.GetHashCode()})");
