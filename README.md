@@ -2,8 +2,10 @@
 
 ## 文章目录
 
-* [01.Ray.EssayNotes.AutoFac：控制反转/依赖注入理论入门、Autofac使用](https://github.com/WangRui321/Ray.EssayNotes.DependencyInjection/blob/master/01.Ray.EssayNotes.AutoFac/README.md)
-* [02.Ray.EssayNotes.DependencyInjection：自己实现一个简单的依赖注入容器](https://github.com/WangRui321/Ray.EssayNotes.DependencyInjection/tree/master/02.Ray.EssayNotes.DependencyInjection)
+* [01.Basic：基础知识与应用]()
+* [02.DIY：自己实现一个精简的类似.NET Core的依赖注入容器](https://github.com/WangRui321/Ray.EssayNotes.DependencyInjection/tree/master/02.Ray.EssayNotes.DependencyInjection)
+* [03.Auto：项目继承Autofac与特殊用法](https://github.com/WangRui321/Ray.EssayNotes.DependencyInjection/blob/master/01.Ray.EssayNotes.AutoFac/README.md)
+* [04.Futher：进(rù)阶(tǔ)]()
 
 ---
 
