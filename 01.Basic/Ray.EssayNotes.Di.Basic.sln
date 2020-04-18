@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Share", "0.Share", "{609A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.ContainerDemo", "1.ContainerDemo", "{74E475C1-9354-4CD6-9591-45ACC5F26FAF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.ContainerDemo", "1.ContainerDemo\Ray.EssayNotes.Di.ContainerDemo\Ray.EssayNotes.Di.ContainerDemo.csproj", "{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.StartupDemo", "2.StartupDemo\Ray.EssayNotes.Di.StartupDemo\Ray.EssayNotes.Di.StartupDemo.csproj", "{94EE7FCD-FA01-42A4-9434-B97DBBF33895}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.DiDemo", "3.DiDemo\Ray.EssayNotes.Di.DiDemo\Ray.EssayNotes.Di.DiDemo.csproj", "{FA9055D7-C856-4A45-B7D9-7A50F40D9225}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.ScopeAndDisposableDemo", "4.ScopeAndDisposableDemo\Ray.EssayNotes.Di.ScopeAndDisposableDemo\Ray.EssayNotes.Di.ScopeAndDisposableDemo.csproj", "{44144F93-E671-423C-9614-1480DAB59D4F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.Infrastructure", "0.Share\Ray.Infrastructure\Ray.Infrastructure.csproj", "{54D88113-7EC9-4009-A37D-3293E6518824}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.ContainerDemo", "1.ContainerDemo\Ray.EssayNotes.Di.ContainerDemo.csproj", "{664D65AF-07A1-43FA-BC6C-394567415CE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.StartupDemo", "2.StartupDemo\Ray.EssayNotes.Di.StartupDemo.csproj", "{90DD7A18-BCB2-4022-9F87-477418901ECD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.DiDemo", "3.DiDemo\Ray.EssayNotes.Di.DiDemo.csproj", "{183737C0-E3F5-4418-8380-18CFD3C9D405}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.ScopeAndDisposableDemo", "4.ScopeAndDisposableDemo\Ray.EssayNotes.Di.ScopeAndDisposableDemo.csproj", "{C57D5A48-C2DC-40AE-9B40-53F5500861C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,36 +29,36 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94EE7FCD-FA01-42A4-9434-B97DBBF33895}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA9055D7-C856-4A45-B7D9-7A50F40D9225}.Release|Any CPU.Build.0 = Release|Any CPU
-		{44144F93-E671-423C-9614-1480DAB59D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44144F93-E671-423C-9614-1480DAB59D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44144F93-E671-423C-9614-1480DAB59D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44144F93-E671-423C-9614-1480DAB59D4F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54D88113-7EC9-4009-A37D-3293E6518824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{54D88113-7EC9-4009-A37D-3293E6518824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54D88113-7EC9-4009-A37D-3293E6518824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54D88113-7EC9-4009-A37D-3293E6518824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664D65AF-07A1-43FA-BC6C-394567415CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664D65AF-07A1-43FA-BC6C-394567415CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664D65AF-07A1-43FA-BC6C-394567415CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664D65AF-07A1-43FA-BC6C-394567415CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90DD7A18-BCB2-4022-9F87-477418901ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DD7A18-BCB2-4022-9F87-477418901ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DD7A18-BCB2-4022-9F87-477418901ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DD7A18-BCB2-4022-9F87-477418901ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{183737C0-E3F5-4418-8380-18CFD3C9D405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183737C0-E3F5-4418-8380-18CFD3C9D405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183737C0-E3F5-4418-8380-18CFD3C9D405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183737C0-E3F5-4418-8380-18CFD3C9D405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57D5A48-C2DC-40AE-9B40-53F5500861C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57D5A48-C2DC-40AE-9B40-53F5500861C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57D5A48-C2DC-40AE-9B40-53F5500861C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57D5A48-C2DC-40AE-9B40-53F5500861C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{69411780-4CFF-49F9-BFC2-2453E7F3BD2D} = {74E475C1-9354-4CD6-9591-45ACC5F26FAF}
-		{94EE7FCD-FA01-42A4-9434-B97DBBF33895} = {ADE30784-BB9B-4CEC-A25C-568B6FA8AEA2}
-		{FA9055D7-C856-4A45-B7D9-7A50F40D9225} = {1E21B084-075E-470A-B22B-B405B87AB944}
-		{44144F93-E671-423C-9614-1480DAB59D4F} = {282B9561-1703-4A2A-8BA3-A62BD6E3EB7E}
 		{54D88113-7EC9-4009-A37D-3293E6518824} = {609A6331-2055-49E4-B0CF-967E3E166192}
+		{664D65AF-07A1-43FA-BC6C-394567415CE9} = {74E475C1-9354-4CD6-9591-45ACC5F26FAF}
+		{90DD7A18-BCB2-4022-9F87-477418901ECD} = {ADE30784-BB9B-4CEC-A25C-568B6FA8AEA2}
+		{183737C0-E3F5-4418-8380-18CFD3C9D405} = {1E21B084-075E-470A-B22B-B405B87AB944}
+		{C57D5A48-C2DC-40AE-9B40-53F5500861C2} = {282B9561-1703-4A2A-8BA3-A62BD6E3EB7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1B23EF1-30FB-4352-A628-EEE59391AF6D}
