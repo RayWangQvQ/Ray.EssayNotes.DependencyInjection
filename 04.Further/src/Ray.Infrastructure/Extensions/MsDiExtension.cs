@@ -52,7 +52,7 @@ namespace System
         /// <returns></returns>
         public static object GetEngine(this IServiceProvider serviceProvider)
         {
-            if (serviceProvider.GetType() == typeof(ServiceProvider))//根容器
+            if (serviceProvider is ServiceProvider)//根容器
             {
                 return serviceProvider.GetFieldValue("_engine");
             }

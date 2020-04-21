@@ -17,6 +17,7 @@ namespace Ray.EssayNotes.Di.Further.Test
             Program.ServiceProviderRoot = new ServiceCollection()
                 .AddTransient<IMyTransientService, MyTransientService>()
                 .AddSingleton<IMySingletonService, MySingletonService>()
+                .AddScoped<IMyScopedService, MyScopedOtherService>()
                 .AddScoped<IMyScopedService, MyScopedService>()
                 .BuildServiceProvider();
         }
