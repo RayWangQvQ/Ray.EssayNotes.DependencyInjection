@@ -9,43 +9,61 @@ using Ray.EssayNotes.Di.Further.Extensions;
 using System.Diagnostics;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using Ray.EssayNotes.Di.ContainerDemo.IServices;
+using Ray.EssayNotes.Di.ContainerDemo.Services;
 
 namespace Ray.EssayNotes.Di.Further.Test
 {
-    [Description("容器中的【服务描述池】")]
+    [Description("向待解析对象中注入容器")]
     public class Test08 : TestBase
     {
-        public override void Print()
+        public override void ReBuildContainer()
         {
-            List<ServiceDescriptor> serviceDescriptorList = Program.ServiceProviderRoot
-                .GetEngine()
-                .GetPropertyValue("CallSiteFactory")
-                .GetFieldValue("_descriptors")
-                as List<ServiceDescriptor>;
-
-            serviceDescriptorList?.ForEach(x =>
-            {
-                string s = x.ToString();//ServiceDescriptor重写了ToString()方法
-
-                s = s.Replace("ServiceType: ", "\"ServiceType\":\"");
-                s = s.Replace(" Lifetime: ", "\", \"Lifetime\":\"");
-                s = s.Replace(" ImplementationType: ", "\", \"ImplementationType\":\"");
-                s = $"{{{s}\"}}";
-
-                Console.WriteLine(s.AsFormatJsonStr());
-            });
-
-
-
-            /**
-             * 可以看到，服务描述池在引擎对象中
-             * 我们用于注册的ServiceCollection其本质就是一个List<ServiceDescriptor>
-             * 当执行Build方法时，这个服务描述集合会封装到CallSiteFactory对象的_descriptors私有字段中，CallSiteFactory作为引擎的一个属性
-             * 所以，由于引擎对象的唯一性，服务描述池也是唯一的
-             * 这也符合我们的常识，因为对服务的描述是不需要区分范围域，任何一个域需要解析对象，都只需要到同一个服务描述池中获取描述信息就行了
-             */
-
+            Program.ServiceProviderRoot = new ServiceCollection()
+                .AddSingleton<SingletonService>()
+                .AddScoped<ScopedService>()
+                .AddTransient<TransientService>()
+                .BuildServiceProvider();
         }
 
+        public override void Print()
+        {
+            using (var childScope = Program.ServiceProviderRoot.CreateScope())
+            {
+                var childServiceProvider = childScope.ServiceProvider;
+                var singletonService = childServiceProvider.GetRequiredService<SingletonService>();
+                var scopedService = childServiceProvider.GetRequiredService<ScopedService>();
+                var transientService = childServiceProvider.GetRequiredService<TransientService>();
+
+                Console.WriteLine($"根容器（ServiceProvider对象）:{Program.ServiceProviderRoot.GetHashCode()}");
+                Console.WriteLine($"根域：{Program.ServiceProviderRoot.GetRequiredService<IServiceProvider>().GetHashCode()}");
+
+                Console.WriteLine($"子容器：{childServiceProvider.GetHashCode()}");
+                Console.WriteLine($"子域：{childScope.GetHashCode()}");
+
+                Console.WriteLine($"\r\n单例对象中注入的容器：{singletonService.ApplicationServices.GetHashCode()}");
+                Console.WriteLine($"域内单例对象注入的容器：{scopedService.RequestServices.GetHashCode()}");
+                Console.WriteLine($"瞬时实例对象注入的容器：{transientService.RequestServices.GetHashCode()}");
+            }
+        }
+
+
+        public class SingletonService
+        {
+            public IServiceProvider ApplicationServices { get; }
+            public SingletonService(IServiceProvider serviceProvider) => ApplicationServices = serviceProvider;
+        }
+
+        public class ScopedService
+        {
+            public IServiceProvider RequestServices { get; }
+            public ScopedService(IServiceProvider serviceProvider) => RequestServices = serviceProvider;
+        }
+
+        public class TransientService
+        {
+            public IServiceProvider RequestServices { get; }
+            public TransientService(IServiceProvider serviceProvider) => RequestServices = serviceProvider;
+        }
     }
 }

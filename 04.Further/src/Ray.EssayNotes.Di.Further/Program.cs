@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
+using Ray.EssayNotes.Di.ContainerDemo.IServices;
+using Ray.EssayNotes.Di.ContainerDemo.Services;
 using Ray.EssayNotes.Di.Further.Test;
 
 namespace Ray.EssayNotes.Di.Further
@@ -15,6 +17,13 @@ namespace Ray.EssayNotes.Di.Further
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Program.ServiceProviderRoot = new ServiceCollection()
+                .AddTransient<IMyTransientService, MyTransientService>()
+                .AddSingleton<IMySingletonService, MySingletonService>()
+                .AddScoped<IMyScopedService, MyScopedOtherService>()
+                .AddScoped<IMyScopedService, MyScopedService>()
+                .BuildServiceProvider();
 
             while (true)
             {
