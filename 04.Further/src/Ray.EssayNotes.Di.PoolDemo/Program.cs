@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using Ray.EssayNotes.Di.ContainerDemo.IServices;
-using Ray.EssayNotes.Di.ContainerDemo.Services;
-using Ray.EssayNotes.Di.Further.Test;
+using Ray.EssayNotes.Di.PoolDemo.IServices;
+using Ray.EssayNotes.Di.PoolDemo.Services;
+using Ray.EssayNotes.Di.PoolDemo.Test;
 
-namespace Ray.EssayNotes.Di.Further
+namespace Ray.EssayNotes.Di.PoolDemo
 {
     class Program
     {
@@ -12,16 +12,6 @@ namespace Ray.EssayNotes.Di.Further
         /// 根容器
         /// </summary>
         public static IServiceProvider ServiceProviderRoot { get; set; }
-
-        /// <summary>
-        /// 持久化一个子域1，不释放
-        /// </summary>
-        public static IServiceScope ChildScope1 { get; set; }
-
-        /// <summary>
-        /// 持久化一个子域2，不释放
-        /// </summary>
-        public static IServiceScope ChildScope2 { get; set; }
 
         static void Main(string[] args)
         {

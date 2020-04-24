@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.Infrastructure", "Ray.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.Further", "Ray.EssayNotes.Di.Further\Ray.EssayNotes.Di.Further.csproj", "{47D6C0AE-53D5-4780-B399-FCC3CDD2F847}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.Di.PoolDemo", "Ray.EssayNotes.Di.PoolDemo\Ray.EssayNotes.Di.PoolDemo.csproj", "{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{47D6C0AE-53D5-4780-B399-FCC3CDD2F847}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47D6C0AE-53D5-4780-B399-FCC3CDD2F847}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47D6C0AE-53D5-4780-B399-FCC3CDD2F847}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
