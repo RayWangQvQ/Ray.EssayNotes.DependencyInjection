@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ray.EssayNotes.Di.PoolDemo.Test
@@ -11,12 +12,9 @@ namespace Ray.EssayNotes.Di.PoolDemo.Test
         public override void Run()
         {
             List<ServiceDescriptor> serviceDescriptorList = Program.ServiceProviderRoot
-                .GetEngine()//拿到引擎对象
-                .GetPropertyValue("CallSiteFactory")//拿到引擎的CallSiteFactory属性（CallSiteFactory对象）
-                .GetFieldValue("_descriptors")//CallSiteFactory对象内的_descriptors字段即是服务描述集合
-                as List<ServiceDescriptor>;
+                .GetServiceDescriptorsFromScope().ToList();
 
-            serviceDescriptorList?.ForEach(x =>
+            serviceDescriptorList.ForEach(x =>
             {
                 Console.WriteLine(x.ToString());//ServiceDescriptor重写了ToString()方法
             });
