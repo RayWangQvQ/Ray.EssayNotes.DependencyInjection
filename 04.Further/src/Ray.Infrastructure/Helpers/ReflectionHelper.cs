@@ -1,4 +1,4 @@
-﻿//系统包
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -62,6 +62,18 @@ namespace Ray.Infrastructure.Helpers
                 list.Add(assembly);
             }
             return list.ToArray();
+        }
+
+        /// <summary>
+        /// 是否为可空类型
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static bool IsNullableType(Type t)
+        {
+            if (t.IsGenericType)
+                return t.GetGenericTypeDefinition() == typeof(Nullable<>);
+            return false;
         }
     }
 }

@@ -17,11 +17,14 @@ namespace Ray.EssayNotes.Di.PoolDemo
         {
             Console.WriteLine("Hello World!");
 
+            TestSingletonService testSingletonService = new TestSingletonService();
+
             Program.ServiceProviderRoot = new ServiceCollection()
                 .AddTransient<IMyTransientService, MyTransientService>()
                 .AddSingleton<IMySingletonService, MySingletonService>()
                 .AddScoped<IMyScopedService, MyScopedOtherService>()
                 .AddScoped<IMyScopedService, MyScopedService>()
+                .AddSingleton(testSingletonService)
                 .BuildServiceProvider();
 
             while (true)

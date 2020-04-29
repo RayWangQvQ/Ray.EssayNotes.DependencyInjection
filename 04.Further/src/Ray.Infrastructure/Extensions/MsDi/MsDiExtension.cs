@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using Newtonsoft.Json;
-using Microsoft.CSharp;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Ray.Infrastructure.Extensions.MsDi;
+using Ray.Infrastructure.Helpers;
 
 namespace System
 {
@@ -63,21 +61,34 @@ namespace System
                 as IEnumerable<ServiceDescriptor>;
         }
 
-
         /// <summary>
         /// 获取容器内的实例池中已持久化的实例集合
         /// </summary>
         /// <param name="serviceProvider">容器</param>
         /// <returns></returns>
-        public static IEnumerable<object> GetResolvedServicesFromScope(this IServiceProvider serviceProvider)
+        public static Dictionary<ServiceCacheKeyDto, object> GetResolvedServicesFromScope(this IServiceProvider serviceProvider)
         {
-            var objList = serviceProvider
-                    .GetRequiredService<IServiceProvider>()//引擎域
-                    .GetPropertyValue("ResolvedServices")//返回Dictionary<Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceCacheKey,object>的装箱后的object，注意ServiceCacheKey为internal struct
-                    .GetPropertyValue("Values")
-                as IEnumerable<object>;
+            Dictionary<ServiceCacheKeyDto, object> result = new Dictionary<ServiceCacheKeyDto, object>();
 
-            return objList ?? new List<object>();
+            object obj = serviceProvider
+                .GetRequiredService<IServiceProvider>() //引擎域
+                .GetPropertyValue("ResolvedServices"); //返回Dictionary<Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceCacheKey,object>的装箱后的object，注意ServiceCacheKey为internal struct
+
+            List<ServiceCacheKeyDto> keys = obj.GetPropertyValue("Keys")
+                .AsJsonStr(false)
+                .JsonDeserialize<IEnumerable<ServiceCacheKeyDto>>(false)
+                .ToList();
+
+            List<object> values = ((IEnumerable<object>)obj.GetPropertyValue("Values"))
+                .ToList();
+
+
+            for (int i = 0; i < keys.Count(); i++)
+            {
+                result.Add(keys[i], values[i]);
+            }
+
+            return result;
         }
 
         /// <summary>

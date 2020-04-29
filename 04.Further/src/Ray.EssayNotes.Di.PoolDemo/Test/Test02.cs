@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Ray.EssayNotes.Di.PoolDemo.IServices;
+using Ray.EssayNotes.Di.PoolDemo.Services;
+using Ray.Infrastructure.Extensions.MsDi;
 
 namespace Ray.EssayNotes.Di.PoolDemo.Test
 {
@@ -15,13 +18,11 @@ namespace Ray.EssayNotes.Di.PoolDemo.Test
             Program.ServiceProviderRoot.GetService<IMyTransientService>();
             Program.ServiceProviderRoot.GetService<IMySingletonService>();
             Program.ServiceProviderRoot.GetService<IMyScopedService>();
+            Program.ServiceProviderRoot.GetService<TestSingletonService>();
 
-            var resolvedServices = Program.ServiceProviderRoot.GetResolvedServicesFromScope();
-            Console.WriteLine("持久化实例池：");
-            foreach (var obj in resolvedServices)
-            {
-                Console.WriteLine(obj);
-            }
+            var resolvedServices = Program.ServiceProviderRoot.GetResolvedServicesFromScope()
+                .ToDictionary(x => x.Key.Type.Name, x => x.Value);
+            Console.WriteLine($"持久化实例池：{resolvedServices.AsFormatJsonStr(false)}");
 
             using (var childScope = Program.ServiceProviderRoot.CreateScope())
             {
@@ -31,13 +32,11 @@ namespace Ray.EssayNotes.Di.PoolDemo.Test
                 childServiceProvider.GetService<IMyTransientService>();
                 childServiceProvider.GetService<IMySingletonService>();
                 childServiceProvider.GetService<IMyScopedService>();
+                childServiceProvider.GetService<TestSingletonService>();
 
-                var childResoledServices = childServiceProvider.GetResolvedServicesFromScope();
-                Console.WriteLine("持久化实例池：");
-                foreach (var obj in childResoledServices)
-                {
-                    Console.WriteLine(obj);
-                }
+                var childResoledServices = childServiceProvider.GetResolvedServicesFromScope()
+                    .ToDictionary(x => x.Key.Type.Name, x => x.Value); ;
+                Console.WriteLine($"持久化实例池：{childResoledServices.AsFormatJsonStr(false)}");
             }
         }
 

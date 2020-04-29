@@ -1,13 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace System
 {
     public static class Json_StringExtension
     {
-        /// <summary>json格式化</summary>
+        /// <summary>
+        /// 反序列化
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="str"></param>
+        /// <param name="useSystem">是否使用系统json</param>
+        /// <returns></returns>
+        public static T JsonDeserialize<T>(this string str, bool useSystem = true)
+        {
+            return useSystem
+                ? System.Text.Json.JsonSerializer.Deserialize<T>(str)
+                : Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str);
+        }
+
+        /// <summary>将json字符串加工为格式化字符串</summary>
         /// <param name="str">The string.</param>
         /// <returns>System.String.</returns>
         public static string AsFormatJsonStr(this string str)
