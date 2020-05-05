@@ -7,7 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.Infrastructure", "Ray.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.Further", "Ray.EssayNotes.Di.Further\Ray.EssayNotes.Di.Further.csproj", "{47D6C0AE-53D5-4780-B399-FCC3CDD2F847}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.Di.PoolDemo", "Ray.EssayNotes.Di.PoolDemo\Ray.EssayNotes.Di.PoolDemo.csproj", "{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ray.EssayNotes.Di.PoolDemo", "Ray.EssayNotes.Di.PoolDemo\Ray.EssayNotes.Di.PoolDemo.csproj", "{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Futher", "1.Futher", "{46816450-FCC5-4E47-BAA3-03AFEDDFE632}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Pool", "2.Pool", "{73F23EF7-57B7-47E0-BB75-666F0793BAE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Init", "3.Init", "{88DF11A0-53F1-43E8-9E66-A75673F42AB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.EssayNotes.Di.InitDemo", "Ray.EssayNotes.Di.InitDemo\Ray.EssayNotes.Di.InitDemo.csproj", "{927D6A2B-C0FD-478E-814B-20A2D6A09D12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +35,18 @@ Global
 		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{927D6A2B-C0FD-478E-814B-20A2D6A09D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{927D6A2B-C0FD-478E-814B-20A2D6A09D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{927D6A2B-C0FD-478E-814B-20A2D6A09D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{927D6A2B-C0FD-478E-814B-20A2D6A09D12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47D6C0AE-53D5-4780-B399-FCC3CDD2F847} = {46816450-FCC5-4E47-BAA3-03AFEDDFE632}
+		{E61ABF56-BF6A-46C2-87F9-3ED5967FB76E} = {73F23EF7-57B7-47E0-BB75-666F0793BAE2}
+		{927D6A2B-C0FD-478E-814B-20A2D6A09D12} = {88DF11A0-53F1-43E8-9E66-A75673F42AB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {212D6F2E-8D37-4D18-969B-3034CCE7526E}

@@ -5,13 +5,6 @@ namespace System
 {
     public static class Json_StringExtension
     {
-        /// <summary>
-        /// 反序列化
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="str"></param>
-        /// <param name="useSystem">是否使用系统json</param>
-        /// <returns></returns>
         public static T JsonDeserialize<T>(this string str, bool useSystem = true)
         {
             return useSystem
@@ -19,7 +12,7 @@ namespace System
                 : Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str);
         }
 
-        /// <summary>将json字符串加工为格式化字符串</summary>
+        /// <summary>json格式化</summary>
         /// <param name="str">The string.</param>
         /// <returns>System.String.</returns>
         public static string AsFormatJsonStr(this string str)

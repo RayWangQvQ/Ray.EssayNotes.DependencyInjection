@@ -8,10 +8,5 @@ namespace Ray.Infrastructure.Extensions.MsDi
     {
         public Type Type { get; set; }
         public int Slot { get; set; }
-
-        public override string ToString()
-        {
-            return $"Type:{Type.FullName}";
-        }
     }
 }

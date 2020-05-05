@@ -49,6 +49,7 @@ namespace System
 
         /// <summary>
         /// 获取容器中的服务描述池
+        /// (序列化时建议忽略部分过长的属性："UsePollingFileWatcher", "Action", "Method", "Assembly" )
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
