@@ -34,13 +34,13 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkApi.Controllers
                 {"_myDbContext2", _myDbContext2.GetHashCode()},
             };
 
-            using (var scope = MyContainer.Root.BeginLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag))
+            using (var scope = RayContainer.AutofacRootScope.BeginLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag))
             {
                 var instance = scope.Resolve<MyDbContext>();
                 dic.Add("instance1", instance.GetHashCode());
             }
 
-            using (var scope = MyContainer.Root.BeginLifetimeScope())
+            using (var scope = RayContainer.AutofacRootScope.BeginLifetimeScope())
             {
                 var instance = scope.Resolve<MyDbContext>();
                 dic.Add("instance2", instance.GetHashCode());

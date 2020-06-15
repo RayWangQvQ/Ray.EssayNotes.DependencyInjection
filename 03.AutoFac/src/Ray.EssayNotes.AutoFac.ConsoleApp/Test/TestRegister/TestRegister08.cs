@@ -19,7 +19,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
             string name = "";
             try
             {
-                IStudentAppService stuService = MyContainer.Root.Resolve<IStudentAppService>();
+                IStudentAppService stuService = RayContainer.AutofacRootScope.Resolve<IStudentAppService>();
                 name = stuService.GetStuName(1);
             }
             catch (Exception)

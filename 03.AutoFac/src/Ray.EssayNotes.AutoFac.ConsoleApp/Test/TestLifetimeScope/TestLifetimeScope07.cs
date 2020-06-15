@@ -31,7 +31,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 
         protected override void PrintResult()
         {
-            using (var scope = MyContainer.Root.BeginLifetimeScope())
+            using (var scope = RayContainer.AutofacRootScope.BeginLifetimeScope())
             {
                 var service = scope.Resolve<TestServiceTwo>();
                 service.PrintToken();

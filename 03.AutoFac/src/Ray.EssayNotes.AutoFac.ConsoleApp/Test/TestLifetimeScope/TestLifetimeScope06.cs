@@ -28,7 +28,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 
         protected override void PrintResult()
         {
-            using (var testScope = MyContainer.Root.BeginLifetimeScope("AutofacWebRequest"))
+            using (var testScope = RayContainer.AutofacRootScope.BeginLifetimeScope("AutofacWebRequest"))
             {
                 var instance1 = testScope.Resolve<DtoToken>();
                 Console.WriteLine($"【AutofacWebRequest】第1次：{instance1.Guid}");
@@ -50,7 +50,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
                 }
             }
 
-            using (var abcScope = MyContainer.Root.BeginLifetimeScope())
+            using (var abcScope = RayContainer.AutofacRootScope.BeginLifetimeScope())
             {
                 try
                 {

@@ -15,9 +15,9 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         public override void Run()
         {
             //初始化容器，将需要用到的组件添加到容器中
-            MyContainer.Init(RegisterFunc);
+            RayContainer.Init(RegisterFunc);
 
-            IStudentAppService stuService = MyContainer.Root.Resolve<StudentAppService>();
+            IStudentAppService stuService = RayContainer.AutofacRootScope.Resolve<StudentAppService>();
             string name = stuService.GetStuName(1);
 
             Console.WriteLine(name);

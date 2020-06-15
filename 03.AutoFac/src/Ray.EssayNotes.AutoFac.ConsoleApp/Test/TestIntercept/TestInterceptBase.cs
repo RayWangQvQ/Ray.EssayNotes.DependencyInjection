@@ -15,7 +15,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
     {
         public void Run()
         {
-            MyContainer.Init(RegisterFunc);
+            RayContainer.Init(RegisterFunc);
 
             //PrintComponent();
 
@@ -26,7 +26,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
         public virtual void PrintComponent()
         {
-            string jsonStr = MyContainer.Root.PrintComponent();
+            string jsonStr = RayContainer.AutofacRootScope.PrintComponent();
             Console.WriteLine(jsonStr.AsFormatJsonStr());
         }
 

@@ -20,13 +20,13 @@ namespace Ray.EssayNotes.AutoFac.NetFrameworkMvc
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //1.初始化容器，注册组件
-            MyContainer.Init(builder =>
+            RayContainer.Init(builder =>
             {
                 new Startup().ConfigureServices(builder);
                 return builder;
             });
             //AutoFac解析器
-            System.Web.Mvc.IDependencyResolver autoFacResolver = new Autofac.Integration.Mvc.AutofacDependencyResolver(MyContainer.Root);
+            System.Web.Mvc.IDependencyResolver autoFacResolver = new Autofac.Integration.Mvc.AutofacDependencyResolver(RayContainer.AutofacRootScope);
             //将AutoFac解析器设置为系统DI解析器
             DependencyResolver.SetResolver(autoFacResolver);
         }

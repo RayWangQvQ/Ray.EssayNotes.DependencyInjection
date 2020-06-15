@@ -28,7 +28,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestIntercept
 
         protected override void PrintResult()
         {
-            var service = MyContainer.Root.Resolve<ITestInterceptAppService>();
+            var service = RayContainer.AutofacRootScope.Resolve<ITestInterceptAppService>();
 
             var re = service.DoSomething();
             Console.WriteLine(re);

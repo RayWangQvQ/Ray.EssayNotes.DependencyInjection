@@ -42,7 +42,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
         {
             Console.WriteLine("testScopeName标签域内：");
 
-            using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
+            using (var testScope = RayContainer.AutofacRootScope.BeginLifetimeScope("testScopeName"))
             {
                 for (int i = 1; i < 3; i++)
                 {
@@ -63,7 +63,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
             {
                 for (int i = 1; i < 3; i++)
                 {
-                    var instance = MyContainer.Root.ResolveOptional<DtoToken>();
+                    var instance = RayContainer.AutofacRootScope.ResolveOptional<DtoToken>();
                     Console.WriteLine($"第{i}次：{instance?.Guid}");
                 }
             }
@@ -81,7 +81,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
             Console.WriteLine("无标签域内：");
             try
             {
-                using (var testScope = MyContainer.Root.BeginLifetimeScope())
+                using (var testScope = RayContainer.AutofacRootScope.BeginLifetimeScope())
                 {
                     for (int i = 1; i < 3; i++)
                     {
@@ -104,7 +104,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
             Console.WriteLine("其他标签域内：");
             try
             {
-                using (var testScope = MyContainer.Root.BeginLifetimeScope("abc"))
+                using (var testScope = RayContainer.AutofacRootScope.BeginLifetimeScope("abc"))
                 {
                     for (int i = 1; i < 3; i++)
                     {
@@ -127,7 +127,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
             Console.WriteLine("testScopeName.空：");
             try
             {
-                using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
+                using (var testScope = RayContainer.AutofacRootScope.BeginLifetimeScope("testScopeName"))
                 {
                     using (var scope = testScope.BeginLifetimeScope())
                     {
@@ -153,7 +153,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
             Console.WriteLine("testScopeName.aaa：");
             try
             {
-                using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
+                using (var testScope = RayContainer.AutofacRootScope.BeginLifetimeScope("testScopeName"))
                 {
                     using (var scope = testScope.BeginLifetimeScope("aaa"))
                     {
@@ -179,7 +179,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
             Console.WriteLine("testScopeName.aaa.bbb：");
             try
             {
-                using (var testScope = MyContainer.Root.BeginLifetimeScope("testScopeName"))
+                using (var testScope = RayContainer.AutofacRootScope.BeginLifetimeScope("testScopeName"))
                 {
                     using (var scopeA = testScope.BeginLifetimeScope("aaa"))
                     {

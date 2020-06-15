@@ -25,7 +25,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestLifetimeScope
 
         protected override void PrintResult()
         {
-            using (var scope = MyContainer.Root.BeginLifetimeScope())
+            using (var scope = RayContainer.AutofacRootScope.BeginLifetimeScope())
             {
                 for (int i = 0; i < 3; i++)
                 {

@@ -39,7 +39,7 @@ namespace Ray.EssayNotes.AutoFac.CoreApi.Controllers
                 Console.WriteLine($"instance1：{instance1.GetHashCode()}");
             }
 
-            using (var scope = MyContainer.Root.BeginLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag))
+            using (var scope = RayContainer.AutofacRootScope.BeginLifetimeScope(Autofac.Core.Lifetime.MatchingScopeLifetimeTags.RequestLifetimeScopeTag))
             {
                 var instance = scope.Resolve<MyDbContext>();
                 Console.WriteLine($"instance：{instance.GetHashCode()}");

@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
+using Ray.EssayNotes.AutoFac.Repository;
 using Ray.EssayNotes.AutoFac.Service.Di;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
@@ -45,17 +47,12 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //可以拿到根容器存储下，方便以后调用
-            MyContainer.Root = app.ApplicationServices.GetAutofacRoot();
+            //存储根容器的引用，方便以后调用
+            RayContainer.ServiceProviderRoot = app.ApplicationServices;
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -64,6 +61,31 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
             {
                 endpoints.MapControllers();
             });
+
+            Test01();
+            Test02();
+        }
+
+        private void Test01()
+        {
+            Console.WriteLine($"{RayContainer.ServiceProviderRoot.GetType()}:{RayContainer.ServiceProviderRoot.GetHashCode()}");
+            /*
+             * 拿到的是Autofac.Extensions.DependencyInjection.AutofacServiceProvider对象
+             */
+
+            Console.WriteLine($"{RayContainer.AutofacRootScope.GetType()}:{RayContainer.AutofacRootScope.GetHashCode()}");
+            /*
+             * 拿到的是Autofac.Core.Lifetime.LifetimeScope
+             */
+        }
+
+        private void Test02()
+        {
+            MyDbContext dbContext1 = RayContainer.ServiceProviderRoot.GetService<MyDbContext>();
+            MyDbContext dbContext2 = RayContainer.AutofacRootScope.Resolve<MyDbContext>();
+
+            Console.WriteLine($"{dbContext1.GetHashCode()}");
+            Console.WriteLine($"{dbContext2.GetHashCode()}");
         }
     }
 }

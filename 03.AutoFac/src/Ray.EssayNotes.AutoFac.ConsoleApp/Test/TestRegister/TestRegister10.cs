@@ -17,13 +17,13 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
     {
         protected override void PrintResult()
         {
-            var service = MyContainer.Root.Resolve<IMyService>();
+            var service = RayContainer.AutofacRootScope.Resolve<IMyService>();
             Console.WriteLine($"{service.GetHashCode()}");
 
-            var other = MyContainer.Root.ResolveNamed<IMyService>("other");
+            var other = RayContainer.AutofacRootScope.ResolveNamed<IMyService>("other");
             Console.WriteLine($"{other.GetHashCode()}");
 
-            var services = MyContainer.Root.Resolve<IEnumerable<IMyService>>();
+            var services = RayContainer.AutofacRootScope.Resolve<IEnumerable<IMyService>>();
             foreach (var item in services)
             {
                 Console.WriteLine($"{item.GetHashCode()}");

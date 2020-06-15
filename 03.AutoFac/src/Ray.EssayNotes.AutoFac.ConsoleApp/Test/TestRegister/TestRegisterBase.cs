@@ -23,7 +23,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         public virtual void Run()
         {
             //初始化容器，将需要用到的组件添加到容器中
-            MyContainer.Init(RegisterFunc);
+            RayContainer.Init(RegisterFunc);
 
             //打印结果
             PrintResult();
@@ -46,7 +46,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         {
             //从容器中解析出对象（可以理解为根生命域(the “root lifetime scope”)
             //这种方式解析出的对象，其生命周期与程序同样长，多了之后可能会造成内存溢出，真实开发场景并不建议使用
-            IStudentAppService stuService = MyContainer.Root.Resolve<IStudentAppService>();
+            IStudentAppService stuService = RayContainer.AutofacRootScope.Resolve<IStudentAppService>();
             string name = stuService.GetStuName(1);
             Console.WriteLine($"输出：{name}");
         }
@@ -56,7 +56,7 @@ namespace Ray.EssayNotes.AutoFac.ConsoleApp.Test.TestRegister
         /// </summary>
         protected virtual void PrintComponent()
         {
-            string jsonStr = MyContainer.Root.PrintComponent();
+            string jsonStr = RayContainer.AutofacRootScope.PrintComponent();
             Console.WriteLine("注册表信息：");
             Console.WriteLine(jsonStr.AsFormatJsonStr());
         }
