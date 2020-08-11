@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Ray.Infrastructure.Helpers;
 
 namespace Ray.Infrastructure.Extensions
 {
@@ -60,5 +63,76 @@ namespace Ray.Infrastructure.Extensions
                 return default;
             }
         }
+
+
+        public static string AsJsonStr(this object obj, bool useSystem = true)
+        {
+            if (obj == null) return null;
+            return useSystem
+                ? System.Text.Json.JsonSerializer.Serialize(obj)
+                : Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+        }
+
+        public static string AsFormatJsonStr(this object obj, bool useSystem = true)
+        {
+            return obj.AsJsonStr(useSystem).AsFormatJsonStr();
+        }
+
+        public static string AsJsonStr(this object obj, Action<SettingOption> option = null)
+        {
+            SettingOption settingOption = new SettingOption();
+            option?.Invoke(settingOption);
+
+            var setting = settingOption.BuildSettings();
+            return JsonConvert.SerializeObject(obj, setting);
+        }
+    }
+
+    public class SettingOption
+    {
+        public JsonSerializerSettings SerializerSettings { get; set; }
+
+        /// <summary>
+        /// 忽略或只保留部分属性
+        /// </summary>
+        public FilterPropsOption FilterProps { get; set; }
+
+        /// <summary>
+        /// 枚举序列化为字符串
+        /// </summary>
+        public bool EnumToString { get; set; } = false;
+
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <returns></returns>
+        public JsonSerializerSettings BuildSettings()
+        {
+            if (SerializerSettings == null)
+                SerializerSettings = new JsonSerializerSettings();
+
+            //忽略/只保留部分属性
+            if (FilterProps != null)
+                SerializerSettings.ContractResolver = new FilterPropsContractResolver(FilterProps);
+
+            //枚举处理
+            if (EnumToString)
+                SerializerSettings.Converters.Add(new StringEnumConverter());
+
+            return SerializerSettings;
+        }
+    }
+
+    public class FilterPropsOption
+    {
+        public FilterEnum FilterEnum { get; set; } = FilterEnum.Ignore;
+
+        public string[] Props { get; set; } = { };
+    }
+
+    public enum FilterEnum
+    {
+        Ignore,
+        Retain
     }
 }

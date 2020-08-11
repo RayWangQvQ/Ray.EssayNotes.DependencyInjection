@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Ray.EssayNotes.AutoFac.Infrastructure.Ioc;
 using Ray.EssayNotes.AutoFac.Repository;
 using Ray.EssayNotes.AutoFac.Service.Di;
+using Ray.Infrastructure.Extensions;
 
 namespace Ray.EssayNotes.AutoFac.CoreApi
 {
@@ -42,6 +45,8 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
         {
             builder.AddRepositories()
                 .AddAppServices();
+
+            LogBuilder(builder);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,6 +91,31 @@ namespace Ray.EssayNotes.AutoFac.CoreApi
 
             Console.WriteLine($"{dbContext1.GetHashCode()}");
             Console.WriteLine($"{dbContext2.GetHashCode()}");
+        }
+
+
+        public static void LogBuilder(ContainerBuilder builder)
+        {
+            var callBacks = builder.GetFieldValue("_configurationCallbacks");
+            string builderJson = callBacks
+                .AsJsonStr(option =>
+                {
+                    option.EnumToString = true;
+                    option.SerializerSettings = new Newtonsoft.Json.JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    };
+                    option.FilterProps = new FilterPropsOption
+                    {
+                        FilterEnum = FilterEnum.Ignore,
+                        Props = new[]
+                        {
+                            "UsePollingFileWatcher", "Action", "Method", "Assembly"
+                            ,"CustomAttributes","assemblies"
+                        }
+                    };
+                }).AsFormatJsonStr();
+            File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "builder.txt"), builderJson);
         }
     }
 }
