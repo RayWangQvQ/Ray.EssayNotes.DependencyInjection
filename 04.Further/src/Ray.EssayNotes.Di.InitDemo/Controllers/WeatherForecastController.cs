@@ -18,14 +18,19 @@ namespace Ray.EssayNotes.Di.InitDemo.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
+            IServiceProvider serviceProvider,
+            SingletonService singletonService)
         {
             _logger = logger;
+            Console.WriteLine($"Controller中注入的ServiceProvider：{serviceProvider.GetHashCode()}");
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            Console.WriteLine($"HttpContext.RequestServices：{HttpContext.RequestServices.GetHashCode()}");
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

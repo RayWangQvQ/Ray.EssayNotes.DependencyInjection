@@ -19,7 +19,7 @@ namespace System
             return obj.AsJsonStr(useSystem).AsFormatJsonStr();
         }
 
-        public static string AsJsonStr(this object obj, Action<SettingOption> option = null)
+        public static string AsJsonStr(this object obj, Action<SettingOption> option)
         {
             SettingOption settingOption = new SettingOption();
             option?.Invoke(settingOption);
